@@ -10,7 +10,7 @@ public class Main{
 
   public static void main(String[] args){
 
-    File noteFolder = new File("../Notepad/notes/"); //Need to figure out how to make an absolute filepath, otherwise the file will not always be found!
+    File noteFolder = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator); //Need to figure out how to make an absolute filepath, otherwise the file will not always be found!
     passFiles(noteFolder);
 
   }
