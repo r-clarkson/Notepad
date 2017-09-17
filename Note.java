@@ -24,6 +24,7 @@ public class Note{
   public void parseNote(File note){
     //declare patterns here for each type of identifier
     Pattern topicMention = Pattern.compile("#[-a-zA-Z0-9_]+");
+    Pattern topicMention = Pattern.compile("@[-a-zA-Z0-9_]+");
     //make a list for each type
     List<String> topicMentionList = new ArrayList<String>();
 
