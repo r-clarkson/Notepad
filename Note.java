@@ -40,7 +40,7 @@ public class Note{
     Pattern individualMention = Pattern.compile("@[-a-zA-Z0-9_]+");
     Pattern uniqueMention = Pattern.compile("![-a-zA-Z0-9_]+");
     Pattern referenceMention = Pattern.compile("\\^[-a-zA-Z0-9_]+");
-    //Pattern url = Pattern.compile("((http:\\/\\/|https:\\/\\/)?(www.)?([a-zA-Z0-9]+).[a-z]{3})");
+    Pattern url = Pattern.compile("((http:\\/\\/|https:\\/\\/)?(www.)?([a-zA-Z0-9]+)\\.[a-z]{3})");
 
     try{
       //turns each line from the file into a string, given the character encoding type and filepath
@@ -50,7 +50,7 @@ public class Note{
       setIndividualMention(identifierMatcher(lines,individualMentionList,individualMention));
       setUniqueMention(identifierMatcher(lines,uniqueMentionList,uniqueMention));
       setReferenceMention(identifierMatcher(lines,referenceMentionList,referenceMention));
-      //identifierMatcher(lines,urlList,url);
+      identifierMatcher(lines,urlList,url);
 
     }
     catch (IOException e){
@@ -109,7 +109,7 @@ public class Note{
   public void setIndividualMention(List<String> individualMentionList){
 
     individualMentionList = this.individualMentionList;
-
+    
   }
   public void setUniqueMention(List<String> uniqueMentionList){
 
