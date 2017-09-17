@@ -28,6 +28,9 @@ public class Main{
             Note n = new Note(fileEntry); //it passes the file on to Note for parsing of the text
             System.out.println(n.getName()); //for now just prints the file name to show its actually creating a file
             //eventually we can pass n as a parameter to notebook class e.g. notebook.add(n)
+            for (int i = 0; i < n.getTopicMention().size(); i++){
+              System.out.println(n.getTopicMention().get(i));
+            }
         }
     }
 }
