@@ -37,16 +37,10 @@ public class Note{
   public void parseNote(File note){
     //declare patterns here for each type of identifier
     Pattern topicMention = Pattern.compile("#[-a-zA-Z0-9_]+");
-<<<<<<< HEAD
-    Pattern topicMention = Pattern.compile("@[-a-zA-Z0-9_]+");
-    //make a list for each type
-    List<String> topicMentionList = new ArrayList<String>();
-=======
     Pattern individualMention = Pattern.compile("@[-a-zA-Z0-9_]+");
     Pattern uniqueMention = Pattern.compile("![-a-zA-Z0-9_]+");
     Pattern referenceMention = Pattern.compile("\\^[-a-zA-Z0-9_]+");
     //Pattern url = Pattern.compile("((http:\\/\\/|https:\\/\\/)?(www.)?([a-zA-Z0-9]+).[a-z]{3})");
->>>>>>> branch 'master' of https://github.com/r-clarkson/Notepad.git
 
     try{
       //turns each line from the file into a string, given the character encoding type and filepath
