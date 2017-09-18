@@ -4,7 +4,7 @@ import java.util.regex.*;
 import java.nio.file.Files;
 import java.nio.charset.StandardCharsets;
 import java.io.IOException;
-
+/** Takes an individual note file, parses it and puts types of identifiers in their respective lists **/
 public class Note{
 
   String name;
@@ -18,11 +18,11 @@ public class Note{
   public Note(File note){
 
     //make a list for each type
-    topicMentionList = new ArrayList<String>();
-    individualMentionList = new ArrayList<String>();
-    uniqueMentionList = new ArrayList<String>();
-    referenceMentionList = new ArrayList<String>();
-    urlList = new ArrayList<String>();
+    topicMentionList = new LinkedList<String>();
+    individualMentionList = new LinkedList<String>();
+    uniqueMentionList = new LinkedList<String>();
+    referenceMentionList = new LinkedList<String>();
+    urlList = new LinkedList<String>();
 
     name = note.getName();
     parseNote(note);
@@ -80,6 +80,8 @@ public class Note{
     return identifierList;
   }
 
+
+  /** Getters and setters **/
   public String getName(){
 
     return name;
@@ -109,7 +111,7 @@ public class Note{
   public void setIndividualMention(List<String> individualMentionList){
 
     individualMentionList = this.individualMentionList;
-    
+
   }
   public void setUniqueMention(List<String> uniqueMentionList){
 
