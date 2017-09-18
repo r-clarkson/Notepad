@@ -15,7 +15,6 @@ public class Main{
 
   }
 
-
   /** Looks at txt files from the local notes directory and will pass each one to the Note class to become a Note
   https://stackoverflow.com/questions/1844688/read-all-files-in-a-folder
   **/
@@ -27,6 +26,7 @@ public class Main{
         passFiles(fileEntry);
       }
       else {
+
         Note n = new Note(fileEntry); //it passes the file on to Note for parsing of the text
 
         notebook.addToMap(n);

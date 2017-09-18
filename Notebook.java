@@ -17,15 +17,19 @@ public class Notebook{
 	https://stackoverflow.com/questions/26478646/adding-to-a-linkedlist-in-a-hashmapstring-linkedlist
 	**/
 	public void addToMap(Note n){
-		for (int i = 0; i < n.getTopicMention().size(); i++){
-			LinkedList<String> previousNotes = topicMentionMap.get(n.getTopicMention().get(i));
-			if (previousNotes==null){
-				previousNotes = new LinkedList<String>();
-				topicMentionMap.put(n.getTopicMention().get(i),previousNotes);
+
+		for (int i = 0; i < n.getIdentifierLists().size(); i++){
+			for (int j = 0; j < n.getIdentifierLists().get(i).size(); j++){
+				LinkedList<String> previousNotes = topicMentionMap.get(n.getIdentifierLists().get(i).get(j));
+				if (previousNotes==null){
+					previousNotes = new LinkedList<String>();
+					topicMentionMap.put(n.getIdentifierLists().get(i).get(j),previousNotes);
+				}
+				previousNotes.add(n.getName());
 			}
-			previousNotes.add(n.getName());
 		}
 	}
+
 	/**
 	an example function for how we might print a report
 	**/
@@ -34,6 +38,7 @@ public class Notebook{
 		for (int i = 0; i < topicMentionMap.get(topicMention).size(); i++){
 			System.out.println(topicMentionMap.get(topicMention).get(i));
 		}
-
 	}
+
+
 }
