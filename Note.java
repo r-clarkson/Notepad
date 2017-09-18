@@ -22,8 +22,8 @@ public class Note{
     patterns.add(Pattern.compile("((http:\\/\\/|https:\\/\\/)?(www.)?([a-zA-Z0-9]+)\\.[a-z]{3})"));
 
     name = note.getName();
-    for (Pattern p : patterns){
-      identifierLists.add(parseNote(note,p));
+    for (int i = 0; i < patterns.size(); i++){
+      identifierLists.add(parseNote(note,patterns.get(i)));
     }
   }
   /** function will turn files text line by line into strings, create patterns for each type of identifier and match with these strings

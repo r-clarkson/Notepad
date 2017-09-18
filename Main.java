@@ -33,6 +33,6 @@ public class Main{
 
       }
     }
-    notebook.printTopicMentionNotes("#hey");
+    notebook.printMaps();
   }
 }
