@@ -31,8 +31,13 @@ public class Main{
         for (int i = 0; i < n.getIdentifierLists().size(); i++){
           notebook.passToMap(n,n.getIdentifierLists().get(i));
         }
+
+
       }
     }
-    notebook.printMaps();
+    Reports report = new Reports(notebook);
+    report.printSpecificMention("#hey");
+    report.printAllMaps();
+    //notebook.printMaps();
   }
 }

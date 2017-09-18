@@ -1,5 +1,4 @@
 import java.util.*;
-
 /**
 Reads in notes and adds them to HashMaps by type
 Rough draft...
@@ -7,11 +6,11 @@ Rough draft...
 public class Notebook{
 	char type = '\0';
 	//initialize map and LLs
-	Map<String, LinkedList<String>> topicMentionMap ;
-	Map<String, LinkedList<String>> individualMentionMap;
-	Map<String, LinkedList<String>> referenceMentionMap;
-	Map<String, LinkedList<String>> uniqueMentionMap;
-	Map<String, LinkedList<String>> urlMap;
+	HashMap<String, LinkedList<String>> topicMentionMap ;
+	HashMap<String, LinkedList<String>> individualMentionMap;
+	HashMap<String, LinkedList<String>> referenceMentionMap;
+	HashMap<String, LinkedList<String>> uniqueMentionMap;
+	HashMap<String, LinkedList<String>> urlMap;
 
 	public Notebook(){
 		topicMentionMap = new HashMap<String, LinkedList<String>>();
@@ -27,11 +26,16 @@ public class Notebook{
 	https://stackoverflow.com/questions/26478646/adding-to-a-linkedlist-in-a-hashmapstring-linkedlist
 	**/
 	public void passToMap(Note n, LinkedList<String> list){
-		Map<String, LinkedList<String>> m = getListType(list);
+		for (int i = 0; i < list.size(); i++){
+			type = list.get(i).charAt(0);
+		}
+
+		Map<String, LinkedList<String>> m = getListType(type);
 		//make a map.
 		Map<String, LinkedList<String>> map = new HashMap<String, LinkedList<String>>();
 		//for each item in each list,
 		for (int j = 0; j < list.size(); j++){
+
 			//check the first character of a list item to get the list type
 			//set map equal to the correct one based on list type
 			map = m;
@@ -48,30 +52,8 @@ public class Notebook{
 			m = map;
 		}
 	}
-
-	/**
-	an example function for how we might print a report
-	**/
-	public void printMap(Map<String, LinkedList<String>> mapType){
-
-		for (String key : mapType.keySet()) {
-			System.out.println("\nKEY: " + key + " ");
-			for (int i = 0; i < mapType.get(key).size(); i++){
-				System.out.print( mapType.get(key).get(i) + " ");
-			}
-		}
-	}
-	public void printMaps(){
-		printMap(topicMentionMap);
-		printMap(uniqueMentionMap);
-		printMap(individualMentionMap);
-		printMap(referenceMentionMap);
-		printMap(urlMap);
-	}
-	public Map<String, LinkedList<String>> getListType(LinkedList<String> list){
-		for (int i = 0; i < list.size(); i++){
-			type = list.get(i).charAt(0);
-		}
+	/** determines list type based on the first character of an item **/
+	public HashMap<String, LinkedList<String>> getListType(char type){
 		switch (type){
 			case '#':
 			return topicMentionMap;
