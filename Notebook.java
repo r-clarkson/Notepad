@@ -1,17 +1,19 @@
 import java.util.*;
+
 /**
 Reads in notes and adds them to HashMaps by type
-Rough draft...
+Generating a map for each type seems too specific to be AGILE
 **/
 public class Notebook{
-	char type = '\0';
-	//initialize map and LLs
+	char listType = '\0';
+
 	HashMap<String, LinkedList<String>> topicMentionMap ;
 	HashMap<String, LinkedList<String>> individualMentionMap;
 	HashMap<String, LinkedList<String>> referenceMentionMap;
 	HashMap<String, LinkedList<String>> uniqueMentionMap;
 	HashMap<String, LinkedList<String>> urlMap;
 
+	/** initializes the hashmaps **/
 	public Notebook(){
 		topicMentionMap = new HashMap<String, LinkedList<String>>();
 		individualMentionMap = new HashMap<String, LinkedList<String>>();
@@ -19,39 +21,43 @@ public class Notebook{
 		uniqueMentionMap = new HashMap<String, LinkedList<String>>();
 		urlMap = new HashMap<String, LinkedList<String>>();
 	}
-	/** custom add to map function
-	for the size of the given note's identifier list that needs to be added,
-	takes the current LL in that identifier's place in the current map (or creates a new one if empty),
-	then adds the new noteName to that LL and puts it into the correct map based on the list type
+
+	/** custom pass to map function
+	1. gets the type of list by checking the symbol in front of the first item
+	2. creates two maps; one is the  current typeMap such as topicMentionMap, the other is a general map to work with (temporary map)
+	3. for each item in the list, sets the temporary map equal to the current map
+	4. creates a LL to contain all previous values that are currently in the current map (so they are not lost when new values are added)
+	5. if the list is empty, initializes a new list and puts previous values in it
+	6. adds the new value to the LL and then sets the current map equal to the temporary map
 	https://stackoverflow.com/questions/26478646/adding-to-a-linkedlist-in-a-hashmapstring-linkedlist
 	**/
 	public void passToMap(Note n, LinkedList<String> list){
+
 		for (int i = 0; i < list.size(); i++){
-			type = list.get(i).charAt(0);
+			listType = list.get(i).charAt(0);
 		}
 
-		Map<String, LinkedList<String>> m = getListType(type);
-		//make a map.
+		Map<String, LinkedList<String>> m = getListType(listType);
 		Map<String, LinkedList<String>> map = new HashMap<String, LinkedList<String>>();
-		//for each item in each list,
+
 		for (int j = 0; j < list.size(); j++){
 
-			//check the first character of a list item to get the list type
-			//set map equal to the correct one based on list type
 			map = m;
-			//make a LL of previous LLs so that old items are not lost
+
 			LinkedList<String> previousNotes = map.get(list.get(j));
-			//if the list is empty, make a new one
+
 			if (previousNotes==null){
+
 				previousNotes = new LinkedList<String>();
 				map.put(list.get(j),previousNotes);
+
 			}
-			//add the note name to the LL of note names for that item
+
 			previousNotes.add(n.getName());
-			//based on list type, set the specific map equal to the general one
 			m = map;
 		}
 	}
+	
 	/** determines list type based on the first character of an item **/
 	public HashMap<String, LinkedList<String>> getListType(char type){
 		switch (type){

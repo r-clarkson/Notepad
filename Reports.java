@@ -14,6 +14,7 @@ public class Reports{
     notebook = this.notebook;
 
   }
+  
   /**
   an example function for how we might print a report
   **/
@@ -22,6 +23,7 @@ public class Reports{
       printMap(maps.get(i));
     }
   }
+
   public void printTypeOfMap(char type){
     printMap(notebook.getListType(type));
   }
@@ -43,5 +45,4 @@ public class Reports{
       }
     }
   }
-
 }
