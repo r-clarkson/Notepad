@@ -8,12 +8,12 @@ import java.io.IOException;
 public class Note{
 
   String name;
-  List<List<String>> identifierLists;
+  LinkedList<LinkedList<String>> identifierLists;
   List<Pattern> patterns;
   /** constructor will set filename to identify file by and then pass the file to be parsed in a separate function**/
   public Note(File note){
     //make a list for each type
-    identifierLists = new LinkedList<List<String>>();
+    identifierLists = new LinkedList<LinkedList<String>>();
 
     patterns = new ArrayList<Pattern>();
     patterns.add(Pattern.compile("#[-a-zA-Z0-9_]+"));
@@ -32,8 +32,8 @@ public class Note{
   https://stackoverflow.com/questions/326390/how-do-i-create-a-java-string-from-the-contents-of-a-file
   https://stackoverflow.com/questions/10432543/extract-hash-tag-from-string
   **/
-  public List<String> parseNote(File note, Pattern pattern){
-    List<String> identifierList = new LinkedList<String>();
+  public LinkedList<String> parseNote(File note, Pattern pattern){
+    LinkedList<String> identifierList = new LinkedList<String>();
     try{
       //turns each line from the file into a string, given the character encoding type and filepath
       List<String> lines = Files.readAllLines(note.toPath(), StandardCharsets.ISO_8859_1);
@@ -58,10 +58,10 @@ public class Note{
   public String getName(){
     return name;
   }
-  public List<List<String>> getIdentifierLists(){
+  public List<LinkedList<String>> getIdentifierLists(){
     return identifierLists;
   }
-  public void setIdentifierList(List<List<String>> identifierList){
+  public void setIdentifierList(LinkedList<LinkedList<String>> identifierList){
     identifierList = this.identifierLists;
   }
 }

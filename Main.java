@@ -28,9 +28,9 @@ public class Main{
       else {
 
         Note n = new Note(fileEntry); //it passes the file on to Note for parsing of the text
-
-        notebook.addToMap(n);
-
+        for (int i = 0; i < n.getIdentifierLists().size(); i++){
+          notebook.passToMap(n,n.getIdentifierLists().get(i));
+        }
       }
     }
     notebook.printMaps();
