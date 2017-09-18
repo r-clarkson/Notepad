@@ -25,15 +25,11 @@ public class Main{
     for (final File fileEntry : folder.listFiles()) {
       if (fileEntry.isDirectory()) {
         passFiles(fileEntry);
-      } else {
+      }
+      else {
         Note n = new Note(fileEntry); //it passes the file on to Note for parsing of the text
-        //System.out.println(n.getName()); //for now just prints the file name to show its actually creating a file
-        //just a little test function here
-        //for (int i = 0; i < n.getURL().size(); i++){
-          //System.out.println(n.getURL().get(i));
-        //}
 
-        notebook.initializeMaps(n);
+        notebook.addToMap(n);
 
       }
     }
