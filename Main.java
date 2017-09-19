@@ -7,7 +7,6 @@ import java.io.*;
 Reports are then generated based on user input and the said notebook
 **/
 public class Main{
-
   /** Filepath is taken from parent folder
   Notebook object initiated, files passed to be parsed, and afterwards, reports gathered
   **/
@@ -36,23 +35,13 @@ public class Main{
     }
   }
 
-  /** Makes reports object so that the maps from the notebook can be searched
+  /** Makes reports object and interacts with user via text input to generate reports with the object
   **/
   public static void generateReports(Notebook notebook){
     Reports report = new Reports(notebook);
     Scanner scanner = new Scanner(System.in);
-    System.out.print("\033[H\033[2J");
-    System.out.flush();
 
-    System.out.println("Please choose the report to be generated, or exit by pressing 7: \n");
-    System.out.println("1: all notes containing one or more mentions");
-    System.out.println("2: all notes organized by mention");
-    System.out.println("3: report of all keywords");
-    System.out.println("4: notes organized by keywords");
-    System.out.println("5: search for #, @, or !");
-    System.out.println("6: notes organized in topological order");
-    System.out.println("7: EXIT");
-
+    printMenu();
     int userInput = scanner.nextInt();
 
     if (userInput == 7){
@@ -61,8 +50,8 @@ public class Main{
 
     report.generateReport(userInput);
 
-    System.out.println("Would you like to generate another report?");
-    System.out.println("1: YES \n 2: NO");
+    continueScreen(notebook);
+
     userInput = scanner.nextInt();
 
     if (userInput == 1){
@@ -71,5 +60,25 @@ public class Main{
     else{
       System.exit(0);
     }
+
   }
+  /** text menu for types of reports that can be generated **/
+  public static void printMenu(){
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
+    System.out.println("Please choose the report to be generated, or exit by pressing 7: \n");
+    System.out.println("1: all notes containing one or more mentions");
+    System.out.println("2: all notes organized by mention");
+    System.out.println("3: report of all keywords");
+    System.out.println("4: notes organized by keywords");
+    System.out.println("5: search for #, @, or !");
+    System.out.println("6: notes organized in topological order");
+    System.out.println("7: EXIT");
+  }
+  /** text menu for user decision to continue or exit **/
+  public static int continueScreen(Notebook notebook){
+    System.out.println("Would you like to generate another report?");
+    System.out.println("1: YES \n2: NO");
+  }
+
 }

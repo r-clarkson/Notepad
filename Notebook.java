@@ -6,6 +6,7 @@ Generating a map for each type seems too specific to be AGILE
 **/
 public class Notebook{
 	char listType = '\0';
+	LinkedList<LinkedList<String>> notes = new LinkedList<LinkedList<String>>();
 	List<String> uniqueMentions = new LinkedList<String>();
 	HashMap<String, LinkedList<String>> topicMentionMap ;
 	HashMap<String, LinkedList<String>> individualMentionMap;
@@ -13,7 +14,9 @@ public class Notebook{
 	HashMap<String, LinkedList<String>> uniqueMentionMap;
 	HashMap<String, LinkedList<String>> urlMap;
 
-	/** initializes the hashmaps **/
+	/** initializes the hashmaps
+	is there a more refactor-ish way to do this while still being specific enough to the assignment? A list of these would not work because we define them later...
+	**/
 	public Notebook(){
 		topicMentionMap = new HashMap<String, LinkedList<String>>();
 		individualMentionMap = new HashMap<String, LinkedList<String>>();
@@ -29,6 +32,7 @@ public class Notebook{
 	4. creates a LL to contain all previous values that are currently in the current map (so they are not lost when new values are added)
 	5. if the list is empty, initializes a new list and puts previous values in it
 	6. adds the new value to the LL and then sets the current map equal to the temporary map
+	7. at the end, this function also adds the list of all notes parsed from the note to the bigger list of all notes parsed in all notes so far...
 	https://stackoverflow.com/questions/26478646/adding-to-a-linkedlist-in-a-hashmapstring-linkedlist
 	**/
 	public void passToMap(Note n, LinkedList<String> list){
@@ -56,6 +60,7 @@ public class Notebook{
 
 			m = map;
 		}
+		notes.add(n.getNotesList());
 	}
 
 	/** determines list type based on the first character of an item **/
@@ -72,5 +77,9 @@ public class Notebook{
 			default:
 			return urlMap;
 		}
+	}
+/** getter for the list of all notes parsed so far; needed for topological sort**/
+	public LinkedList<LinkedList<String>> getNotesList(){
+		return notes;
 	}
 }
