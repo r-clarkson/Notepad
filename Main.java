@@ -7,16 +7,51 @@ import java.io.*;
 Reports are then generated based on user input and the said notebook
 **/
 public class Main{
-  /** Filepath is taken from parent folder
-  Notebook object initiated, files passed to be parsed, and afterwards, reports gathered
+  /** Notebook object is created,
+  filepath is taken from user (or not, depending on their input).
+  files then passed to be parsed, and afterwards, reports gathered
   **/
   public static void main(String[] args){
-    File noteFolder = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator);
     Notebook notebook = new Notebook();
-    passFiles(noteFolder,notebook);
+    passFiles(getFilePath(),notebook);
     generateReports(notebook);
   }
-
+  /**
+  prints the start menu to see if the user wants to put in their own filepath,
+  then guides the user through getting the folder correct
+  returns the folder of notes to main so they can be passed to passFiles
+  **/
+  public static File getFilePath(){
+    printStartMenu();
+    File noteFolder;
+    Scanner scanner = new Scanner(System.in);
+    int input = scanner.nextInt();
+    try{
+      switch(input){
+        case 1:
+        System.out.println("Please enter your ABSOLUTE filepath:");
+        noteFolder = new File(scanner.next());
+        if (!noteFolder.isDirectory()){
+          System.out.println("This is not a directory. Try again.");
+          getFilePath();
+        }
+        break;
+        case 2:
+        noteFolder = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator);
+        break;
+        case 3:
+        System.exit(0);
+        default:
+        return null;
+      }
+      return noteFolder;
+    }
+    catch (NullPointerException e){
+      System.out.println("File not found. Please try again.");
+      getFilePath();
+    }
+    return null;
+  }
   /** Looks at txt files from the local notes directory and will pass each one to the Note class to become a Note
   for each file in the directory, makes a new note, and then the note is added to the notebook with passToMap
   https://stackoverflow.com/questions/1844688/read-all-files-in-a-folder
@@ -76,9 +111,14 @@ public class Main{
     System.out.println("7: EXIT");
   }
   /** text menu for user decision to continue or exit **/
-  public static int continueScreen(Notebook notebook){
+  public static void continueScreen(Notebook notebook){
     System.out.println("Would you like to generate another report?");
     System.out.println("1: YES \n2: NO");
   }
-
+  /** prints start menu **/
+  public static void printStartMenu(){
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
+    System.out.println("THERE ARE TWO OPTIONS TO GET STARTED:\n1: Enter the ABSOLUTE filepath of the notes' DIRECTORY (not a txt file) below\n2: Put your notes in the 'notes' directory included in this package, then run this program from the 'Notepad' directory. Only select this option if your notes are already in the notes directory.\n3: Exit");
+  }
 }
