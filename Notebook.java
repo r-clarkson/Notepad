@@ -32,7 +32,6 @@ public class Notebook{
 	https://stackoverflow.com/questions/26478646/adding-to-a-linkedlist-in-a-hashmapstring-linkedlist
 	**/
 	public void passToMap(Note n, LinkedList<String> list){
-		List<String> alreadyOnList = new LinkedList<String>();
 		for (int i = 0; i < list.size(); i++){
 			listType = list.get(i).charAt(0);
 		}
@@ -52,10 +51,9 @@ public class Notebook{
 					map.put(list.get(j),previousNotes);
 				}
 			}
-			if (!alreadyOnList.contains(n.getName())){
-				alreadyOnList.add(n.getName());
-				previousNotes.add(n.getName());
-			}
+
+			previousNotes.add(n.getName());
+
 			m = map;
 		}
 	}

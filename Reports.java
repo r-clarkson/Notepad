@@ -62,7 +62,6 @@ public class Reports{
   **/
   public void printNotesWithOneOrMoreMentions(Map<String, LinkedList<String>> mapType){
     for (String key : mapType.keySet()) {
-      System.out.println("\nKEY: " + key + " ");
       for (int i = 0; i < mapType.get(key).size(); i++){
           System.out.print( mapType.get(key).get(i) + "\n");
       }
