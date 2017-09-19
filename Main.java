@@ -1,5 +1,5 @@
 import java.nio.file.*;
-import java.util.stream.*;
+import java.util.*;
 import java.io.*;
 
 
@@ -40,6 +40,36 @@ public class Main{
   **/
   public static void generateReports(Notebook notebook){
     Reports report = new Reports(notebook);
-    //report.printSpecificMention("#hey");
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
+
+    System.out.println("Please choose the report to be generated, or exit by pressing 7: \n");
+    System.out.println("1: all notes containing one or more mentions");
+    System.out.println("2: all notes organized by mention");
+    System.out.println("3: report of all keywords");
+    System.out.println("4: notes organized by keywords");
+    System.out.println("5: search for #, @, or !");
+    System.out.println("6: notes organized in topological order");
+    System.out.println("7: EXIT");
+
+    int userInput = scanner.nextInt();
+
+    if (userInput == 7){
+      System.exit(0);
+    }
+
+    report.generateReport(userInput);
+
+    System.out.println("Would you like to generate another report?");
+    System.out.println("1: YES \n 2: NO");
+    userInput = scanner.nextInt();
+
+    if (userInput == 1){
+      generateReports(notebook);
+    }
+    else{
+      System.exit(0);
+    }
   }
 }
