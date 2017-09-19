@@ -6,7 +6,7 @@ Generating a map for each type seems too specific to be AGILE
 **/
 public class Notebook{
 	char listType = '\0';
-
+	List<String> uniqueMentions = new LinkedList<String>();
 	HashMap<String, LinkedList<String>> topicMentionMap ;
 	HashMap<String, LinkedList<String>> individualMentionMap;
 	HashMap<String, LinkedList<String>> referenceMentionMap;
@@ -32,7 +32,7 @@ public class Notebook{
 	https://stackoverflow.com/questions/26478646/adding-to-a-linkedlist-in-a-hashmapstring-linkedlist
 	**/
 	public void passToMap(Note n, LinkedList<String> list){
-
+		List<String> alreadyOnList = new LinkedList<String>();
 		for (int i = 0; i < list.size(); i++){
 			listType = list.get(i).charAt(0);
 		}
@@ -47,17 +47,19 @@ public class Notebook{
 			LinkedList<String> previousNotes = map.get(list.get(j));
 
 			if (previousNotes==null){
-
-				previousNotes = new LinkedList<String>();
-				map.put(list.get(j),previousNotes);
-
+				if ((listType == '!' && !uniqueMentions.contains(list.get(j))) || listType != '!'){
+					previousNotes = new LinkedList<String>();
+					map.put(list.get(j),previousNotes);
+				}
 			}
-
-			previousNotes.add(n.getName());
+			if (!alreadyOnList.contains(n.getName())){
+				alreadyOnList.add(n.getName());
+				previousNotes.add(n.getName());
+			}
 			m = map;
 		}
 	}
-	
+
 	/** determines list type based on the first character of an item **/
 	public HashMap<String, LinkedList<String>> getListType(char type){
 		switch (type){

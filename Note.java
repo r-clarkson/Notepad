@@ -19,6 +19,7 @@ public class Note{
     patterns.add(Pattern.compile("#[-a-zA-Z0-9_]+"));
     patterns.add(Pattern.compile("@[-a-zA-Z0-9_]+"));
     patterns.add(Pattern.compile("![-a-zA-Z0-9_]+"));
+    patterns.add(Pattern.compile("\\^[-a-zA-Z0-9_]+"));
     patterns.add(Pattern.compile("((http:\\/\\/|https:\\/\\/)?(www.)?([a-zA-Z0-9]+)\\.[a-z]{3})"));
 
     name = note.getName();

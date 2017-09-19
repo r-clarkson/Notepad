@@ -40,7 +40,6 @@ public class Main{
   **/
   public static void generateReports(Notebook notebook){
     Reports report = new Reports(notebook);
-    report.printSpecificMention("#hey");
-    report.printAllMaps();
+    //report.printSpecificMention("#hey");
   }
 }
