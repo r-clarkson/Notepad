@@ -1,3 +1,5 @@
+package src;
+
 import java.util.*;
 import java.io.*;
 
@@ -7,7 +9,7 @@ public class TSort{
   public TSort(){
     sortIndex = 0;
   }
-  
+
   /** topological sort of note files
   finds notes without any incoming vertices, prints them, and then deletes those notes' outgoing vertices
   the note that was printed is then deleted from the list of all notes

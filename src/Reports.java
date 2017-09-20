@@ -1,3 +1,5 @@
+package src;
+
 import java.nio.file.*;
 import java.util.*;
 import java.io.*;
@@ -13,7 +15,6 @@ public class Reports{
   public Reports(Notebook notebook){
     Scanner scanner = new  Scanner(System.in);
     maps = new LinkedList<HashMap<String,LinkedList<String>>>();
-    sortIndex = 0;
     maps.add(notebook.getListType('#'));
     maps.add(notebook.getListType('@'));
     maps.add(notebook.getListType('!'));
