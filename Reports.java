@@ -9,12 +9,13 @@ public class Reports{
   LinkedList<HashMap<String,LinkedList<String>>> maps;
   Notebook notebook;
   LinkedList<String> notesList;
+  int sortIndex;
 
   /** adds the notebook's hashmaps to the new list of maps so they can be more easily iterated through (its a little cleaner)**/
   public Reports(Notebook notebook){
     Scanner scanner = new  Scanner(System.in);
     maps = new LinkedList<HashMap<String,LinkedList<String>>>();
-
+    sortIndex = 0;
     maps.add(notebook.getListType('#'));
     maps.add(notebook.getListType('@'));
     maps.add(notebook.getListType('!'));
@@ -95,45 +96,45 @@ public class Reports{
 
   public void topologicalSort(LinkedList<String> notesList){
     boolean incomingVertices = false;
-    int i = 0;
-    for (int a = 0; a < notesList.size(); a ++){
-      System.out.println(notesList.get(a));
+    while (notesList.size()!=0){
+      incomingVertices = findIncomingVertices(notesList);
+      if (incomingVertices){
+        sortIndex++;
+        topologicalSort(notesList);
+      }
+      else{
+        deleteOutgoingVertices(notesList);
+        topologicalSort(notesList);
+      }
     }
-    //make a temp list instead of using the real one?
-    //search for any notes that reference the given notes !unique mention (incoming vertices)
-    while (notesList.size()!= 0){
-      incomingVertices = false;
-      while (!incomingVertices){
-        for (String keyOne : maps.get(2).keySet()){
-          //find the key that contains that note's !unique mention
-          if (i == notesList.size()){
-            i = 0;
+  }
+
+  public boolean findIncomingVertices(LinkedList<String> notesList){
+    for (String keyOne : maps.get(2).keySet()){
+      if (sortIndex == notesList.size()){
+        sortIndex = 0;
+      }
+      if (maps.get(2).get(keyOne).contains(notesList.get(sortIndex))){
+        for (String keyTwo : maps.get(3).keySet()){
+          //System.out.println(keyOne.substring(1) + " " + keyTwo.substring(1));
+          if ((keyOne.substring(1)).equals(keyTwo.substring(1)) && maps.get(3).get(keyTwo).size()!=0){
+            return true;
           }
-          if (maps.get(2).get(keyOne).contains(notesList.get(i))){
-            for (String keyTwo : maps.get(3).keySet()){
-              //System.out.println(keyOne.substring(1) + " " + keyTwo.substring(1));
-              if ((keyOne.substring(1)).equals(keyTwo.substring(1)) && maps.get(3).get(keyTwo).size()!=0){
-                //System.out.println("Yay");
-                i++;
-                incomingVertices = true;
-              }
-            }
-          }
-        }
-        if (!incomingVertices){
-          System.out.println("\n" + notesList.get(i));
-          //remove outgoing vertices
-          for (String key : maps.get(3).keySet()){
-            while (maps.get(3).get(key).contains(notesList.get(i))){
-              maps.get(3).get(key).remove(notesList.get(i));
-            }
-          }
-          notesList.remove(i);
-          i = 0;
         }
       }
-
     }
+    System.out.println("\n" + notesList.get(sortIndex));
+    return false;
+  }
+
+  public void deleteOutgoingVertices(LinkedList<String> notesList){
+    for (String key : maps.get(3).keySet()){
+      while (maps.get(3).get(key).contains(notesList.get(sortIndex))){
+        maps.get(3).get(key).remove(notesList.get(sortIndex));
+      }
+    }
+    notesList.remove(sortIndex);
+    sortIndex = 0;
   }
 
   /** simple function to clear screen, the less repetitive code the better
