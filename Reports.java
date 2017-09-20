@@ -8,16 +8,21 @@ public class Reports{
   Scanner scanner;
   LinkedList<HashMap<String,LinkedList<String>>> maps;
   Notebook notebook;
+  LinkedList<String> notesList;
+
   /** adds the notebook's hashmaps to the new list of maps so they can be more easily iterated through (its a little cleaner)**/
   public Reports(Notebook notebook){
     Scanner scanner = new  Scanner(System.in);
     maps = new LinkedList<HashMap<String,LinkedList<String>>>();
+
     maps.add(notebook.getListType('#'));
     maps.add(notebook.getListType('@'));
     maps.add(notebook.getListType('!'));
     maps.add(notebook.getListType('^'));
     maps.add(notebook.getListType('f'));
-    notebook = this.notebook;
+
+    notesList = notebook.getNotesList();
+
   }
   /** based on the users input from main, generates that report
   **/
@@ -25,30 +30,31 @@ public class Reports{
     clearScreen();
     switch(input){
       case 1:
-        System.out.println("NOTES WITH ONE OR MORE MENTION(S) (@)");
-        printNotesWithOneOrMoreMentions(maps.get(1),false);
-        break;
+      System.out.println("NOTES WITH ONE OR MORE MENTION(S) (@)");
+      printNotesWithOneOrMoreMentions(maps.get(1),false);
+      break;
       case 2:
-        System.out.println("NOTES ORGANIZED BY MENTION (@)");
-        printNotesWithOneOrMoreMentions(maps.get(1),true);
-        break;
+      System.out.println("NOTES ORGANIZED BY MENTION (@)");
+      printNotesWithOneOrMoreMentions(maps.get(1),true);
+      break;
       case 3:
-        System.out.println("ALL KEYWORDS (#)");
-        printNotesWithOneOrMoreMentions(maps.get(0),false);
-        break;
+      System.out.println("ALL KEYWORDS (#)");
+      printNotesWithOneOrMoreMentions(maps.get(0),false);
+      break;
       case 4:
-        System.out.println("NOTES ORGANIZED BY KEYWORD (#)");
-        printNotesWithOneOrMoreMentions(maps.get(0),true);
-        break;
+      System.out.println("NOTES ORGANIZED BY KEYWORD (#)");
+      printNotesWithOneOrMoreMentions(maps.get(0),true);
+      break;
       case 5:
-        clearScreen();
-        System.out.println("Please enter the keyword or mention you would like to find notes for, including the symbol: ");
-        String userInput = scanner.next();
-        printSpecificMention(userInput);
+      clearScreen();
+      System.out.println("Please enter the keyword or mention you would like to find notes for, including the symbol: ");
+      String userInput = scanner.next();
+      printSpecificMention(userInput);
       case 6:
-        break;
+      topologicalSort(notesList);
+      break;
       default:
-        System.out.println("Please enter a valid input.");
+      System.out.println("Please enter a valid input.");
     }
   }
   /**
@@ -80,12 +86,58 @@ public class Reports{
   public void iterateLists(Map<String, LinkedList<String>> mapType, String key){
     List<String> noteNames = new LinkedList<String>();
     for (int i = 0; i < mapType.get(key).size(); i++){
-        if (!noteNames.contains(mapType.get(key).get(i))){
-          System.out.print(mapType.get(key).get(i) + "\n");
-          noteNames.add(mapType.get(key).get(i));
-        }
+      if (!noteNames.contains(mapType.get(key).get(i))){
+        System.out.print(mapType.get(key).get(i) + "\n");
+        noteNames.add(mapType.get(key).get(i));
+      }
     }
   }
+
+  public void topologicalSort(LinkedList<String> notesList){
+    boolean incomingVertices = false;
+    int i = 0;
+    for (int a = 0; a < notesList.size(); a ++){
+      System.out.println(notesList.get(a));
+    }
+    //make a temp list instead of using the real one?
+    //search for any notes that reference the given notes !unique mention (incoming vertices)
+    while (notesList.size()!= 0){
+      incomingVertices = false;
+      while (!incomingVertices){
+        for (String keyOne : maps.get(2).keySet()){
+          //find the key that contains that note's !unique mention
+          if (maps.get(2).get(keyOne).contains(notesList.get(i))){
+            for (String keyTwo : maps.get(3).keySet()){
+              //System.out.println(keyOne.substring(1) + " " + keyTwo.substring(1));
+              if ((keyOne.substring(1)).equals(keyTwo.substring(1))){
+                //System.out.println("Yay");
+                i++;
+                incomingVertices = true;
+              }
+            }
+          }
+        }
+      if (!incomingVertices){
+        System.out.println("\n" + notesList.get(i));
+        //remove outgoing vertices
+        for (String key : maps.get(3).keySet()){
+          while (maps.get(3).get(key).contains(notesList.get(i))){
+            maps.get(3).get(key).remove(notesList.get(i));
+          }
+        }
+        notesList.remove(i);
+      }
+    }
+    }
+  }
+
+
+
+  //topologicalSort(notesList);
+
+
+
+
   /** simple function to clear screen, the less repetitive code the better
   https://stackoverflow.com/questions/10241217/how-to-clear-console-in-java **/
   public void clearScreen(){

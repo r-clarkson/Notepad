@@ -62,7 +62,7 @@ public class Main{
         passFiles(fileEntry,notebook);
       }
       else {
-        Note n = new Note(fileEntry); //it passes the file on to Note for parsing of the text
+        Note n = new Note(fileEntry);
         for (int i = 0; i < n.getIdentifierLists().size(); i++){
           notebook.passToMap(n,n.getIdentifierLists().get(i));
         }

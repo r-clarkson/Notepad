@@ -6,7 +6,7 @@ Generating a map for each type seems too specific to be AGILE
 **/
 public class Notebook{
 	char listType = '\0';
-	LinkedList<LinkedList<String>> notes = new LinkedList<LinkedList<String>>();
+	LinkedList<String> notes = new LinkedList<String>();
 	List<String> uniqueMentions = new LinkedList<String>();
 	HashMap<String, LinkedList<String>> topicMentionMap ;
 	HashMap<String, LinkedList<String>> individualMentionMap;
@@ -60,7 +60,9 @@ public class Notebook{
 
 			m = map;
 		}
-		notes.add(n.getNotesList());
+		if (!notes.contains(n.getName())){
+			notes.add(n.getName());
+		}
 	}
 
 	/** determines list type based on the first character of an item **/
@@ -79,7 +81,7 @@ public class Notebook{
 		}
 	}
 /** getter for the list of all notes parsed so far; needed for topological sort**/
-	public LinkedList<LinkedList<String>> getNotesList(){
+	public LinkedList<String> getNotesList(){
 		return notes;
 	}
 }

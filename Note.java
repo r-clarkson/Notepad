@@ -15,11 +15,9 @@ public class Note{
   String name;
   LinkedList<LinkedList<String>> identifierLists;
   List<Pattern> patterns;
-  LinkedList<String> notes;
 
   /** constructor initializes lists, adds patterns to their respective list, and parses the note for each type of pattern**/
   public Note(File note){
-    notes = new LinkedList<String>();
     identifierLists = new LinkedList<LinkedList<String>>();
 
     patterns = new ArrayList<Pattern>();
@@ -56,7 +54,6 @@ public class Note{
       if (pattern == Pattern.compile("\\^[-a-zA-Z0-9_]+")){
 
       }
-      notes.add(note.getName());
     }
     catch (IOException e){
       e.printStackTrace();
@@ -73,8 +70,5 @@ public class Note{
   }
   public void setIdentifierList(LinkedList<LinkedList<String>> identifierList){
     identifierList = this.identifierLists;
-  }
-  public LinkedList<String> getNotesList(){
-    return notes;
   }
 }
