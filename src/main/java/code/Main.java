@@ -1,4 +1,4 @@
-package src;
+package code;
 import java.nio.file.*;
 import java.util.*;
 import java.io.*;
@@ -26,7 +26,10 @@ public class Main{
     printStartMenu();
     File noteFolder;
     Scanner scanner = new Scanner(System.in);
-    int input = scanner.nextInt();
+    int input = 0;
+    if(scanner.hasNextInt()){
+      input = scanner.nextInt();
+    }
     try{
       switch(input){
         case 1:

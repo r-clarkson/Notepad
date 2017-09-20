@@ -10,12 +10,12 @@ Given the initial requirements for this assignment, we made the whole thing more
 
 REQUIREMENTS
 ------------
-Make sure Java 8 is installed.
-
-Junit stuff?
+Make sure Java is installed/updated.
 
 INSTALLATION/CONFIGURATION
 --------------------------
 1. CD into the "Notepad" directory of this program in terminal.
-2. Compile with javac src/Main.java
-3. Run with java src/Main
+2. Run by copy/pasting the command "./gradlew run"
+    ** "gradlew run" on windows
+3. Perform tests by copy/pasting the command "./gradlew test"
+    ** "gradlew test" on windows

@@ -1,4 +1,4 @@
-package src;
+package code;
 
 import java.nio.file.*;
 import java.util.*;
