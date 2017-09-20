@@ -1,5 +1,6 @@
 !pope
 ^moby
+^recipe
 #hey
 http:://www.pope.com
 

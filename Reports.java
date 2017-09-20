@@ -106,10 +106,13 @@ public class Reports{
       while (!incomingVertices){
         for (String keyOne : maps.get(2).keySet()){
           //find the key that contains that note's !unique mention
+          if (i == notesList.size()){
+            i = 0;
+          }
           if (maps.get(2).get(keyOne).contains(notesList.get(i))){
             for (String keyTwo : maps.get(3).keySet()){
               //System.out.println(keyOne.substring(1) + " " + keyTwo.substring(1));
-              if ((keyOne.substring(1)).equals(keyTwo.substring(1))){
+              if ((keyOne.substring(1)).equals(keyTwo.substring(1)) && maps.get(3).get(keyTwo).size()!=0){
                 //System.out.println("Yay");
                 i++;
                 incomingVertices = true;
@@ -117,26 +120,21 @@ public class Reports{
             }
           }
         }
-      if (!incomingVertices){
-        System.out.println("\n" + notesList.get(i));
-        //remove outgoing vertices
-        for (String key : maps.get(3).keySet()){
-          while (maps.get(3).get(key).contains(notesList.get(i))){
-            maps.get(3).get(key).remove(notesList.get(i));
+        if (!incomingVertices){
+          System.out.println("\n" + notesList.get(i));
+          //remove outgoing vertices
+          for (String key : maps.get(3).keySet()){
+            while (maps.get(3).get(key).contains(notesList.get(i))){
+              maps.get(3).get(key).remove(notesList.get(i));
+            }
           }
+          notesList.remove(i);
+          i = 0;
         }
-        notesList.remove(i);
       }
-    }
+
     }
   }
-
-
-
-  //topologicalSort(notesList);
-
-
-
 
   /** simple function to clear screen, the less repetitive code the better
   https://stackoverflow.com/questions/10241217/how-to-clear-console-in-java **/
