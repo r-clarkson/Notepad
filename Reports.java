@@ -9,8 +9,6 @@ public class Reports{
   LinkedList<HashMap<String,LinkedList<String>>> maps;
   Notebook notebook;
   LinkedList<String> notesList;
-  int sortIndex;
-
   /** adds the notebook's hashmaps to the new list of maps so they can be more easily iterated through (its a little cleaner)**/
   public Reports(Notebook notebook){
     Scanner scanner = new  Scanner(System.in);
@@ -23,7 +21,6 @@ public class Reports{
     maps.add(notebook.getListType('f'));
 
     notesList = notebook.getNotesList();
-
   }
   /** based on the users input from main, generates that report
   **/
@@ -52,7 +49,8 @@ public class Reports{
       String userInput = scanner.next();
       printSpecificMention(userInput);
       case 6:
-      topologicalSort(notesList);
+      TSort topologicalSort = new TSort();
+      topologicalSort.tSort(notesList,maps);
       break;
       default:
       System.out.println("Please enter a valid input.");
@@ -93,50 +91,6 @@ public class Reports{
       }
     }
   }
-
-  public void topologicalSort(LinkedList<String> notesList){
-    boolean incomingVertices = false;
-    while (notesList.size()!=0){
-      incomingVertices = findIncomingVertices(notesList);
-      if (incomingVertices){
-        sortIndex++;
-        topologicalSort(notesList);
-      }
-      else{
-        deleteOutgoingVertices(notesList);
-        topologicalSort(notesList);
-      }
-    }
-  }
-
-  public boolean findIncomingVertices(LinkedList<String> notesList){
-    for (String keyOne : maps.get(2).keySet()){
-      if (sortIndex == notesList.size()){
-        sortIndex = 0;
-      }
-      if (maps.get(2).get(keyOne).contains(notesList.get(sortIndex))){
-        for (String keyTwo : maps.get(3).keySet()){
-          //System.out.println(keyOne.substring(1) + " " + keyTwo.substring(1));
-          if ((keyOne.substring(1)).equals(keyTwo.substring(1)) && maps.get(3).get(keyTwo).size()!=0){
-            return true;
-          }
-        }
-      }
-    }
-    System.out.println("\n" + notesList.get(sortIndex));
-    return false;
-  }
-
-  public void deleteOutgoingVertices(LinkedList<String> notesList){
-    for (String key : maps.get(3).keySet()){
-      while (maps.get(3).get(key).contains(notesList.get(sortIndex))){
-        maps.get(3).get(key).remove(notesList.get(sortIndex));
-      }
-    }
-    notesList.remove(sortIndex);
-    sortIndex = 0;
-  }
-
   /** simple function to clear screen, the less repetitive code the better
   https://stackoverflow.com/questions/10241217/how-to-clear-console-in-java **/
   public void clearScreen(){
