@@ -19,3 +19,8 @@ INSTALLATION/CONFIGURATION
     ** "gradlew run" on windows
 3. Perform tests by copy/pasting the command "./gradlew test"
     ** "gradlew test" on windows
+
+INSTRUCTIONS
+------------
+1. The program requires user input; simply type the number of the option you want and press enter
+2. Gradle may display something like "BUILD 75%" at the cursor; ignore this and type your input normally
