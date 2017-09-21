@@ -13,7 +13,7 @@ public class Reports{
   LinkedList<String> notesList;
   /** adds the notebook's hashmaps to the new list of maps so they can be more easily iterated through (its a little cleaner)**/
   public Reports(Notebook notebook){
-    Scanner scanner = new  Scanner(System.in);
+    scanner = new  Scanner(System.in);
     maps = new LinkedList<HashMap<String,LinkedList<String>>>();
     maps.add(notebook.getListType('#'));
     maps.add(notebook.getListType('@'));
@@ -47,8 +47,12 @@ public class Reports{
       case 5:
       clearScreen();
       System.out.println("Please enter the keyword or mention you would like to find notes for, including the symbol: ");
-      String userInput = scanner.next();
+      String userInput = null;
+      if(scanner.hasNext()){
+        userInput = scanner.next();
+      }
       printSpecificMention(userInput);
+      break;
       case 6:
       TSort topologicalSort = new TSort();
       topologicalSort.tSort(notesList,maps);
