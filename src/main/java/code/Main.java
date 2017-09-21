@@ -3,7 +3,6 @@ import java.nio.file.*;
 import java.util.*;
 import java.io.*;
 
-
 /**  MainClass initiates process by passing on files in the "notes" folder to be made into note objects, which are then put into a notebook
 Reports are then generated based on user input and the said notebook
 **/
@@ -30,8 +29,10 @@ public class Main{
     if(scanner.hasNextInt()){
       input = scanner.nextInt();
     }
+    /** different cases for user input */
     try{
       switch(input){
+        /** user inputs direct filepath */
         case 1:
         System.out.println("Please enter your ABSOLUTE filepath:");
         noteFolder = new File(scanner.next());
@@ -40,9 +41,11 @@ public class Main{
           getFilePath();
         }
         break;
+        /** user has put notes in the notes folder */
         case 2:
         noteFolder = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator);
         break;
+        /** user wants to exit */
         case 3:
         System.exit(0);
         default:
@@ -50,6 +53,7 @@ public class Main{
       }
       return noteFolder;
     }
+    /** catches null pointers from filepath not being correct */
     catch (NullPointerException e){
       System.out.println("File not found. Please try again.");
       getFilePath();
@@ -61,16 +65,23 @@ public class Main{
   https://stackoverflow.com/questions/1844688/read-all-files-in-a-folder
   **/
   public static void passFiles(final File folder,Notebook notebook) {
-    for (final File fileEntry : folder.listFiles()) {
-      if (fileEntry.isDirectory()) {
-        passFiles(fileEntry,notebook);
-      }
-      else {
-        Note n = new Note(fileEntry);
-        for (int i = 0; i < n.getIdentifierLists().size(); i++){
-          notebook.passToMap(n,n.getIdentifierLists().get(i));
+    try{
+      /** passes each file to passfiles to become a note */
+      for (final File fileEntry : folder.listFiles()) {
+        if (fileEntry.isDirectory()) {
+          passFiles(fileEntry,notebook);
+        }
+        else {
+          Note n = new Note(fileEntry);
+          for (int i = 0; i < n.getIdentifierLists().size(); i++){
+            notebook.passToMap(n,n.getIdentifierLists().get(i));
+          }
         }
       }
+    }
+    catch (NullPointerException e){
+      System.out.println("File not found. Please try again.");
+      getFilePath();
     }
   }
 
@@ -79,7 +90,7 @@ public class Main{
   public static void generateReports(Notebook notebook){
     Reports report = new Reports(notebook);
     Scanner scanner = new Scanner(System.in);
-
+    /** prints report menu and waits for input */
     printMenu();
     int userInput = scanner.nextInt();
 
@@ -88,7 +99,7 @@ public class Main{
     }
 
     report.generateReport(userInput);
-
+    /** asks user if they want more reports or to exit */
     continueScreen(notebook);
 
     userInput = scanner.nextInt();
@@ -99,7 +110,6 @@ public class Main{
     else{
       System.exit(0);
     }
-
   }
   /** text menu for types of reports that can be generated **/
   public static void printMenu(){

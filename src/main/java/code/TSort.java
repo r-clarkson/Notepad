@@ -49,7 +49,7 @@ public class TSort{
         }
       }
     }
-    System.out.println("\n" + notesList.get(sortIndex));
+    System.out.println("\n*" + notesList.get(sortIndex) + "\n");
     return false;
   }
   /** for each ^refrence key in the ^map, goes through its LL to look for the note in questions

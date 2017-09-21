@@ -30,19 +30,19 @@ public class Reports{
     switch(input){
       case 1:
       System.out.println("NOTES WITH ONE OR MORE MENTION(S) (@)");
-      printNotesWithOneOrMoreMentions(maps.get(1),false);
+      printNotesWithOneOrMoreMentions(maps.get(1),false,true);
       break;
       case 2:
       System.out.println("NOTES ORGANIZED BY MENTION (@)");
-      printNotesWithOneOrMoreMentions(maps.get(1),true);
+      printNotesWithOneOrMoreMentions(maps.get(1),true,true);
       break;
       case 3:
       System.out.println("ALL KEYWORDS (#)");
-      printNotesWithOneOrMoreMentions(maps.get(0),false);
+      printNotesWithOneOrMoreMentions(maps.get(0),true,false);
       break;
       case 4:
       System.out.println("NOTES ORGANIZED BY KEYWORD (#)");
-      printNotesWithOneOrMoreMentions(maps.get(0),true);
+      printNotesWithOneOrMoreMentions(maps.get(0),true,true);
       break;
       case 5:
       clearScreen();
@@ -76,12 +76,14 @@ public class Reports{
   takes the type of map and boolean for whether to print keys or not (just notes or notes with their mention/keyword)
   for each key in the map, calls iterateLists to go through the key's LL of note names
   **/
-  public void printNotesWithOneOrMoreMentions(Map<String, LinkedList<String>> mapType, boolean showKey){
+  public void printNotesWithOneOrMoreMentions(Map<String, LinkedList<String>> mapType, boolean showKey, boolean showValue){
     for (String key : mapType.keySet()) {
       if(showKey){
-        System.out.println("\nKEY: " + key);
+        System.out.println("\nKEY: " + key + "\n");
       }
-      iterateLists(mapType,key);
+      if(showValue){
+        iterateLists(mapType,key);
+      }
     }
   }
   /**
@@ -89,9 +91,10 @@ public class Reports{
   **/
   public void iterateLists(Map<String, LinkedList<String>> mapType, String key){
     List<String> noteNames = new LinkedList<String>();
+
     for (int i = 0; i < mapType.get(key).size(); i++){
       if (!noteNames.contains(mapType.get(key).get(i))){
-        System.out.print(mapType.get(key).get(i) + "\n");
+        System.out.println( "\n*" + mapType.get(key).get(i) + "\n");
         noteNames.add(mapType.get(key).get(i));
       }
     }
