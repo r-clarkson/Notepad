@@ -1,4 +1,4 @@
-package code;
+package notepad.src.main.java.code;
 import java.util.*;
 
 /**

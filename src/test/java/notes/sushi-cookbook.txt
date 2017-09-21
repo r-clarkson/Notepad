@@ -1,0 +1,12 @@
+!sushi
+
+^donald
+
+sushi.com
+
+tiger roll
+spicy tuna roll
+california roll
+dragon roll
+rainbow roll
+philly roll
