@@ -60,11 +60,12 @@ public class Main{
     }
     return null;
   }
+
   /** Looks at txt files from the local notes directory and will pass each one to the Note class to become a Note
   for each file in the directory, makes a new note, and then the note is added to the notebook with passToMap
   https://stackoverflow.com/questions/1844688/read-all-files-in-a-folder
   **/
-  public static void passFiles(final File folder,Notebook notebook) {
+  public static boolean passFiles(final File folder,Notebook notebook) {
     try{
       /** passes each file to passfiles to become a note */
       for (final File fileEntry : folder.listFiles()) {
@@ -78,10 +79,12 @@ public class Main{
           }
         }
       }
+      return true;
     }
     catch (NullPointerException e){
       System.out.println("File not found. Please try again.");
       getFilePath();
+      return false;
     }
   }
 
