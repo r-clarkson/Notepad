@@ -39,7 +39,7 @@ public class Notebook {
    * of all notes parsed from the note to the bigger list of all notes parsed in all notes so far...
    * https://stackoverflow.com/questions/26478646/adding-to-a-linkedlist-in-a-hashmapstring-linkedlist
    */
-  public void passToMap(Note n, LinkedList<String> list) {
+  public boolean passToMap(Note n, LinkedList<String> list) {
     for (int i = 0; i < list.size(); i++) {
       listType = list.get(i).charAt(0);
     }
