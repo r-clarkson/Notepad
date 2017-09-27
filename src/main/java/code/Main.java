@@ -7,6 +7,7 @@ import java.io.*;
 Reports are then generated based on user input and the said notebook
 **/
 public class Main{
+  
   /** Notebook object is created,
   filepath is taken from user (or not, depending on their input).
   files then passed to be parsed, and afterwards, reports gathered
@@ -16,6 +17,7 @@ public class Main{
     passFiles(getFilePath(),notebook);
     generateReports(notebook);
   }
+  
   /**
   prints the start menu to see if the user wants to put in their own filepath,
   then guides the user through getting the folder correct
@@ -29,6 +31,7 @@ public class Main{
     if(scanner.hasNextInt()){
       input = scanner.nextInt();
     }
+    
     /** different cases for user input */
     try{
       switch(input){
@@ -53,6 +56,7 @@ public class Main{
       }
       return noteFolder;
     }
+    
     /** catches null pointers from filepath not being correct */
     catch (NullPointerException e){
       System.out.println("File not found. Please try again.");
@@ -114,6 +118,7 @@ public class Main{
       System.exit(0);
     }
   }
+  
   /** text menu for types of reports that can be generated **/
   public static void printMenu(){
     System.out.print("\033[H\033[2J");
@@ -127,11 +132,13 @@ public class Main{
     System.out.println("6: notes organized in topological order");
     System.out.println("7: EXIT");
   }
+  
   /** text menu for user decision to continue or exit **/
   public static void continueScreen(Notebook notebook){
     System.out.println("Would you like to generate another report?");
     System.out.println("1: YES \n2: NO");
   }
+  
   /** prints start menu **/
   public static void printStartMenu(){
     System.out.print("\033[H\033[2J");
