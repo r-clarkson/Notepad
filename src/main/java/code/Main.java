@@ -2,6 +2,11 @@ package notepad.src.main.java.code;
 import java.nio.file.*;
 import java.util.*;
 import java.io.*;
+import edu.cmu.sphinx.api.Configuration;
+import edu.cmu.sphinx.api.LiveSpeechRecognizer;
+import edu.cmu.sphinx.api.SpeechResult;
+
+
 
 /**  MainClass initiates process by passing on files in the "notes" folder to be made into note objects, which are then put into a notebook
 Reports are then generated based on user input and the said notebook
@@ -14,6 +19,26 @@ public class Main{
   **/
 
   public static void main(String[] args) throws Exception{
+    /** code derived from sphinx4 examples at https://github.com/cmusphinx/sphinx4/blob/master/sphinx4-samples/src/main/java/edu/cmu/sphinx/demo/dialog/DialogDemo.java */
+    Configuration configuration = new Configuration();
+    //set up recognizer to be for english
+    configuration.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
+    configuration.setDictionaryPath("resource:/edu/cmu/sphinx/models/en-us/cmudict-en-us.dict");
+    configuration.setLanguageModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us.lm.bin");
+
+    LiveSpeechRecognizer recognizer = new LiveSpeechRecognizer(configuration);
+    // Start recognition process with microphone
+    recognizer.startRecognition(true);
+    //get the result from the recognizer and print it if the word is not stop
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
+    System.out.println("Dependencies loaded. Say some words and see them printed! Say stop clearly (sometimes twice) to stop recording. (Scroll up after you say stop cuz the screen clears)");
+    SpeechResult result = recognizer.getResult();
+    System.out.println(result.getHypothesis());
+    //quit printing if word is stop
+    if (result.getHypothesis() == "stop"){
+      recognizer.stopRecognition();
+    }
 
     Notebook notebook = new Notebook();
     passFiles(getFilePath(),notebook);
