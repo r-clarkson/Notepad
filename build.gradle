@@ -2,15 +2,17 @@ description = 'Gradle build for comp330 hw1 project'
 
 buildscript {
     repositories {
+        mavenLocal()
         maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     }
     dependencies {
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.15.0'
         classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.6'
-	
     }
 }
 
+apply plugin: 'maven'
 apply plugin: 'application'
 apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'com.github.sherter.google-java-format'
@@ -30,10 +32,8 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.+'
-}
-
-tasks.withType(JavaCompile) { 
-    options.compilerArgs << "-Xlint:all" 
+    compile group: 'edu.cmu.sphinx', name: 'sphinx4-core', version:'5prealpha-SNAPSHOT'
+    compile group: 'edu.cmu.sphinx', name: 'sphinx4-data', version:'5prealpha-SNAPSHOT'
 }
 
 verifyGoogleJavaFormat.enabled = false
