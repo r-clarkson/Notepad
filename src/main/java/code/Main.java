@@ -19,7 +19,8 @@ public class Main{
   **/
 
   public static void main(String[] args) throws Exception{
-    /** code derived from sphinx4 examples at https://github.com/cmusphinx/sphinx4/blob/master/sphinx4-samples/src/main/java/edu/cmu/sphinx/demo/dialog/DialogDemo.java */
+    /**
+    //code derived from sphinx4 examples at https://github.com/cmusphinx/sphinx4/blob/master/sphinx4-samples/src/main/java/edu/cmu/sphinx/demo/dialog/DialogDemo.java
     Configuration configuration = new Configuration();
     //set up recognizer to be for english
     configuration.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
@@ -39,6 +40,7 @@ public class Main{
     if (result.getHypothesis() == "stop"){
       recognizer.stopRecognition();
     }
+    **/
 
     Notebook notebook = new Notebook();
     passFiles(getFilePath(),notebook);
@@ -134,7 +136,7 @@ public class Main{
 
     report.generateReport(userInput);
     /** asks user if they want more reports or to exit */
-    continueScreen(notebook);
+    continueScreen();
 
     userInput = scanner.nextInt();
 
@@ -161,7 +163,7 @@ public class Main{
   }
 
   /** text menu for user decision to continue or exit **/
-  public static void continueScreen(Notebook notebook){
+  public static void continueScreen(){
     System.out.println("Would you like to generate another report?");
     System.out.println("1: YES \n2: NO");
   }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="notepad.src.main.java.code.testNote" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-02T23:49:13" hostname="Rileys-MacBook-Pro.local" time="0.017">
+<testsuite name="notepad.src.main.java.code.testNote" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-03T23:23:44" hostname="Rileys-MacBook-Pro.local" time="0.016">
   <properties/>
-  <testcase name="testParseNote" classname="notepad.src.main.java.code.testNote" time="0.013"/>
+  <testcase name="testParseNote" classname="notepad.src.main.java.code.testNote" time="0.012"/>
   <testcase name="testName" classname="notepad.src.main.java.code.testNote" time="0.002"/>
   <testcase name="testGetIdentifierLists" classname="notepad.src.main.java.code.testNote" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
