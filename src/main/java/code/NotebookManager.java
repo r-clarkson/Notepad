@@ -15,6 +15,8 @@ public class NotebookManager{
     //TODO: would you to like to analyze existing note or create a note?
     
     public void noteCreationProcess(){
+        Scanner scan = new Scanner(System.in)
+        String stringToWrite = null;
         char dataType = 'X';
         String value = null
         System.out.println("Before you enter text, you must add your note data.")
@@ -27,36 +29,35 @@ public class NotebookManager{
             case data_type.upper() == 'M':
                 System.out.println("Who would you like to mention? Include @: ")
                 value =scan.nextln();
-                // TODO: add mention to linked list to
+                stringToWrite.append(value,'\n')
             case data_type.upper() == 'H':
                 System.out.println("What would you like to tag? Include #, one tag at a time: ")
                 value = scan.nextln()
-                //TODO: add checker function
+                stringToWrite.append(value,'\n')
             case data_type.upper() == 'L':
                 //TODO: how do we want to link notes??
-               
+                stringToWrite.append(value,'\n')
             case data_type.upper() == 'F':
                 System.out.println("What would you like to name your note?");
                 String filename = scan.nextln();
-                writesNoteFile(filename+'.txt');
                 // TODO: note creation process of Note object
             case data_type.upper() == 'A':
                 System.out.println("Note creation aborted!");
                 break;
             default: 
               System.out.println("Incorrect entry please try again!");
-
-        Scanner scan = new Scanner(System.in)
-        System.out.println("How would you like to ")
-        
+    }
+    
+    public void captureNoteBody(){
+        char value = null;
+        System.out.println("How would you like to enter the text? Dictate or Type? (D or T)\n");
         
     }
     
-    public void writesNoteFile(String filename){
+    public void writesNoteFile(String filename, String stringToWrite){
         try{
             PrintWriter writer = new PrintWriter(filename, "UTF-8");
-            writer.println("The first line");
-            writer.println("The second line");
+            writer.print(stringToWrite);
             writer.close();
             System.out.println("File written properly!");
         } catch (IOException e) {
