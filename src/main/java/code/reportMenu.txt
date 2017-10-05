@@ -1,0 +1,7 @@
+Please choose the report to be generated and then press enter, or type 'help' for help
+1: all notes containing one or more mentions
+2: all notes organized by mention
+3: report of all keywords
+4: notes organized by keywords
+5: search for #, @, or !
+6: notes organized in topological order

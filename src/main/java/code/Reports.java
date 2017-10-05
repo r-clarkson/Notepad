@@ -82,8 +82,7 @@ public class Reports {
    * their mention/keyword) for each key in the map, calls iterateLists to go through the key's LL
    * of note names
    */
-  public void printNotesWithOneOrMoreMentions(
-      Map<String, LinkedList<String>> mapType, boolean showKey, boolean showValue) {
+  public void printNotesWithOneOrMoreMentions(Map<String, LinkedList<String>> mapType, boolean showKey, boolean showValue) {
     for (String key : mapType.keySet()) {
       if (showKey) {
         System.out.println("\nKEY: " + key + "\n");
@@ -114,5 +113,14 @@ public class Reports {
   public void clearScreen() {
     System.out.print("\033[H\033[2J");
     System.out.flush();
+  }
+  /** text menu for user decision to continue or exit **/
+  public boolean continueScreen(){
+    System.out.println("Would you like to generate another report?");
+    System.out.println("1: YES \n2: NO");
+    if (scanner.nextInt()==1){
+      return true;
+    }
+    return false;
   }
 }
