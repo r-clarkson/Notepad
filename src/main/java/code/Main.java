@@ -25,6 +25,8 @@ public class Main{
     System.out.println("Enter command below, or for help type 'help'");
     getCommand(notebook);
 
+    System.out.println("Terminating...");
+    System.exit(0);
   }
 
   /**
@@ -101,43 +103,47 @@ public class Main{
   /** gets users command and performs proper action **/
   public static void getCommand(Notebook notebook){
     //NotebookManager notebookManager = new NotebookManager();
-    printMenu(new File("." + File.separator + "commands.txt"));
     String command = scanner.next();
-    switch (command) {
-      case "q!":
-      //quit without saving
-      System.exit(0);
-      break;
-      case "add":
-      //something like notebookManager.addNote(Notebook notebook);
-      break;
-      case "add -d":
-      //notebookManager.addDictatedNote(Notebook notebook);
-      break;
-      case "add -i":
-      //notebookManager.enterData(Notebook notebook);
-      break;
-      case "filepath":
-      passFiles(notebook);
-      break;
-      case "delete":
-      //notebookManager.deleteNote(Notebook notebook);
-      break;
-      case "delete -i":
-      //notebookManager.deleteData(Notebook notebook);
-      break;
-      case "report":
-      printMenu(new File("reportMenu.txt"));
-      Reports report = new Reports(notebook);
-      report.generateReport(scanner.nextInt());
-      while(report.continueScreen()){
-        printMenu(new File("reportMenu.txt"));
+    while (!command.equals("q")){
+      switch (command) {
+        case "help":
+        printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt"));
+        command = scanner.next();
+        break;
+        case "add":
+        //something like notebookManager.addNote(Notebook notebook);
+        break;
+        case "add -d":
+        //notebookManager.addDictatedNote(Notebook notebook);
+        break;
+        case "add -i":
+        //notebookManager.enterData(Notebook notebook);
+        break;
+        case "filepath":
+        passFiles(notebook);
+        break;
+        case "delete":
+        //notebookManager.deleteNote(Notebook notebook);
+        break;
+        case "delete -i":
+        //notebookManager.deleteData(Notebook notebook);
+        break;
+        case "report":
+        passFiles(notebook);
+        printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "reportMenu.txt"));
+        Reports report = new Reports(notebook);
         report.generateReport(scanner.nextInt());
+        boolean continueInput = report.continueScreen();
+        while(continueInput){
+          printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "reportMenu.txt"));
+          report.generateReport(scanner.nextInt());
+          continueInput = report.continueScreen();
+        }
+        break;
+        default:
+        System.out.println("Please try again.");
+        getCommand(notebook);
       }
-      break;
-      default:
-      System.out.println("Please try again.");
-      getCommand(notebook);
     }
   }
 }

@@ -1,0 +1,9 @@
+add        | add a note via typing text
+add -d     | add a note via dictation
+add -i     | add a type of identifier to an existing note by filename
+filepath   | add a note by giving the text file's FULL filepath
+delete     | delete a note by filename
+delete -i  | delete a type of identifier from an existing note by filename
+pull       | search for the sentences where a word is mentioned
+report     | generate different reports of all existing notes in notebook from this session
+q          | quit the program
