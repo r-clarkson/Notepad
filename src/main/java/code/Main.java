@@ -23,7 +23,6 @@ public class Main{
     Notebook notebook = new Notebook();
     // something like NotebookManager notebookManager = new NotebookManager();
     getCommand(notebook);
-
     System.out.println("Terminating...");
     System.exit(0);
   }
