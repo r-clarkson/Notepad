@@ -42,7 +42,7 @@ public class testNote {
   }
   @Test
   public void testGetIdentifierLists(){
-    assertEquals(n.getIdentifierLists().size(),4);
+    assertEquals(n.getIdentifierLists().size(),5);
   }
 
 }
