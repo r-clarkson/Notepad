@@ -22,7 +22,6 @@ public class Main{
   public static void main(String[] args) throws Exception{
     Notebook notebook = new Notebook();
     // something like NotebookManager notebookManager = new NotebookManager();
-    System.out.println("Enter command below, or for help type 'help'");
     getCommand(notebook);
 
     System.out.println("Terminating...");
@@ -85,8 +84,7 @@ public class Main{
 
   /** text menu for types of reports that can be generated **/
   public static void printMenu(File menu){
-    System.out.print("\033[H\033[2J");
-    System.out.flush();
+    clearScreen();
     try  {
       BufferedReader br = new BufferedReader(new FileReader(menu));
       String line = null;
@@ -103,6 +101,8 @@ public class Main{
   /** gets users command and performs proper action **/
   public static void getCommand(Notebook notebook){
     //NotebookManager notebookManager = new NotebookManager();
+    clearScreen();
+    System.out.println("Enter command below, or for help type 'help'");
     String command = scanner.next();
     while (!command.equals("q")){
       switch (command) {
@@ -133,17 +133,17 @@ public class Main{
         printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "reportMenu.txt"));
         Reports report = new Reports(notebook);
         report.generateReport(scanner.nextInt());
-        boolean continueInput = report.continueScreen();
-        while(continueInput){
-          printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "reportMenu.txt"));
-          report.generateReport(scanner.nextInt());
-          continueInput = report.continueScreen();
-        }
+        getCommand(notebook);
         break;
         default:
         System.out.println("Please try again.");
         getCommand(notebook);
+        break;
       }
     }
+  }
+  public static void clearScreen(){
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
   }
 }

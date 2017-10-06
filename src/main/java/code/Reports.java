@@ -64,6 +64,10 @@ public class Reports {
       default:
         System.out.println("Please enter a valid input.");
     }
+    System.out.println("PRESS ANY KEY TO CONTINUE");
+    while(!scanner.hasNext()){
+      break;      
+    }
   }
   /**
    * iterates through each map to search for a specific mention and prints out the notes associated
@@ -113,14 +117,5 @@ public class Reports {
   public void clearScreen() {
     System.out.print("\033[H\033[2J");
     System.out.flush();
-  }
-  /** text menu for user decision to continue or exit **/
-  public boolean continueScreen(){
-    System.out.println("Would you like to generate another report?");
-    System.out.println("1: YES \n2: NO");
-    if (scanner.nextInt()==1){
-      return true;
-    }
-    return false;
   }
 }
