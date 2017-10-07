@@ -100,8 +100,9 @@ public class Main{
     //NotebookManager notebookManager = new NotebookManager();
     clearScreen();
     System.out.println("Enter command below, or for help type 'help'");
-    String command = scanner.next();
+    String command = scanner.nextln();
     while (!command.equals("q")){
+      String sw = scanner.nextln();
       switch (command) {
         case "help":
         printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt"));
@@ -109,27 +110,22 @@ public class Main{
         break;
         case "add":
         //something like notebookManager.addNote(Notebook notebook);
-        break;
-        case "add -d":
-        //notebookManager.addDictatedNote(Notebook notebook);
-        break;
-        case "add -i":
-        //notebookManager.enterData(Notebook notebook);
+        //pass switch to notebookManager and perform based on that...
         break;
         case "filepath":
+        getFilePath();
         passFiles(notebook);
         break;
         case "delete":
         //notebookManager.deleteNote(Notebook notebook);
+        //pass switch to notebookmanager and delete based on that...
         break;
-        case "delete -i":
-        //notebookManager.deleteData(Notebook notebook);
-        break;
-        case "report":
+        case "search":
+        //pass switch to report object and generate report based on that
         passFiles(notebook);
         Reports report = new Reports(notebook);
         //report.generatethisreport
-        report.generateReport(scanner.nextInt());
+        report.generateReport(sw);
         getCommand(notebook);
         break;
         default:

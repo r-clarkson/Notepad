@@ -1,6 +1,9 @@
-add        | add a note via typing text [-d add a note via dictation] [-i add a type of identifier to an existing note]
-filepath   | add a note by giving the text file's FULL filepath
-delete     | delete a note by filename [-i delete a type of identifier from an existing note by filename]
+add        | [-t add a note via typing text]
+             [-d add a note via dictation]
+             [-i add a type of identifier to an existing note]
+filepath   | add a note to be processed by giving the text file's FULL filepath
+delete     | [-n delete a note by filename]
+             [-i delete a type of identifier from an existing note by filename]
 search     | [-w "identifier" returns the filenames of notes containing said identifier (mention, keyword, reference, or URL)]
              [-a "@/#/!/^/url" returns all notes which contain one or more mentions, keywords, references, or URLs depending on which identifying character is placed in quotations]
              [-o "@/#/!/^/url" returns notes organized by the mentions, keywords, references, or URLs depending on which identifying character is placed in quotations]

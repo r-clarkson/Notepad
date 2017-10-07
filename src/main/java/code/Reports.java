@@ -28,26 +28,27 @@ public class Reports {
     notesList = notebook.getNotesList();
   }
   /** based on the users input from main, generates that report */
-  public void generateReport(int input) {
+  public void generateReport(String sw) {
     clearScreen();
-    switch (input) {
-      case 1:
+    switch (sw) {
+      case "-a":
         System.out.println("NOTES WITH ONE OR MORE MENTION(S) (@)");
         printNotesWithOneOrMoreMentions(maps.get(1), false, true);
         break;
-      case 2:
+        /** this one will be the same as the one below...*/
+      case "":
         System.out.println("NOTES ORGANIZED BY MENTION (@)");
         printNotesWithOneOrMoreMentions(maps.get(1), true, true);
         break;
-      case 3:
+      case "-l":
         System.out.println("ALL KEYWORDS (#)");
         printNotesWithOneOrMoreMentions(maps.get(0), true, false);
         break;
-      case 4:
+      case "-o":
         System.out.println("NOTES ORGANIZED BY KEYWORD (#)");
         printNotesWithOneOrMoreMentions(maps.get(0), true, true);
         break;
-      case 5:
+      case "-w":
         clearScreen();
         System.out.println(
             "Please enter the keyword or mention you would like to find notes for, including the symbol: ");
@@ -57,7 +58,7 @@ public class Reports {
         }
         printSpecificMention(userInput);
         break;
-      case 6:
+      case "-topological":
         TSort topologicalSort = new TSort();
         topologicalSort.tSort(notesList, maps);
         break;
@@ -66,7 +67,7 @@ public class Reports {
     }
     System.out.println("PRESS ANY KEY TO CONTINUE");
     while(!scanner.hasNext()){
-      break;      
+      break;
     }
   }
   /**
