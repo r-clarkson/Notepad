@@ -1,9 +1,9 @@
-add        | add a note via typing text
-add -d     | add a note via dictation
-add -i     | add a type of identifier to an existing note by filename
+add        | add a note via typing text [-d add a note via dictation] [-i add a type of identifier to an existing note]
 filepath   | add a note by giving the text file's FULL filepath
-delete     | delete a note by filename
-delete -i  | delete a type of identifier from an existing note by filename
-pull       | search for the sentences where a word is mentioned
-report     | generate different reports of all existing notes in notebook from this session
+delete     | delete a note by filename [-i delete a type of identifier from an existing note by filename]
+search     | [-w "identifier" returns the filenames of notes containing said identifier (mention, keyword, reference, or URL)]
+             [-a "@/#/!/^/url" returns all notes which contain one or more mentions, keywords, references, or URLs depending on which identifying character is placed in quotations]
+             [-o "@/#/!/^/url" returns notes organized by the mentions, keywords, references, or URLs depending on which identifying character is placed in quotations]
+             [-l "@/#/!/^/url" returns list of all mentions, keywords, references, or URLs depending on which identifying character is placed in quotations]
+             [-topological returns note filenames organized in topological order]
 q          | quit the program

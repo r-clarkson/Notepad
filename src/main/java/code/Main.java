@@ -127,8 +127,8 @@ public class Main{
         break;
         case "report":
         passFiles(notebook);
-        printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "reportMenu.txt"));
         Reports report = new Reports(notebook);
+        //report.generatethisreport
         report.generateReport(scanner.nextInt());
         getCommand(notebook);
         break;
