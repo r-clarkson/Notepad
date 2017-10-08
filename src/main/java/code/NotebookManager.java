@@ -1,8 +1,9 @@
-cpackage notepad.src.main.java.code;
+package notepad.src.main.java.code;
 
 import java.util.*;
 import notepad.src.main.java.code.Notebook;
-import Scanner.*;
+import java.io.*;
+
 
 /*
 Due to the construction of the Note class, we will create a txt file,
@@ -12,53 +13,49 @@ then pull the necessary data from the txt file to create the Note object.
 public class NotebookManager{
 
 
-    //TODO: would you to like to analyze existing note or create a note?
+  //TODO: would you to like to analyze existing note or create a note?
 
-    public void noteCreationProcess(){
-        Scanner scan = new Scanner(System.in)
-        String stringToWrite = null;
-        char dataType = 'X';
-        String value = null
-        System.out.println("Before you enter text, you must add your note data.")
-        System.out.println("What type of data would you like to add?");
-        dataType = scan.next():
-        boolean runLinkProcess = False;
-        while !(dataType.toUpper().equal('E')):
-            switch dataType:
-            data_type = raw_input("\tMention -> M\n\tHashtag? -> H\n\tLink a Note -> L\n\tFinish and create note? -> F\n\tAbandon note -> A\n")
-            case data_type.upper() == 'M':
-                System.out.println("Who would you like to mention? Include @: ")
-                value =scan.nextln();
-                stringToWrite.append(value,'\n')
-            case data_type.upper() == 'H':
-                System.out.println("What would you like to tag? Include #, one tag at a time: ")
-                value = scan.nextln()
-                stringToWrite.append(value,'\n')
-            case data_type.upper() == 'L':
-                //TODO: how do we want to link notes??
-                stringToWrite.append(value,'\n')
-            case data_type.upper() == 'F':
-                System.out.println("What would you like to name your note?");
-                String filename = scan.nextln();
-                // TODO: note creation process of Note object
-            case data_type.upper() == 'A':
-                System.out.println("Note creation aborted!");
-                break;
-            default:
-              System.out.println("Incorrect entry please try again!");
-    }
-    
+  public Note addIdentifier(String identifier){
+    Scanner scan = new Scanner(System.in);
+    char dataType = identifier.charAt(0);
+    Note newNote = null;
+    /** each of these cases should add the identifier value to the hashmap for that type of identifier as well as the note name that they wanted to add it to */
+    switch (dataType){
+      case '@':
+      /** go to hashmap for @mentions and add the key value (the string identifier parameter). Then add the note name to this key value's LL in the hashmap */
+      //add note name to the LL by using I/O to retrieve text file, appending the identifier to the note, and then returning the note to main so it can be added to notebook
+      //instantiate new note with the edited text file: newNote = Note(editedFile)
 
-    public void writesNoteFile(String filename, String stringToWrite){
-        try{
-            PrintWriter writer = new PrintWriter(filename, "UTF-8");
-            writer.print(stringToWrite);
-            writer.close();
-            System.out.println("File written properly!");
-        } catch (IOException e) {
-            System.out.println("File did not write properly");
-        }
+      break;
+      case '^':
+      break;
+      case '#':
+      //TODO: how do we want to link notes??
+      break;
+      /** w for www. in urls */
+      default:
+      System.out.println("Incorrect entry please try again!");
+      break;
     }
+    return newNote;
+
+  }
+
+/** takes in a filename that the user wants to start as a text file and asks them to type what they want to add.
+* then saves the text that they wrote into the text file, makes it into a note object, and returns it to main so it can be added into the notebook */
+  public Note writesNoteFile(String filename, String stringToWrite){
+    Note note = null;
+    try{
+      PrintWriter writer = new PrintWriter(filename, "UTF-8");
+      writer.print(stringToWrite);
+      writer.close();
+      System.out.println("File written properly!");
+      //turn new texxt file into note with note = new Note(textfile)
+    } catch (IOException e) {
+      System.out.println("File did not write properly");
+    }
+    return note;
+  }
 
 
 

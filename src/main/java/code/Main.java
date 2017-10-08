@@ -106,7 +106,7 @@ public class Main{
       switch (command[0]) {
         case "help":
         printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt"));
-        command = scanner.next();
+        command = scanner.next().split(" ");
         break;
         case "add":
         //something like notebookManager.addNote(Notebook notebook);
@@ -125,7 +125,7 @@ public class Main{
         passFiles(notebook);
         Reports report = new Reports(notebook);
         //report.generatethisreport
-        report.generateReport(sw);
+        report.generateReport(command[1]);
         getCommand(notebook);
         break;
         default:
