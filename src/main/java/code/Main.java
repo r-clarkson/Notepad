@@ -19,8 +19,8 @@ public class Main{
 
   public static void main(String[] args) throws Exception{
     Notebook notebook = new Notebook();
-    // something like NotebookManager notebookManager = new NotebookManager();
-    getCommand(notebook);
+    NotebookManager notebookManager = new NotebookManager();
+    getCommand(notebook,notebookManager);
     System.out.println("Terminating...");
     System.exit(0);
   }
@@ -96,7 +96,7 @@ public class Main{
   }
 
   /** gets users command and performs proper action **/
-  public static void getCommand(Notebook notebook){
+  public static void getCommand(Notebook notebook,NotebookManager notebookManager){
     //NotebookManager notebookManager = new NotebookManager();
     clearScreen();
     System.out.println("Enter command below, or for help type 'help'");
@@ -110,16 +110,14 @@ public class Main{
         commands = scanner.next().split(" ");
         break;
         case "add":
-        //something like notebookManager.addNote(Notebook notebook);
-        //pass switch to notebookManager and perform based on that...
+        notebookManager.addNote(commands[1]);
         break;
         case "filepath":
         getFilePath();
         passFiles(notebook);
         break;
         case "delete":
-        //notebookManager.deleteNote(Notebook notebook);
-        //pass switch to notebookmanager and delete based on that...
+        notebookManager.deleteNote(commands[1]);
         break;
         case "search":
         //pass switch to report object and generate report based on that
