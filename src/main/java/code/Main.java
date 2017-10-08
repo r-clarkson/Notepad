@@ -101,12 +101,13 @@ public class Main{
     clearScreen();
     System.out.println("Enter command below, or for help type 'help'");
     //splits command up into each part and examines it one part at a time
-    String[] command = scanner.next().split(" ");
-    while (!command.equals("q")){
-      switch (command[0]) {
+    String[] commands = null;
+    commands = scanner.nextLine().split(" ");
+    while (!commands[0].equals("quit")){
+      switch (commands[0]) {
         case "help":
         printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt"));
-        command = scanner.next().split(" ");
+        commands = scanner.next().split(" ");
         break;
         case "add":
         //something like notebookManager.addNote(Notebook notebook);
@@ -125,7 +126,7 @@ public class Main{
         passFiles(notebook);
         Reports report = new Reports(notebook);
         //report.generatethisreport
-        report.generateReport(command[1]);
+        report.generateReport(commands[1]);
         getCommand(notebook);
         break;
         default:

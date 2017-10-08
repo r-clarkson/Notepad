@@ -4,9 +4,9 @@ add        | [-t add a note via typing text]
 filepath   | add a note to be processed by giving the text file's FULL filepath
 delete     | [-n delete a note by filename]
              [-i delete a type of identifier from an existing note by filename]
-search     | [-w "identifier" returns the filenames of notes containing said identifier (mention, keyword, reference, or URL)]
-             [-a "@/#/!/^/url" returns all notes which contain one or more mentions, keywords, references, or URLs depending on which identifying character is placed in quotations]
-             [-o "@/#/!/^/url" returns notes organized by the mentions, keywords, references, or URLs depending on which identifying character is placed in quotations]
-             [-l "@/#/!/^/url" returns list of all mentions, keywords, references, or URLs depending on which identifying character is placed in quotations]
-             [-topological returns note filenames organized in topological order]
-q          | quit the program
+search     | [-w ] returns the filenames of notes containing said identifier (mention, keyword, reference, or URL)
+             [-a ] returns all notes which contain one or more mentions, keywords, references, or URLs depending on which identifying character is placed in quotations
+             [-o ] returns notes organized by the mentions, keywords, references, or URLs depending on which identifying character is placed in quotations
+             [-l ] returns list of all mentions, keywords, references, or URLs depending on which identifying character is placed in quotations
+             [-topological] returns note filenames organized in topological order
+quit       | quit the program

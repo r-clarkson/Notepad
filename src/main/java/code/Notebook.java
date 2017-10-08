@@ -96,4 +96,14 @@ public class Notebook {
   public LinkedList<String> getNotesList() {
     return notes;
   }
+
+  public LinkedList<HashMap<String, LinkedList<String>>> getMaps(){
+    LinkedList<HashMap<String, LinkedList<String>>> maps = new LinkedList<HashMap<String, LinkedList<String>>>();
+    maps.add(topicMentionMap);
+    maps.add(referenceMentionMap);
+    maps.add(individualMentionMap);
+    maps.add(uniqueMentionMap);
+    maps.add(urlMap);
+    return maps;
+  }
 }
