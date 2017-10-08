@@ -1,19 +1,19 @@
-package notepad.src.main.java.code;
+cpackage notepad.src.main.java.code;
 
 import java.util.*;
 import notepad.src.main.java.code.Notebook;
 import Scanner.*;
 
-/* 
+/*
 Due to the construction of the Note class, we will create a txt file,
 then pull the necessary data from the txt file to create the Note object.
 */
 
 public class NotebookManager{
 
-    
+
     //TODO: would you to like to analyze existing note or create a note?
-    
+
     public void noteCreationProcess(){
         Scanner scan = new Scanner(System.in)
         String stringToWrite = null;
@@ -44,24 +44,11 @@ public class NotebookManager{
             case data_type.upper() == 'A':
                 System.out.println("Note creation aborted!");
                 break;
-            default: 
+            default:
               System.out.println("Incorrect entry please try again!");
     }
     
-    public void captureNoteBody(){
-        char value = null;
-        System.out.println("How would you like to enter the text? Dictate or Type? (D or T)\n");
-        char decision = scan.nextln();
-        if decision.toUpper().equals('D'):
-            // start dictation module
-        else if decision.toUpper().equals('T'):
-            // create note from typing
-        else:
-            System.out.println("Desicion not recognized. Please try again");
-            captureNoteBody()
-        
-    }
-    
+
     public void writesNoteFile(String filename, String stringToWrite){
         try{
             PrintWriter writer = new PrintWriter(filename, "UTF-8");
@@ -72,8 +59,8 @@ public class NotebookManager{
             System.out.println("File did not write properly");
         }
     }
-    
-    
-    
-    
+
+
+
+
 }
