@@ -51,6 +51,14 @@ public class NotebookManager{
     public void captureNoteBody(){
         char value = null;
         System.out.println("How would you like to enter the text? Dictate or Type? (D or T)\n");
+        char decision = scan.nextln();
+        if decision.toUpper().equals('D'):
+            // start dictation module
+        else if decision.toUpper().equals('T'):
+            // create note from typing
+        else:
+            System.out.println("Desicion not recognized. Please try again");
+            captureNoteBody()
         
     }
     
