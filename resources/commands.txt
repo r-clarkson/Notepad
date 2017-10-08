@@ -1,12 +1,39 @@
-add        | [-t add a note via typing text]
-             [-d add a note via dictation]
-             [-i add a type of identifier to an existing note]
-filepath   | add a note to be processed by giving the text file's FULL filepath
-delete     | [-n delete a note by filename]
-             [-i delete a type of identifier from an existing note by filename]
-search     | [-w ] returns the filenames of notes containing said identifier (mention, keyword, reference, or URL)
-             [-a ] returns all notes which contain one or more mentions, keywords, references, or URLs depending on which identifying character is placed in quotations
-             [-o ] returns notes organized by the mentions, keywords, references, or URLs depending on which identifying character is placed in quotations
-             [-l ] returns list of all mentions, keywords, references, or URLs depending on which identifying character is placed in quotations
-             [-topological] returns note filenames organized in topological order
-quit       | quit the program
+
+
+COMMAND NAME
+  add
+FUNCTION
+  add a note or specific identifier to the notebook
+OPTIONS
+  -t (add a note by typing text)
+  -d (add a note via dictation)
+  -i (add a type of identifier to existing note)
+
+COMMAND NAME
+  filepath
+FUNCTION
+  add a text file or folder of text files to be added to the notebook
+
+COMMAND NAME
+  delete
+FUNCTION
+  delete a note or specific identifier from the notebook
+OPTIONS
+  -n (delete a note and its identifier by the note's filename)
+  -i (delete a specific identifier)
+
+COMMAND NAME
+  search
+FUNCTION
+  search for different types of identifiers and organize the notebook
+OPTIONS
+  -w (returns the filenames of notes containing an entered identifier)
+  -a (returns all notes which contain one or more identifiers of a certain type)
+  -o (returns notes organized by identifiers of a certain type)
+  -l (returns list of all identifiers of a certain type)
+  -t (returns notes organized in topological order)
+
+COMMAND NAME
+  quit
+FUNCTION
+  terminate the program

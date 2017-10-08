@@ -28,16 +28,16 @@ public class Reports {
     if (sw!="-t"){
       switch (sw) {
         case "-a":
-        System.out.println("N O T E S   W I T H   O N E   O R   M O R E   " + identifier);
+        System.out.println("N O T E S   W I T H   O N E   O R   M O R E   " + data);
         printNotesWithOneOrMoreMentions(notebook.getListType(identifier), false, true);
         break;
         /** this one will be the same as the one below...*/
         case "-l":
-        System.out.println("A L L   " + identifier);
+        System.out.println("A L L   " + data);
         printNotesWithOneOrMoreMentions(notebook.getListType(identifier), true, false);
         break;
         case "-o":
-        System.out.println("N O T E S   O R G A N I Z E D   B Y   " + identifier);
+        System.out.println("N O T E S   O R G A N I Z E D   B Y   " + data);
         printNotesWithOneOrMoreMentions(notebook.getListType(identifier), true, true);
         break;
         case "-w":
