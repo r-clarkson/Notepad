@@ -100,11 +100,10 @@ public class Main{
     //NotebookManager notebookManager = new NotebookManager();
     clearScreen();
     System.out.println("Enter command below, or for help type 'help'");
-    String command = scanner.next();
+    //splits command up into each part and examines it one part at a time
+    String[] command = scanner.next().split(" ");
     while (!command.equals("q")){
-      String sw = scanner.next();
-      String data = scanner.next();
-      switch (command) {
+      switch (command[0]) {
         case "help":
         printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt"));
         command = scanner.next();
