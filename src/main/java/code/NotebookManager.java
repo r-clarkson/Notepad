@@ -8,23 +8,22 @@ Due to the construction of the Note class, we will create a txt file,
 then pull the necessary data from the txt file to create the Note object.
 */
 public class NotebookManager{
+  Scanner scan = new Scanner(System.in);
   /** given the user's input, adds a note of that type */
-  public void addNote(String type){
+  public void editNote(String type){
     if (type.equals("-t")){
-      addTypedNote();
+      addTypedNote(getNoteFile());
     }
     else if (type.equals("-d")){
-      addDictatedNote();
+      addDictatedNote(getNoteFile());
     }
     else if (type.equals("-i")){
-      addIdentifier();
+      addIdentifier(getNoteFile());
     }
   }
   /** adds a specific identifier to a note and returns the note */
-  public Note addIdentifier(){
-    Scanner scan = new Scanner(System.in);
-    getNoteName();
-    System.out.println("Please enter the identifier you would like to add, and include its type symbol ()#/@/!/^/www.)")
+  public Note addIdentifier(File filename){
+    System.out.println("Please enter the identifier you would like to add, and include its type symbol ()#/@/!/^/www.)");
     String identifier = scan.next();
     char dataType = identifier.charAt(0);
     Note newNote = null;
@@ -53,12 +52,11 @@ public class NotebookManager{
 
 /** takes in a filename that the user wants to start as a text file and asks them to type what they want to add.
 * then saves the text that they wrote into the text file, makes it into a note object, and returns it to main so it can be added into the notebook */
-  public Note addTypedNote(String filename, String stringToWrite){
+  public Note addTypedNote(File filename){
     Note note = null;
-    File noteFile = new File(getNoteFile());
+
     try{
       PrintWriter writer = new PrintWriter(filename, "UTF-8");
-      writer.print(stringToWrite);
       writer.close();
       System.out.println("File written properly!");
       //turn new texxt file into note with note = new Note(textfile)
@@ -68,7 +66,16 @@ public class NotebookManager{
     return note;
   }
 
-public String getNoteFile(){
+  public void deleteNote(File filename){
+
+  }
+
+  public void addDictatedNote(File filename){
+
+  }
+
+public File getNoteFile(){
+  File noteFile = null;
   System.out.println("Please enter the name of the note you would like to add to or create. For a list of current note filenames, please type 'list'.");
   if (scan.next().equals("list")){
     //print filenames of files in the notes folder
@@ -76,6 +83,7 @@ public String getNoteFile(){
   else{
     //create new text file (in notes folder) with filename entered and return the string of it
   }
+  return noteFile;
 }
 
 

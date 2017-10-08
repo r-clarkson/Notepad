@@ -110,14 +110,14 @@ public class Main{
         commands = scanner.next().split(" ");
         break;
         case "add":
-        notebookManager.addNote(commands[1]);
+        notebookManager.editNote(commands[1]);
         break;
         case "filepath":
         getFilePath();
         passFiles(notebook);
         break;
         case "delete":
-        notebookManager.deleteNote(commands[1]);
+        notebookManager.editNote(commands[1]);
         break;
         case "search":
         //pass switch to report object and generate report based on that
@@ -125,11 +125,11 @@ public class Main{
         Reports report = new Reports(notebook);
         //report.generatethisreport
         report.generateReport(commands[1]);
-        getCommand(notebook);
+        getCommand(notebook,notebookManager);
         break;
         default:
         System.out.println("Command not recognized. Please try again.");
-        getCommand(notebook);
+        getCommand(notebook,notebookManager);
         break;
       }
     }
