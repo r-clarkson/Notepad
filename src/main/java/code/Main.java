@@ -100,9 +100,10 @@ public class Main{
     //NotebookManager notebookManager = new NotebookManager();
     clearScreen();
     System.out.println("Enter command below, or for help type 'help'");
-    String command = scanner.nextln();
+    String command = scanner.next();
     while (!command.equals("q")){
-      String sw = scanner.nextln();
+      String sw = scanner.next();
+      String data = scanner.next();
       switch (command) {
         case "help":
         printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt"));
@@ -129,7 +130,7 @@ public class Main{
         getCommand(notebook);
         break;
         default:
-        System.out.println("Please try again.");
+        System.out.println("Command not recognized. Please try again.");
         getCommand(notebook);
         break;
       }
