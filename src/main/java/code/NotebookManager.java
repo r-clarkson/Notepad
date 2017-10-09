@@ -3,6 +3,9 @@ import java.util.*;
 import notepad.src.main.java.code.Notebook;
 import java.io.*;
 import java.nio.file.*;
+import edu.cmu.sphinx.api.Configuration;
+import edu.cmu.sphinx.api.LiveSpeechRecognizer;
+import edu.cmu.sphinx.api.SpeechResult;
 
 /*
 Due to the construction of the Note class, we will create a txt file,
@@ -59,20 +62,48 @@ public class NotebookManager{
 
   }
 
-  public void addDictatedNote(File filename){
+  public Note addDictatedNote(File filename){
+    Configuration configuration = new Configuration();
+    //set up recognizer to be for english
+    configuration.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
+    configuration.setDictionaryPath("resource:/edu/cmu/sphinx/models/en-us/cmudict-en-us.dict");
+    configuration.setLanguageModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us.lm.bin");
+    try {
+    LiveSpeechRecognizer recognizer = new LiveSpeechRecognizer(configuration);
+    // Start recognition process with microphone
+    recognizer.startRecognition(true);
+    //get the result from the recognizer and print it if the word is not stop
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
+    System.out.println("Dependencies loaded. Dictate your note and type 'stop' to stop.");
 
+    SpeechResult result = recognizer.getResult();
+
+    System.out.println(result.getHypothesis());
+    Files.write(Paths.get(filename.getPath()), result.getHypothesis().getBytes(), StandardOpenOption.APPEND);
+    if (scan.next()=="stop"){
+      recognizer.stopRecognition();
+    }
+  }
+
+  catch (IOException e){
+    System.out.println("Error.");
+  }
+    Note newNote = new Note(filename);
+
+    return newNote;
   }
 
   public File getNoteFile(){
     File noteFile = null;
-    System.out.println("Please enter the name of the note you would like to add to or create. For a list of current note filenames, please type 'list'.");
+    System.out.println("Please enter the name of the note you would like to edit to or create (do not include file type, only the name). For a list of current note filenames, please type 'list'.");
     String input = scan.next();
     if (input.equals("list")){
       //print filenames of files in the notes folder
 
     }
     else{
-      //create new text file (in notes folder) with filename entered and return the string of it
+      //create new text file (in notes folder) with filename entered and return it
       noteFile = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator + input + ".txt");
     }
     return noteFile;

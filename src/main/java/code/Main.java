@@ -2,9 +2,6 @@ package notepad.src.main.java.code;
 import java.nio.file.*;
 import java.util.*;
 import java.io.*;
-import edu.cmu.sphinx.api.Configuration;
-import edu.cmu.sphinx.api.LiveSpeechRecognizer;
-import edu.cmu.sphinx.api.SpeechResult;
 
 /**  MainClass initiates process by passing on files in the "notes" folder to be made into note objects, which are then put into a notebook
 Reports are then generated based on user input and the said notebook

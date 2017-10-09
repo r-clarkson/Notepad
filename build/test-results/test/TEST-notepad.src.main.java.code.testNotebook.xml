@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="notepad.src.main.java.code.testNotebook" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-10-08T23:18:45" hostname="Rileys-MacBook-Pro.local" time="0.009">
+<testsuite name="notepad.src.main.java.code.testNotebook" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-10-09T17:51:32" hostname="Rileys-MacBook-Pro.local" time="0.005">
   <properties/>
-  <testcase name="testPassToMap" classname="notepad.src.main.java.code.testNotebook" time="0.009"/>
+  <testcase name="testPassToMap" classname="notepad.src.main.java.code.testNotebook" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
