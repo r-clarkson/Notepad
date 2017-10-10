@@ -122,16 +122,15 @@ public class Main{
       passFiles(notebook);
       Reports report = new Reports(notebook);
       report.generateReport(commands[1]);
-      getCommand(notebook,notebookManager);
       break;
       case "quit":
       terminateProgram();
       break;
       default:
       System.out.println("Command not recognized. Please try again.");
-      getCommand(notebook,notebookManager);
       break;
     }
+    getCommand(notebook,notebookManager);
   }
 
   /** Clears the console https://stackoverflow.com/questions/10241217/how-to-clear-console-in-java */

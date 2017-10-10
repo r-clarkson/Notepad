@@ -16,18 +16,20 @@ INSTALLATION/CONFIGURATION
 --------------------------
 1. Put the text files you wish to parse within the "notes" folder of this package. There are test notes in there, and you can remove them if you wish.
 2. CD into the "Notepad" directory of this program in terminal.
-3. Run by copy/pasting the command "./gradlew run"
-    ** "gradlew run" on windows
+3. Run by copy/pasting the command "./gradlew run -q"
+    ** "gradlew run -q" on windows
 4. Perform tests by copy/pasting the command "./gradlew test"
     ** "gradlew test" on windows
 
 INSTRUCTIONS
 ------------
-1. The program requires user input; simply type the number of the option you want and press enter
-2. Gradle may display something like "BUILD 75%" at the cursor; ignore this and type your input normally
+1. The program requires user input; simply type commands as prompted
 
 OUR THOUGHTS
 ------------
+***
+HW1
+***
 We originally had an incorrect concept of the requirements of this project, and this led the program to being more complicated than necessary. However, at the point that we got clarifications, we decided to simply move forward with what we had instead of trying to go backwards. So, at some points our code may look bulky. We did our best to document and make the code clean where we could.
 
 We decided to use gradle. Testing does not currently work as "gradle build" fails due to file processing errors. This is because the program depends on user input to get the filepath. We do, however, have some test files. We did not get to finish them in time unfortunately, so there are some missing.
@@ -35,3 +37,7 @@ We decided to use gradle. Testing does not currently work as "gradle build" fail
 Thankfully, running the program works with gradle.
 
 If you have any issues getting the program to read your files, please make sure the filepath doesn't have any extra spaces and ends with '/'. If you're having issues and your notes are in the specified "notes" folder, please contact me or Joe on basecamp.
+***
+HW2
+***
+Checkpoint 2: The program is a little buggy, but core aspects of the note adding feature are working. Dictation and URL tracking have also been implemented. We have done the travis build and added a gitignore as well. After we get aspects of each feature working the main goal will be to clean up our code and get the program running smoothly.

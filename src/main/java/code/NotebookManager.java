@@ -90,8 +90,6 @@ public class NotebookManager{
     configuration.setLanguageModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us.lm.bin");
 
     try {
-      /* while the record variable is true... */
-      while(record){
         /** clear the screen and give user instructions */
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -103,20 +101,22 @@ public class NotebookManager{
         if (conFile == null) {
           System.setProperty("java.util.logging.config.file", "ignoreAllSphinx4LoggingOutput");
         }
-
+        ArrayList<SpeechResult> results = new ArrayList<SpeechResult>();
         /** initialize recognizer which uses the microphone to start speech recognition */
         LiveSpeechRecognizer recognizer = new LiveSpeechRecognizer(configuration);
         recognizer.startRecognition(true);
         /** result from recognizer is taken and the hypothesis of the word is written to the file */
         SpeechResult result = recognizer.getResult();
-        Files.write(Paths.get(filename.getPath()), result.getHypothesis().getBytes(), StandardOpenOption.APPEND);
-        /** recording is stopped when user types the command */
-        //TODO: it doesn't stop when it should!
+        results.add(result);
+        //TODO: there should be a better flow here/better way to keep recording going and then stop on command
         if (scan.next()=="stop"){
           recognizer.stopRecognition();
-          record = false;
         }
-      }
+
+        for (int i = 0; i < results.size(); i++){
+          Files.write(Paths.get(filename.getPath()), results.get(i).getHypothesis().getBytes(), StandardOpenOption.APPEND);
+        }
+        /** recording is stopped when user types the command */
     }
     catch (IOException e){
       //TODO: better options here. user should be able to quit or go back to main menu or something.
