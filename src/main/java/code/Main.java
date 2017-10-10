@@ -100,36 +100,38 @@ public class Main{
     //splits command up into each part and examines it one part at a time
     String[] commands = null;
     commands = scanner.nextLine().split(" ");
-    while (!commands[0].equals("quit")){
-      switch (commands[0]) {
-        case "help":
-        printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt"));
-        commands = scanner.next().split(" ");
-        break;
-        case "add":
-        notebookManager.editNote(commands[1]);
-        break;
-        case "filepath":
-        getFilePath();
-        passFiles(notebook);
-        break;
-        case "delete":
-        notebookManager.editNote(commands[1]);
-        break;
-        case "search":
-        //pass switch to report object and generate report based on that
-        passFiles(notebook);
-        Reports report = new Reports(notebook);
-        //report.generatethisreport
-        report.generateReport(commands[1]);
-        getCommand(notebook,notebookManager);
-        break;
-        default:
-        System.out.println("Command not recognized. Please try again.");
-        getCommand(notebook,notebookManager);
-        break;
-      }
+
+    switch (commands[0]) {
+      case "help":
+      printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt"));
+      commands = scanner.next().split(" ");
+      break;
+      case "add":
+      notebookManager.editNote(commands[1]);
+      break;
+      case "filepath":
+      getFilePath();
+      passFiles(notebook);
+      break;
+      case "delete":
+      notebookManager.editNote(commands[1]);
+      break;
+      case "search":
+      //pass switch to report object and generate report based on that
+      passFiles(notebook);
+      Reports report = new Reports(notebook);
+      //report.generatethisreport
+      report.generateReport(commands[1]);
+      getCommand(notebook,notebookManager);
+      break;
+      case "quit":
+      break;
+      default:
+      System.out.println("Command not recognized. Please try again.");
+      getCommand(notebook,notebookManager);
+      break;
     }
+
   }
   public static void clearScreen(){
     System.out.print("\033[H\033[2J");

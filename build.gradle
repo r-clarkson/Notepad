@@ -36,6 +36,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.+'
     compile group: 'edu.cmu.sphinx', name: 'sphinx4-core', version:'5prealpha-SNAPSHOT'
     compile group: 'edu.cmu.sphinx', name: 'sphinx4-data', version:'5prealpha-SNAPSHOT'
+    compile 'com.google.cloud:google-cloud:0.25.0-alpha'
 }
 
 verifyGoogleJavaFormat.enabled = false
