@@ -18,18 +18,15 @@ public class Main{
     Notebook notebook = new Notebook();
     NotebookManager notebookManager = new NotebookManager();
     getCommand(notebook,notebookManager);
-    System.out.println("Terminating...");
-    System.exit(0);
+    terminateProgram();
   }
 
   /**
-  prints the start menu to see if the user wants to put in their own filepath,
-  then guides the user through getting the folder correct
-  returns the folder of notes to main so they can be passed to passFiles
+  * If the user wants to put in their own filepath, this function will retrieve it
+  * Asks user for filepath, and then puts those files into the notes directory
   **/
   public static void getFilePath(){
     File noteFolder;
-    /** different cases for user input */
     try{
       System.out.println("Please enter your ABSOLUTE filepath:");
       noteFolder = new File(scanner.next());
@@ -41,7 +38,7 @@ public class Main{
         fileEntry.renameTo(new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator));
       }
     }
-    /** catches null pointers from filepath not being correct */
+    /** Catches null pointers from filepath not being correct */
     catch (NullPointerException e){
       System.out.println("File not found. Please try again.");
       getFilePath();
@@ -49,18 +46,20 @@ public class Main{
   }
 
   /** Looks at txt files from the local notes directory and will pass each one to the Note class to become a Note
-  for each file in the directory, makes a new note, and then the note is added to the notebook with passToMap
-  https://stackoverflow.com/questions/1844688/read-all-files-in-a-folder
+  * for each file in the directory, makes a new note, and then the note is added to the notebook with passToMap
+  * https://stackoverflow.com/questions/1844688/read-all-files-in-a-folder
+  * TODO: function was made boolean for testing but is that still necessary?
   **/
   public static boolean passFiles(Notebook notebook) {
     File folder = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator);
     try{
-      /** passes each file to passfiles to become a note */
+      /** passes each file to passfiles recursively to become a note */
       for (final File fileEntry : folder.listFiles()) {
         if (fileEntry.isDirectory()) {
           passFiles(notebook);
         }
         else {
+          /** turns text file into note object and then passes object's parsed identifiers */
           Note n = new Note(fileEntry);
           for (int i = 0; i < n.getIdentifierLists().size(); i++){
             notebook.passToMap(n,n.getIdentifierLists().get(i));
@@ -76,7 +75,7 @@ public class Main{
     }
   }
 
-  /** text menu for types of reports that can be generated **/
+  /** Reads text file containing menu or commands and prints it to the screen https://stackoverflow.com/questions/15695984/java-print-contents-of-text-file-to-screen **/
   public static void printMenu(File menu){
     clearScreen();
     try  {
@@ -92,15 +91,18 @@ public class Main{
     }
   }
 
-  /** gets users command and performs proper action **/
+  /**
+  * This method retrieves the user's desired action and performs it
+  * in most cases, the method recursively calls itself so that the user can continue to make/edit/report notes
+  **/
   public static void getCommand(Notebook notebook,NotebookManager notebookManager){
-    //NotebookManager notebookManager = new NotebookManager();
     clearScreen();
     System.out.println("Enter command below, or for help type 'help'");
-    //splits command up into each part and examines it one part at a time
+
+    /* splits command into parts so that each can be handed off to the correct class/method */
     String[] commands = null;
     commands = scanner.nextLine().split(" ");
-
+    /* performs action based on first command */
     switch (commands[0]) {
       case "help":
       printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt"));
@@ -117,24 +119,29 @@ public class Main{
       notebookManager.editNote(commands[1]);
       break;
       case "search":
-      //pass switch to report object and generate report based on that
       passFiles(notebook);
       Reports report = new Reports(notebook);
-      //report.generatethisreport
       report.generateReport(commands[1]);
       getCommand(notebook,notebookManager);
       break;
       case "quit":
+      terminateProgram();
       break;
       default:
       System.out.println("Command not recognized. Please try again.");
       getCommand(notebook,notebookManager);
       break;
     }
-
   }
+
+  /** Clears the console https://stackoverflow.com/questions/10241217/how-to-clear-console-in-java */
   public static void clearScreen(){
     System.out.print("\033[H\033[2J");
     System.out.flush();
+  }
+  /** Closes the program */
+  public static void terminateProgram(){
+    System.out.println("Terminating...");
+    System.exit(0);
   }
 }
