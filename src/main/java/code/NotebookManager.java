@@ -111,6 +111,7 @@ public class NotebookManager{
         SpeechResult result = recognizer.getResult();
         Files.write(Paths.get(filename.getPath()), result.getHypothesis().getBytes(), StandardOpenOption.APPEND);
         /** recording is stopped when user types the command */
+        //TODO: it doesn't stop when it should!
         if (scan.next()=="stop"){
           recognizer.stopRecognition();
           record = false;
