@@ -100,7 +100,7 @@ public class NotebookManager{
     String input = scan.next();
     if (input.equals("list")){
       //print filenames of files in the notes folder
-
+      
     }
     else{
       //create new text file (in notes folder) with filename entered and return it
