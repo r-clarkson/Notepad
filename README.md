@@ -41,3 +41,6 @@ If you have any issues getting the program to read your files, please make sure 
 HW2
 ***
 Checkpoint 2: The program is a little buggy, but core aspects of the note adding feature are working. Dictation and URL tracking have also been implemented. We have done the travis build and added a gitignore as well. After we get aspects of each feature working the main goal will be to clean up our code and get the program running smoothly.
+
+Commands that will currently work: add -d, add -i, filepath, all search options. The quit option works as well.
+Commands that need to be added: delete options and add -t.

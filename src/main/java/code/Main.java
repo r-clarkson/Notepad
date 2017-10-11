@@ -96,7 +96,7 @@ public class Main{
   * in most cases, the method recursively calls itself so that the user can continue to make/edit/report notes
   **/
   public static void getCommand(Notebook notebook,NotebookManager notebookManager){
-    clearScreen();
+    //clearScreen();
     System.out.println("Enter command below, or for help type 'help'");
 
     /* splits command into parts so that each can be handed off to the correct class/method */
@@ -106,7 +106,6 @@ public class Main{
     switch (commands[0]) {
       case "help":
       printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt"));
-      commands = scanner.next().split(" ");
       break;
       case "add":
       notebookManager.editNote(commands[1]);
