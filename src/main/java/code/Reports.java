@@ -72,6 +72,10 @@ public class Reports {
   public void printSpecificMention(String mention) {
     for (int i = 0; i < maps.size(); i++) {
       if (maps.get(i).containsKey(mention)) {
+        /**
+         * Needs to print each mention with each word from the period (.) preceding
+         * the mention, until the period following the mention
+         */
         System.out.println("Notes found for " + mention + " ");
         System.out.print(" " + maps.get(i).get(mention) + "\n");
       }
