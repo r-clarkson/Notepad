@@ -12,8 +12,8 @@ import org.junit.Test;
 public class testMain{
   protected Notebook n;
   protected File testFile;
-  
-  
+
+
   @Before
   public void setUp(){
     n = new Notebook();
@@ -24,10 +24,17 @@ public class testMain{
     n = null;
     testFile = null;
   }
-}
-  /** Test not working, needs to be rewritten
+  @Test
   public void testPassFiles(){
-    assertEquals(true,Main.passFiles(testFile,n));
-  }  
-  **/
-
+    assertEquals(true,Main.passFiles(n));
+  }
+  @Test
+  public void testGetFilepath(){
+    //should return false without any user input
+    assertEquals(false,Main.getFilePath());
+  }
+  @Test
+  public void testPrintMenu(){
+    assertEquals(true,Main.printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt")));
+  }
+}

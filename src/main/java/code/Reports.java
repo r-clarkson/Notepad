@@ -22,7 +22,7 @@ public class Reports {
   /** The big, the bad, and ugly
   * switch statement to generate different types of reports based on the option the user typed in (sw variable)
   */
-  public void generateReport(String sw) {
+  public boolean generateReport(String sw) {
     /** TODO: have an option to just do them all or combinations instead of choosing one */
     if (sw.equals("-t")){
       TSort topologicalSort = new TSort();
@@ -63,10 +63,7 @@ public class Reports {
         System.out.println("Please enter a valid input.");
       }
     }
-    System.out.println("PRESS ANY KEY TO CONTINUE");
-    while(!scanner.hasNext()){
-      break;
-    }
+    return getContinue();
   }
 
   /**
@@ -90,7 +87,7 @@ public class Reports {
   public void printNotesWithOneOrMoreMentions(HashMap<String, LinkedList<String>> mapType, boolean showKey, boolean showValue) {
     for (String key : mapType.keySet()) {
       if (showKey) {
-        System.out.println("\nKEY: " + key);
+        System.out.println("* " + key);
       }
       if (showValue) {
         iterateLists(mapType, key);
@@ -117,5 +114,21 @@ public class Reports {
   public void clearScreen() {
     System.out.print("\033[H\033[2J");
     System.out.flush();
+  }
+
+  public boolean getContinue(){
+    System.out.println("1: Return\n2: Quit");
+    switch (scanner.nextInt()){
+      case 1:
+      clearScreen();
+      return true;
+      case 2:
+      clearScreen();
+      return false;
+      default:
+      System.out.println("Command not recognized. Please try again.");
+      getContinue();
+    }
+    return false;
   }
 }
