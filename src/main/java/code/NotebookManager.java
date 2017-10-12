@@ -54,18 +54,19 @@ public class NotebookManager{
   * then the user will type what they wish to add and it will be written to the text file.
   * previous note deleted and then new note returned so it can be re-added to the notebook in main
   */
-  public Note addTypedNote(File filename){
+   public Note addTypedNote(File filename){
     Note note = null;
-    /**
     try{
       PrintWriter writer = new PrintWriter(filename, "UTF-8");
+      System.out.println("Enter the body of your note: ");
+      String body = scan.next();
+      writer.write(body);
       writer.close();
       System.out.println("File written properly!");
       //turn new texxt file into note with note = new Note(textfile)
     } catch (IOException e) {
       System.out.println("File did not write properly");
     }
-    */
     return note;
   }
 
