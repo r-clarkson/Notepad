@@ -7,6 +7,8 @@ import java.nio.file.*;
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import edu.cmu.sphinx.api.SpeechResult;
+import java.util.regex.*;
+
 
 /**
 * Due to the construction of the Note class, we will create a txt file with whatever method the user chose,
@@ -54,12 +56,14 @@ public class NotebookManager{
   * then the user will type what they wish to add and it will be written to the text file.
   * previous note deleted and then new note returned so it can be re-added to the notebook in main
   */
-   public Note addTypedNote(File filename){
+  public Note addTypedNote(File filename){
     Note note = null;
     try{
       PrintWriter writer = new PrintWriter(filename, "UTF-8");
       System.out.println("Enter the body of your note: ");
-      String body = scan.next();
+      //testing only appended one word to the file so a while loop should fix it...
+      String body;
+      body = scan.nextLine();
       writer.write(body);
       writer.close();
       System.out.println("File written properly!");
@@ -91,33 +95,33 @@ public class NotebookManager{
     configuration.setLanguageModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us.lm.bin");
 
     try {
-        /** clear the screen and give user instructions */
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-        System.out.println("Dependencies loaded. Dictate your note and type 'stop' to stop.");
-        /* somehwat messy fix to keep log messages from sphinx4 appearing in the console https://stackoverflow.com/questions/35560969/disable-console-mess-in-cmusphinx4 */
-        Logger cmRootLogger = Logger.getLogger("default.config");
-        cmRootLogger.setLevel(java.util.logging.Level.OFF);
-        String conFile = System.getProperty("java.util.logging.config.file");
-        if (conFile == null) {
-          System.setProperty("java.util.logging.config.file", "ignoreAllSphinx4LoggingOutput");
-        }
-        ArrayList<SpeechResult> results = new ArrayList<SpeechResult>();
-        /** initialize recognizer which uses the microphone to start speech recognition */
-        LiveSpeechRecognizer recognizer = new LiveSpeechRecognizer(configuration);
-        recognizer.startRecognition(true);
-        /** result from recognizer is taken and the hypothesis of the word is written to the file */
-        SpeechResult result = recognizer.getResult();
-        results.add(result);
-        //TODO: there should be a better flow here/better way to keep recording going and then stop on command
-        if (scan.next()=="stop"){
-          recognizer.stopRecognition();
-        }
+      /** clear the screen and give user instructions */
+      System.out.print("\033[H\033[2J");
+      System.out.flush();
+      System.out.println("Dependencies loaded. Dictate your note and type 'stop' to stop.");
+      /* somehwat messy fix to keep log messages from sphinx4 appearing in the console https://stackoverflow.com/questions/35560969/disable-console-mess-in-cmusphinx4 */
+      Logger cmRootLogger = Logger.getLogger("default.config");
+      cmRootLogger.setLevel(java.util.logging.Level.OFF);
+      String conFile = System.getProperty("java.util.logging.config.file");
+      if (conFile == null) {
+        System.setProperty("java.util.logging.config.file", "ignoreAllSphinx4LoggingOutput");
+      }
+      ArrayList<SpeechResult> results = new ArrayList<SpeechResult>();
+      /** initialize recognizer which uses the microphone to start speech recognition */
+      LiveSpeechRecognizer recognizer = new LiveSpeechRecognizer(configuration);
+      recognizer.startRecognition(true);
+      /** result from recognizer is taken and the hypothesis of the word is written to the file */
+      SpeechResult result = recognizer.getResult();
+      results.add(result);
+      //TODO: there should be a better flow here/better way to keep recording going and then stop on command
+      if (scan.next()=="stop"){
+        recognizer.stopRecognition();
+      }
 
-        for (int i = 0; i < results.size(); i++){
-          Files.write(Paths.get(filename.getPath()), results.get(i).getHypothesis().getBytes(), StandardOpenOption.APPEND);
-        }
-        /** recording is stopped when user types the command */
+      for (int i = 0; i < results.size(); i++){
+        Files.write(Paths.get(filename.getPath()), results.get(i).getHypothesis().getBytes(), StandardOpenOption.APPEND);
+      }
+      /** recording is stopped when user types the command */
     }
     catch (IOException e){
       //TODO: better options here. user should be able to quit or go back to main menu or something.
