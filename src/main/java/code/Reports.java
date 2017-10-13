@@ -31,10 +31,10 @@ public class Reports {
     }
     /** do these if the user did not choose topological sort */
     else if (!sw.equals("-t")){
-      System.out.println("Enter the type of identifier ('#','@','^','!', or 'u' for url) you would like to organize by");
-      String data = scanner.next();
+      String data = getData();
       char identifier = data.charAt(0);
       clearScreen();
+      //printInformation(data,sw)
       switch (sw) {
         case "-a":
         System.out.println("N O T E S   W I T H   O N E   O R   M O R E   " + data);
@@ -133,5 +133,11 @@ public class Reports {
       getContinue();
     }
     return false;
+  }
+
+  public String getData(){
+    System.out.println("Enter the type of identifier ('#','@','^','!', or 'u' for url) you would like to organize by");
+    String data = scanner.next();
+    return data;
   }
 }
