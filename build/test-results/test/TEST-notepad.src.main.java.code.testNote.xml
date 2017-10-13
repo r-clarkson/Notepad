@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<testsuite name="notepad.src.main.java.code.testNote" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-13T18:48:45" hostname="Rileys-MacBook-Pro.local" time="0.029">
-  <properties/>
-  <testcase name="testParseNote" classname="notepad.src.main.java.code.testNote" time="0.02"/>
-  <testcase name="testName" classname="notepad.src.main.java.code.testNote" time="0.002"/>
-=======
-<testsuite name="notepad.src.main.java.code.testNote" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-12T19:45:35" hostname="Rileys-MacBook-Pro.local" time="0.014">
+<testsuite name="notepad.src.main.java.code.testNote" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-13T18:53:38" hostname="Rileys-MacBook-Pro.local" time="0.02">
   <properties/>
   <testcase name="testParseNote" classname="notepad.src.main.java.code.testNote" time="0.005"/>
   <testcase name="testName" classname="notepad.src.main.java.code.testNote" time="0.005"/>
->>>>>>> 86dd9367f1652439dd775e2c3717113a90ac42e9
-  <testcase name="testGetIdentifierLists" classname="notepad.src.main.java.code.testNote" time="0.004"/>
+  <testcase name="testGetIdentifierLists" classname="notepad.src.main.java.code.testNote" time="0.01"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

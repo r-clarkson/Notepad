@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<testsuite name="notepad.src.main.java.code.testNotebook" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-10-13T18:48:45" hostname="Rileys-MacBook-Pro.local" time="0.006">
+<testsuite name="notepad.src.main.java.code.testNotebook" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-10-13T18:53:38" hostname="Rileys-MacBook-Pro.local" time="0.008">
   <properties/>
-  <testcase name="testPassToMap" classname="notepad.src.main.java.code.testNotebook" time="0.006"/>
-=======
-<testsuite name="notepad.src.main.java.code.testNotebook" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-10-12T19:45:35" hostname="Rileys-MacBook-Pro.local" time="0.004">
-  <properties/>
-  <testcase name="testPassToMap" classname="notepad.src.main.java.code.testNotebook" time="0.004"/>
->>>>>>> 86dd9367f1652439dd775e2c3717113a90ac42e9
+  <testcase name="testPassToMap" classname="notepad.src.main.java.code.testNotebook" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
