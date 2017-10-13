@@ -1,0 +1,41 @@
+[H[2J
+
+COMMAND NAME
+  add
+	FUNCTION
+4  add a note or specific identifier to the notebook
+OPTIONS
+!  -t (add a note by typing text)
+   -d (add a note via dictation)
+1  -i (add a type of identifier to existing note)
+
+COMMAND NAME
+  filepath
+	FUNCTION
+F  add a text file or folder of text files to be added to the notebook
+
+COMMAND NAME
+	  delete
+	FUNCTION
+9  delete a note or specific identifier from the notebook
+OPTIONS
+?  -n (delete a note and its identifier by the note's filename)
+$  -i (delete a specific identifier)
+
+COMMAND NAME
+	  search
+	FUNCTION
+F  search for different types of identifiers and organize the notebook
+OPTIONS
+G  -w (returns the filenames of notes containing an entered identifier)
+Q  -a (returns all notes which contain one or more identifiers of a certain type)
+@  -o (returns notes organized by identifiers of a certain type)
+9  -l (returns list of all identifiers of a certain type)
+4  -t (returns notes organized in topological order)
+
+COMMAND NAME
+  quit
+	FUNCTION
+  terminate the program
+%Please enter your ABSOLUTE filepath:
+File not found.

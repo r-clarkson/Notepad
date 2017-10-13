@@ -17,15 +17,15 @@ public class Main{
   public static void main(String[] args) throws Exception{
     Notebook notebook = new Notebook();
     NotebookManager notebookManager = new NotebookManager();
+    clearScreen();
     getCommand(notebook,notebookManager);
-    terminateProgram();
   }
 
   /**
   * If the user wants to put in their own filepath, this function will retrieve it
   * Asks user for filepath, and then puts those files into the notes directory
   **/
-  public static void getFilePath(){
+  public static boolean getFilePath(){
     File noteFolder;
     try{
       System.out.println("Please enter your ABSOLUTE filepath:");
@@ -40,9 +40,14 @@ public class Main{
     }
     /** Catches null pointers from filepath not being correct */
     catch (NullPointerException e){
-      System.out.println("File not found. Please try again.");
-      getFilePath();
+      System.out.println("File not found.");
+      return false;
     }
+    catch (NoSuchElementException f){
+      System.out.println("File not found.");
+      return false;
+    }
+    return true;
   }
 
   /** Looks at txt files from the local notes directory and will pass each one to the Note class to become a Note
@@ -66,17 +71,16 @@ public class Main{
           }
         }
       }
-      return true;
     }
     catch (NullPointerException e){
-      System.out.println("File not found. Please try again.");
-      getFilePath();
+      System.out.println("There has been an error in the notes directory. Please restart the program.");
       return false;
     }
+    return true;
   }
 
   /** Reads text file containing menu or commands and prints it to the screen https://stackoverflow.com/questions/15695984/java-print-contents-of-text-file-to-screen **/
-  public static void printMenu(File menu){
+  public static boolean printMenu(File menu){
     clearScreen();
     try  {
       BufferedReader br = new BufferedReader(new FileReader(menu));
@@ -84,11 +88,13 @@ public class Main{
       while ((line = br.readLine()) != null) {
         System.out.println(line);
       }
+      return true;
     }
     catch (IOException e){
       System.out.println("Error. Terminating program.");
       System.exit(0);
     }
+    return false;
   }
 
   /**
@@ -102,6 +108,12 @@ public class Main{
     /* splits command into parts so that each can be handed off to the correct class/method */
     String[] commands = null;
     commands = scanner.nextLine().split(" ");
+    if (!(commands.length>=1)){
+      System.out.println("Please enter at least two arguments.");
+      getCommand(notebook,notebookManager);
+    }
+    boolean cont = true;
+    clearScreen();
     /* performs action based on first command */
     switch (commands[0]) {
       case "help":
@@ -112,7 +124,6 @@ public class Main{
       break;
       case "filepath":
       getFilePath();
-      passFiles(notebook);
       break;
       case "delete":
       notebookManager.editNote(commands[1]);
@@ -120,16 +131,21 @@ public class Main{
       case "search":
       passFiles(notebook);
       Reports report = new Reports(notebook);
-      report.generateReport(commands[1]);
+      cont = report.generateReport(commands[1]);
       break;
       case "quit":
-      terminateProgram();
+      cont = false;
       break;
       default:
       System.out.println("Command not recognized. Please try again.");
       break;
     }
-    getCommand(notebook,notebookManager);
+    if (!cont){
+      terminateProgram();
+    }
+    else if (cont){
+      getCommand(notebook,notebookManager);
+    }
   }
 
   /** Clears the console https://stackoverflow.com/questions/10241217/how-to-clear-console-in-java */
