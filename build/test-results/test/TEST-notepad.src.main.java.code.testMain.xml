@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="notepad.src.main.java.code.testMain" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-13T18:40:40" hostname="Rileys-MacBook-Pro.local" time="0.077">
+  <properties/>
+  <testcase name="testPrintMenu" classname="notepad.src.main.java.code.testMain" time="0.018"/>
+  <testcase name="testPassFiles" classname="notepad.src.main.java.code.testMain" time="0.058"/>
+  <testcase name="testGetFilepath" classname="notepad.src.main.java.code.testMain" time="0.0"/>
+  <system-out><![CDATA[?[H?[2J
+
+COMMAND NAME
+  add
+FUNCTION
+  add a note or specific identifier to the notebook
+OPTIONS
+  -t (add a note by typing text)
+  -d (add a note via dictation)
+  -i (add a type of identifier to existing note)
+
+COMMAND NAME
+  filepath
+FUNCTION
+  add a text file or folder of text files to be added to the notebook
+
+COMMAND NAME
+  delete
+FUNCTION
+  delete a note or specific identifier from the notebook
+OPTIONS
+  -n (delete a note and its identifier by the note's filename)
+  -i (delete a specific identifier)
+
+COMMAND NAME
+  search
+FUNCTION
+  search for different types of identifiers and organize the notebook
+OPTIONS
+  -w (returns the filenames of notes containing an entered identifier)
+  -a (returns all notes which contain one or more identifiers of a certain type)
+  -o (returns notes organized by identifiers of a certain type)
+  -l (returns list of all identifiers of a certain type)
+  -t (returns notes organized in topological order)
+
+COMMAND NAME
+  quit
+FUNCTION
+  terminate the program
+Please enter your ABSOLUTE filepath:
+File not found.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
