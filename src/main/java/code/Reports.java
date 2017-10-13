@@ -27,6 +27,7 @@ public class Reports {
     if (sw.equals("-t")){
       TSort topologicalSort = new TSort();
       topologicalSort.tSort(notebook.getNotesList(), notebook.getMaps());
+      return true;
     }
     /** do these if the user did not choose topological sort */
     else if (!sw.equals("-t")){
@@ -55,34 +56,35 @@ public class Reports {
         data = data.concat(scanner.next());
         printSpecificMention(data);
         break;
-        case "":
-        TSort topologicalSort = new TSort();
-        topologicalSort.tSort(notebook.getNotesList(), notebook.getMaps());
-        break;
         default:
-        System.out.println("Please enter a valid input.");
+        System.out.println("Please enter a valid second argument.");
+        return false;
       }
+      return true;
     }
-    return getContinue();
+    return false;
   }
 
   /**
   * Iterates through each map to search for a specific mention and prints out the notes associated
   * with that mention
   */
-  public void printSpecificMention(String mention) {
+  public boolean printSpecificMention(String mention) {
     for (int i = 0; i < notebook.getMaps().size(); i++) {
       if (notebook.getMaps().get(i).containsKey(mention)) {
         System.out.println("Notes found for " + mention + " ");
         System.out.print(" " + notebook.getMaps().get(i).get(mention) + "\n");
+        return true;
       }
     }
+    return false;
   }
 
   /**
   * Takes the type of map and boolean for whether to print keys or not (just notes or notes with
   * their mention/keyword) for each key in the map, calls iterateLists to go through the key's LL
   * of note names
+  * Returns false if the map is null (useful for testing)
   */
   public void printNotesWithOneOrMoreMentions(HashMap<String, LinkedList<String>> mapType, boolean showKey, boolean showValue) {
     for (String key : mapType.keySet()) {
@@ -93,6 +95,7 @@ public class Reports {
         iterateLists(mapType, key);
       }
     }
+
   }
   /**
   * Iterates through given key's LL, while keeping track of which note names have already been

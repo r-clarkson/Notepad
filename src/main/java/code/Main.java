@@ -131,7 +131,8 @@ public class Main{
       case "search":
       passFiles(notebook);
       Reports report = new Reports(notebook);
-      cont = report.generateReport(commands[1]);
+      report.generateReport(commands[1]);
+      cont = report.getContinue();
       break;
       case "quit":
       cont = false;

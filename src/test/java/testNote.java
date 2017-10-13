@@ -1,6 +1,6 @@
 package notepad.src.main.java.code;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.io.*;
 import java.util.*;
@@ -35,13 +35,13 @@ public class testNote {
   /** tests that the first character of a LL item is a # after parsing note for #s */
   @Test
   public void testParseNote(){
-
     LinkedList<String> testList = n.parseNote(testFile,testPattern);
+    assertNotEquals(testList.get(0),null);
     assertEquals(testList.get(0).charAt(0),'#');
-
   }
   @Test
   public void testGetIdentifierLists(){
+    assertNotEquals(n.getIdentifierLists().get(0),null);
     assertEquals(n.getIdentifierLists().size(),5);
   }
 

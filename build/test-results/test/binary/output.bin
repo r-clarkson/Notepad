@@ -39,3 +39,9 @@
   terminate the program
 %Please enter your ABSOLUTE filepath:
 File not found.
+Notes found for #hey 
+; [_DonaldDuck.txt, growingBasil.txt, The-Popes-Tweets.txt]
+
+1: Return
+2: Quit
+]Enter the type of identifier ('#','@','^','!', or 'u' for url) you would like to organize by

@@ -1,7 +1,6 @@
 package notepad.src.main.java.code;
 import junit.framework.*;
-import static org.junit.Assert.assertEquals;
-
+import static org.junit.Assert.*;
 import java.io.*;
 import java.nio.file.*;
 import org.junit.After;
@@ -18,7 +17,7 @@ public class testNotebook{
     notebook = new Notebook();
     note = new Note(testFile);
   }
-  @After  
+  @After
   public void tearDown(){
     testFile = null;
     notebook = null;
@@ -26,8 +25,16 @@ public class testNotebook{
   }
   @Test
   public void testPassToMap(){
-
     assertEquals(notebook.passToMap(note,note.getIdentifierLists().get(0)),true);
-    
+  }
+  @Test
+  public void testGetListType(){
+    assertNotEquals(notebook.getListType('!'),null);
+    assertEquals(notebook.getListType('#'),notebook.getMaps().get(0));
+  }
+  @Test
+  public void testGetMaps(){
+    assertNotEquals(notebook.getMaps(),null);
+    assertEquals(5,notebook.getMaps().size());
   }
 }
