@@ -58,7 +58,7 @@ public class NotebookManager{
   */
   public Note addTypedNote( File filename){
     String body=null;
-    Note newNote;
+    Note newNote=null;
     try{
       PrintWriter writer = new PrintWriter(filename);
       System.out.println("Enter the body of your note. When you are finished please type EOF: \n ");
