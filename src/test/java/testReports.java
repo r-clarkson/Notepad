@@ -38,11 +38,15 @@ public class testReports{
   @Test
   public void testIterateLists(){
     /** makes sure LL value in hashmap is not size 0 */
-    assertNotEquals(notebook.getMaps().get(0).get(0).size(),0);
+    assertEquals(report.iterateLists(notebook.getMaps().get(0),"#hey"),true);
   }
   @Test
   public void testGetContinue(){
     /** should return false without input during testing */
     assertEquals(report.getContinue(),false);
+  }
+  @Test
+  public void testPrintInformation(){
+    assertEquals(report.printInformation("#","-l"),true);
   }
 }

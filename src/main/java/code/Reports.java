@@ -30,37 +30,13 @@ public class Reports {
       return true;
     }
     /** do these if the user did not choose topological sort */
-    else if (!sw.equals("-t")){
+    else if (sw.equals("-a") || sw.equals("-w") || sw.equals("-l") || sw.equals("-o")){
       String data = getData();
-      char identifier = data.charAt(0);
       clearScreen();
-      //printInformation(data,sw)
-      switch (sw) {
-        case "-a":
-        System.out.println("N O T E S   W I T H   O N E   O R   M O R E   " + data);
-        printNotesWithOneOrMoreMentions(notebook.getListType(identifier), false, true);
-        break;
-        /** this one will be the same as the one below...*/
-        case "-l":
-        System.out.println("A L L   " + data);
-        printNotesWithOneOrMoreMentions(notebook.getListType(identifier), true, false);
-        break;
-        case "-o":
-        System.out.println("N O T E S   O R G A N I Z E D   B Y   " + data);
-        printNotesWithOneOrMoreMentions(notebook.getListType(identifier), true, true);
-        break;
-        case "-w":
-        clearScreen();
-        String userInput = null;
-        System.out.println("Enter the word you would like to search for of type " + data);
-        data = data.concat(scanner.next());
-        printSpecificMention(data);
-        break;
-        default:
-        System.out.println("Please enter a valid second argument.");
-        return false;
-      }
-      return true;
+      return printInformation(data,sw);
+    }
+    else{
+      System.out.println("Command not recognized.");
     }
     return false;
   }
@@ -101,15 +77,15 @@ public class Reports {
   * Iterates through given key's LL, while keeping track of which note names have already been
   * printed (hence the extra LL) in order to avoid duplicates
   */
-  public void iterateLists(HashMap<String, LinkedList<String>> mapType, String key) {
+  public boolean iterateLists(HashMap<String, LinkedList<String>> mapType, String key) {
     List<String> noteNames = new LinkedList<String>();
-
     for (int i = 0; i < mapType.get(key).size(); i++) {
       if (!noteNames.contains(mapType.get(key).get(i))) {
         System.out.println("\n*" + mapType.get(key).get(i));
         noteNames.add(mapType.get(key).get(i));
       }
     }
+    return (noteNames.size()!=0) ? true : false;
   }
   /**
   * Clears the console https://stackoverflow.com/questions/10241217/how-to-clear-console-in-java *
@@ -118,26 +94,58 @@ public class Reports {
     System.out.print("\033[H\033[2J");
     System.out.flush();
   }
-
+  /**  retrieves user's input on whether to conitnue or not */
   public boolean getContinue(){
     System.out.println("1: Return\n2: Quit");
-    switch (scanner.nextInt()){
-      case 1:
-      clearScreen();
-      return true;
-      case 2:
-      clearScreen();
-      return false;
-      default:
-      System.out.println("Command not recognized. Please try again.");
-      getContinue();
+    if (scanner.hasNext()){
+      switch (scanner.nextInt()){
+        case 1:
+        clearScreen();
+        return true;
+        case 2:
+        clearScreen();
+        return false;
+        default:
+        System.out.println("Command not recognized. Please try again.");
+        getContinue();
+      }
     }
     return false;
   }
-
+  /** returns the type of identifier the user wants to search by */
   public String getData(){
     System.out.println("Enter the type of identifier ('#','@','^','!', or 'u' for url) you would like to organize by");
     String data = scanner.next();
     return data;
+  }
+  /** prints the report */
+  public boolean printInformation(String data, String sw){
+    char identifier = data.charAt(0);
+    switch (sw) {
+      case "-a":
+      System.out.println("N O T E S   W I T H   O N E   O R   M O R E   " + data);
+      printNotesWithOneOrMoreMentions(notebook.getListType(identifier), false, true);
+      break;
+      /** this one will be the same as the one below...*/
+      case "-l":
+      System.out.println("A L L   " + data);
+      printNotesWithOneOrMoreMentions(notebook.getListType(identifier), true, false);
+      break;
+      case "-o":
+      System.out.println("N O T E S   O R G A N I Z E D   B Y   " + data);
+      printNotesWithOneOrMoreMentions(notebook.getListType(identifier), true, true);
+      break;
+      case "-w":
+      clearScreen();
+      String userInput = null;
+      System.out.println("Enter the word you would like to search for of type " + data);
+      data = data.concat(scanner.next());
+      printSpecificMention(data);
+      break;
+      default:
+      System.out.println("Please enter a valid second argument.");
+      return false;
+    }
+    return true;
   }
 }
