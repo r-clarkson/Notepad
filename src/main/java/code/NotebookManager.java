@@ -58,6 +58,7 @@ public class NotebookManager{
   */
   public Note addTypedNote( File filename){
     String body=null;
+    Note newNote;
     try{
       PrintWriter writer = new PrintWriter(filename);
       System.out.println("Enter the body of your note. When you are finished please type EOF: \n ");
@@ -67,7 +68,7 @@ public class NotebookManager{
         }
         writer.close();
         System.out.println("File written properly!");
-        Note newNote = new Note(filename);
+        newNote = new Note(filename);
       } catch (IOException e) {
       System.out.println("File did not write properly");
     }
