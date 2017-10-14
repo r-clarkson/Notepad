@@ -114,37 +114,45 @@ public class Reports {
   }
   /** returns the type of identifier the user wants to search by */
   public String getData(){
-    System.out.println("Enter the type of identifier ('#','@','^','!', or 'u' for url) you would like to organize by");
+    System.out.println("Enter the type of identifier ('#','@','^','!', or 'u' for url) you would like to organize by, or type 'all' for all");
     String data = scanner.next();
     return data;
   }
   /** prints the report */
   public boolean printInformation(String data, String sw){
-    char identifier = data.charAt(0);
-    switch (sw) {
-      case "-a":
-      System.out.println("N O T E S   W I T H   O N E   O R   M O R E   " + data);
-      printNotesWithOneOrMoreMentions(notebook.getListType(identifier), false, true);
-      break;
-      /** this one will be the same as the one below...*/
-      case "-l":
-      System.out.println("A L L   " + data);
-      printNotesWithOneOrMoreMentions(notebook.getListType(identifier), true, false);
-      break;
-      case "-o":
-      System.out.println("N O T E S   O R G A N I Z E D   B Y   " + data);
-      printNotesWithOneOrMoreMentions(notebook.getListType(identifier), true, true);
-      break;
-      case "-w":
-      clearScreen();
-      String userInput = null;
-      System.out.println("Enter the word you would like to search for of type " + data);
-      data = data.concat(scanner.next());
-      printSpecificMention(data);
-      break;
-      default:
-      System.out.println("Please enter a valid second argument.");
-      return false;
+    String[] types = {"keywords (#)","mentions (@)","references (^)","titles (!)","urls"};
+    if (data.equals("all")){
+      for (String type : types){
+        System.out.println("\n");
+        printInformation(type,sw);
+      }
+    }
+    else if (!data.equals("all")){
+      switch (sw) {
+        case "-a":
+        System.out.println("N O T E S   W I T H   O N E   O R   M O R E   " + data);
+        printNotesWithOneOrMoreMentions(notebook.getListType(data), false, true);
+        break;
+        /** this one will be the same as the one below...*/
+        case "-l":
+        System.out.println("A L L   " + data);
+        printNotesWithOneOrMoreMentions(notebook.getListType(data), true, false);
+        break;
+        case "-o":
+        System.out.println("N O T E S   O R G A N I Z E D   B Y   " + data);
+        printNotesWithOneOrMoreMentions(notebook.getListType(data), true, true);
+        break;
+        case "-w":
+        clearScreen();
+        String userInput = null;
+        System.out.println("Enter the word you would like to search for of type " + data);
+        data = data.concat(scanner.next());
+        printSpecificMention(data);
+        break;
+        default:
+        System.out.println("Please enter a valid second argument.");
+        return false;
+      }
     }
     return true;
   }

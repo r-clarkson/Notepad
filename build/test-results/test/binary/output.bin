@@ -1,42 +1,32 @@
 [H[2J
+6COMMAND NAME  |  COMMAND FUNCTION  |  COMMAND OPTIONS
 
-COMMAND NAME
-  add
-	FUNCTION
-4  add a note or specific identifier to the notebook
-OPTIONS
-!  -t (add a note by typing text)
-   -d (add a note via dictation)
-1  -i (add a type of identifier to existing note)
+F add -x           add to notebook      -t (add a note by typing text)
+I                                       -d (add a note through dictation)
+Y                                       -i (add a type of identifier to an existing note)
 
-COMMAND NAME
-  filepath
-	FUNCTION
-F  add a text file or folder of text files to be added to the notebook
+6COMMAND NAME |   COMMAND FUNCTION  |  COMMAND OPTIONS
 
-COMMAND NAME
-	  delete
-	FUNCTION
-9  delete a note or specific identifier from the notebook
-OPTIONS
-?  -n (delete a note and its identifier by the note's filename)
-$  -i (delete a specific identifier)
+[ delete -x     delete from notebook     -n (delete a note and its identifiers by notename)
+J                                        -i (delete a specific identifier)
 
-COMMAND NAME
-	  search
-	FUNCTION
-F  search for different types of identifiers and organize the notebook
-OPTIONS
-G  -w (returns the filenames of notes containing an entered identifier)
-Q  -a (returns all notes which contain one or more identifiers of a certain type)
-@  -o (returns notes organized by identifiers of a certain type)
-9  -l (returns list of all identifiers of a certain type)
-4  -t (returns notes organized in topological order)
+5COMMAND NAME |  COMMAND FUNCTION  |  COMMAND OPTIONS
 
-COMMAND NAME
-  quit
-	FUNCTION
-  terminate the program
+k search -x     search in notebook     -w (returns the filenames of notes containing an entered identifier)
+n                                      -a (returns all notes which contain one+ identifiers of a certain type)
+d                                      -o (returns notes organized by identifiers of a certain type)
+]                                      -l (returns list of all identifiers of a certain type)
+X                                      -t (returns notes organized in topological order)
+
+"COMMAND NAME  |  COMMAND FUNCTION
+
+3 filepath         give notes location via filepath
+
+"COMMAND NAME  |  COMMAND FUNCTION
+
+$ quit             terminate program
+
+
 %Please enter your ABSOLUTE filepath:
 File not found.
 

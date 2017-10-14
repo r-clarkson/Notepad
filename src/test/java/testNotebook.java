@@ -29,8 +29,8 @@ public class testNotebook{
   }
   @Test
   public void testGetListType(){
-    assertNotEquals(notebook.getListType('!'),null);
-    assertEquals(notebook.getListType('#'),notebook.getMaps().get(0));
+    assertNotEquals(notebook.getListType("!"),null);
+    assertEquals(notebook.getListType("#"),notebook.getMaps().get(0));
   }
   @Test
   public void testGetMaps(){

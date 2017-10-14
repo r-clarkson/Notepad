@@ -7,7 +7,7 @@ import java.util.*;
  * specific to be AGILE
  */
 public class Notebook {
-  char listType = '\0';
+  String listType = "";
   LinkedList<String> notes = new LinkedList<String>();
   List<String> uniqueMentions = new LinkedList<String>();
   HashMap<String, LinkedList<String>> topicMentionMap;
@@ -41,7 +41,7 @@ public class Notebook {
    */
   public boolean passToMap(Note n, LinkedList<String> list) {
     for (int i = 0; i < list.size(); i++) {
-      listType = list.get(i).charAt(0);
+      listType = "" + list.get(i).charAt(0);
     }
 
     Map<String, LinkedList<String>> m = getListType(listType);
@@ -54,7 +54,7 @@ public class Notebook {
       LinkedList<String> previousNotes = map.get(list.get(j));
 
       if (previousNotes == null) {
-        if ((listType == '!' && !uniqueMentions.contains(list.get(j))) || listType != '!') {
+        if ((listType == "!" && !uniqueMentions.contains(list.get(j))) || listType != "!") {
           previousNotes = new LinkedList<String>();
           map.put(list.get(j), previousNotes);
         }
@@ -78,15 +78,15 @@ public class Notebook {
   }
 
   /** determines list type based on the first character of an item * */
-  public HashMap<String, LinkedList<String>> getListType(char type) {
+  public HashMap<String, LinkedList<String>> getListType(String type) {
     switch (type) {
-      case '#':
+      case "#":
         return topicMentionMap;
-      case '^':
+      case "^":
         return referenceMentionMap;
-      case '@':
+      case "@":
         return individualMentionMap;
-      case '!':
+      case "!":
         return uniqueMentionMap;
       default:
         return urlMap;

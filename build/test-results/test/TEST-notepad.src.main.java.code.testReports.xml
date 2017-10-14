@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="notepad.src.main.java.code.testReports" tests="6" skipped="0" failures="0" errors="0" timestamp="2017-10-14T21:59:48" hostname="Rileys-MacBook-Pro.local" time="0.268">
+<testsuite name="notepad.src.main.java.code.testReports" tests="6" skipped="0" failures="0" errors="0" timestamp="2017-10-14T23:45:03" hostname="Rileys-MacBook-Pro.local" time="0.298">
   <properties/>
-  <testcase name="testPrintNotesWithOneOrMoreMentions" classname="notepad.src.main.java.code.testReports" time="0.047"/>
-  <testcase name="testPrintInformation" classname="notepad.src.main.java.code.testReports" time="0.052"/>
-  <testcase name="testPrintSpecificMention" classname="notepad.src.main.java.code.testReports" time="0.042"/>
-  <testcase name="testGetContinue" classname="notepad.src.main.java.code.testReports" time="0.038"/>
-  <testcase name="testGenerateReport" classname="notepad.src.main.java.code.testReports" time="0.038"/>
-  <testcase name="testIterateLists" classname="notepad.src.main.java.code.testReports" time="0.047"/>
+  <testcase name="testPrintNotesWithOneOrMoreMentions" classname="notepad.src.main.java.code.testReports" time="0.06"/>
+  <testcase name="testPrintInformation" classname="notepad.src.main.java.code.testReports" time="0.053"/>
+  <testcase name="testPrintSpecificMention" classname="notepad.src.main.java.code.testReports" time="0.045"/>
+  <testcase name="testGetContinue" classname="notepad.src.main.java.code.testReports" time="0.048"/>
+  <testcase name="testGenerateReport" classname="notepad.src.main.java.code.testReports" time="0.042"/>
+  <testcase name="testIterateLists" classname="notepad.src.main.java.code.testReports" time="0.046"/>
   <system-out><![CDATA[A L L   #
 * #whats-up
 * #theWhale

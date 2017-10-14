@@ -15,9 +15,10 @@ public class Main{
   **/
 
   public static void main(String[] args) throws Exception{
+    clearScreen();
+    printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "title.txt"));
     Notebook notebook = new Notebook();
     NotebookManager notebookManager = new NotebookManager();
-    clearScreen();
     getCommand(notebook,notebookManager);
   }
 
@@ -88,6 +89,7 @@ public class Main{
       while ((line = br.readLine()) != null) {
         System.out.println(line);
       }
+      System.out.println("\n");
       return true;
     }
     catch (IOException e){
