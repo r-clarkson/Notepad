@@ -56,31 +56,35 @@ public class NotebookManager{
   * then the user will type what they wish to add and it will be written to the text file.
   * previous note deleted and then new note returned so it can be re-added to the notebook in main
   */
-  public Note addTypedNote(File filename){
-    Note note = null;
+  public Note addTypedNote( File filename){
+    String body=null;
     try{
-      PrintWriter writer = new PrintWriter(filename, "UTF-8");
-      System.out.println("Enter the body of your note: ");
-      //testing only appended one word to the file so a while loop should fix it...
-      String body;
-      body = scan.nextLine();
-      writer.write(body);
-      writer.close();
-      System.out.println("File written properly!");
-      //turn new texxt file into note with note = new Note(textfile)
-    } catch (IOException e) {
+      PrintWriter writer = new PrintWriter(filename);
+      System.out.println("Enter the body of your note. When you are finished please type EOF: \n ");
+      while(!(scan.next().equals("EOF"))){
+          body = scan.next();
+          writer.write(body);
+        }
+        writer.close();
+        System.out.println("File written properly!");
+        Note newNote = new Note(filename);
+      } catch (IOException e) {
       System.out.println("File did not write properly");
     }
-    return note;
+    return newNote;
   }
 
   /**
   * TODO: Method should iterate through hashmaps' LLs of notebook and delete references of the given filename
   * if the LL of a certain key in the HM is only size 1, then delete the key because it only existed due to that file
-  */
-  public void deleteNote(File filename){
 
+  public void deleteNote(Notebook nb, File filename){
+    LinkedList<String>noteList=nb.getNotesList();
+    for(int i;len(noteList);i++){
+
+    }
   }
+*/
 
   /**
   * Using Sphinx4 API, record from user's microphone and then add recording to a text file
