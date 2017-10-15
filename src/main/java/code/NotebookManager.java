@@ -2,6 +2,7 @@ package notepad.src.main.java.code;
 import java.util.*;
 import java.util.logging.Logger;
 import notepad.src.main.java.code.Notebook;
+import notepad.src.main.java.code.TSort;
 import java.io.*;
 import java.nio.file.*;
 import edu.cmu.sphinx.api.Configuration;
@@ -14,10 +15,12 @@ import java.util.regex.*;
 * Due to the construction of the Note class, we will create a txt file with whatever method the user chose,
 * then the text file will be returned after it is turned into a note object
 */
-public class NotebookManager{
+public class NotebookManager {
   Scanner scan = new Scanner(System.in);
+  TSort sorter = new TSort();
+
   /** given the user's input, adds a note of that type */
-  public void editNote(String type){
+  public void editNote(Notebook notebook, String type){
     if (type.equals("-t")){
       addTypedNote(getNoteFile());
     }
@@ -26,6 +29,9 @@ public class NotebookManager{
     }
     else if (type.equals("-i")){
       addIdentifier(getNoteFile());
+    }
+    else if (type.equals("-x")){
+      deleteNote(notebook, getNoteFile());
     }
   }
 
@@ -83,14 +89,30 @@ public class NotebookManager{
   /**
   * TODO: Method should iterate through hashmaps' LLs of notebook and delete references of the given filename
   * if the LL of a certain key in the HM is only size 1, then delete the key because it only existed due to that file
+*/
+  public void deleteNote(Notebook notebook, File filename){
+      System.out.println("IN DELETE NOTE");
+    LinkedList<String>noteList=notebook.getNotesList();
+    //TODO: should i use iterateLists here or 
+    for(int i =0; i<noteList.size();i++){
+      System.out.println("IN FOR LOOP");
+      sorter.deleteOutgoingVertices(noteList, notebook.getMaps());
 
-  public void deleteNote(Notebook nb, File filename){
-    LinkedList<String>noteList=nb.getNotesList();
-    for(int i;len(noteList);i++){
-
+      System.out.println(filename.toPath());
+      try {
+        Files.delete(filename.toPath());
+      } catch (NoSuchFileException x) {
+        System.err.format("%s: no such" + " file or directory%n", filename.toPath());
+      } catch (DirectoryNotEmptyException x) {
+        System.err.format("%s not empty%n", filename.toPath());
+      } catch (IOException x) {
+        // File permission problems are caught here.
+        System.err.println(x);
+      }
+      System.out.println("File deleted successfully!");
     }
   }
-*/
+
 
   /**
   * Using Sphinx4 API, record from user's microphone and then add recording to a text file
