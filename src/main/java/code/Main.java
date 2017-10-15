@@ -8,6 +8,9 @@ Reports are then generated based on user input and the said notebook
 **/
 public class Main{
   static Scanner scanner = new Scanner(System.in);
+  File title = new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "title.txt");
+  File commands = new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt");
+  File notesDirectory = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator);
 
   /** Notebook object is created,
   filepath is taken from user (or not, depending on their input).
@@ -16,7 +19,7 @@ public class Main{
 
   public static void main(String[] args) throws Exception{
     clearScreen();
-    printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "title.txt"));
+    printMenu(title);
     Notebook notebook = new Notebook();
     NotebookManager notebookManager = new NotebookManager();
     getCommand(notebook,notebookManager);
@@ -36,7 +39,7 @@ public class Main{
         getFilePath();
       }
       for (final File fileEntry : noteFolder.listFiles()) {
-        fileEntry.renameTo(new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator));
+        fileEntry.renameTo(notesDirectory);
       }
     }
     /** Catches null pointers from filepath not being correct */
@@ -57,10 +60,9 @@ public class Main{
   * TODO: function was made boolean for testing but is that still necessary?
   **/
   public static boolean passFiles(Notebook notebook) {
-    File folder = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator);
     try{
       /** passes each file to passfiles recursively to become a note */
-      for (final File fileEntry : folder.listFiles()) {
+      for (final File fileEntry : notesDirectory.listFiles()) {
         if (fileEntry.isDirectory()) {
           passFiles(notebook);
         }
@@ -104,22 +106,31 @@ public class Main{
   * in most cases, the method recursively calls itself so that the user can continue to make/edit/report notes
   **/
   public static void getCommand(Notebook notebook,NotebookManager notebookManager){
-    //clearScreen();
-    System.out.println("Enter command below, or for help type 'help'");
-
-    /* splits command into parts so that each can be handed off to the correct class/method */
+    boolean cont = true;
     String[] commands = null;
+    System.out.println("Enter command below, or for help type 'help'");
+    /* splits command into parts so that each can be handed off to the correct class/method */
     commands = scanner.nextLine().split(" ");
+
     if (!(commands.length>=1)){
       System.out.println("Please enter at least two arguments.");
       getCommand(notebook,notebookManager);
     }
-    boolean cont = true;
     clearScreen();
     /* performs action based on first command */
+    cont = commandSwitch(commands);
+    if (!cont){
+      terminateProgram();
+    }
+    else if (cont){
+      getCommand(notebook,notebookManager);
+    }
+  }
+
+  public boolean commandSwitch(String commands[]){
     switch (commands[0]) {
       case "help":
-      printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt"));
+      printMenu(commands);
       break;
       case "add":
       notebookManager.editNote(commands[1]);
@@ -134,21 +145,16 @@ public class Main{
       passFiles(notebook);
       Reports report = new Reports(notebook);
       report.generateReport(commands[1]);
-      cont = report.getContinue();
+      return report.getContinue();
       break;
       case "quit":
-      cont = false;
+      return false;
       break;
       default:
       System.out.println("Command not recognized. Please try again.");
       break;
     }
-    if (!cont){
-      terminateProgram();
-    }
-    else if (cont){
-      getCommand(notebook,notebookManager);
-    }
+    return true;
   }
 
   /** Clears the console https://stackoverflow.com/questions/10241217/how-to-clear-console-in-java */

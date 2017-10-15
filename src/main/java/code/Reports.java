@@ -114,7 +114,7 @@ public class Reports {
   }
   /** returns the type of identifier the user wants to search by */
   public String getData(){
-    System.out.println("Enter the type of identifier ('#','@','^','!', or 'u' for url) you would like to organize by, or type 'all' for all");
+    System.out.println("Enter the type of identifier ('#','@','^','!', or 'url') you would like to organize by, or type 'all' for all");
     String data = scanner.next();
     return data;
   }
