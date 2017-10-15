@@ -17,6 +17,7 @@
 d                                      -o (returns notes organized by identifiers of a certain type)
 ]                                      -l (returns list of all identifiers of a certain type)
 X                                      -t (returns notes organized in topological order)
+[                                      -s (returns sentences containing a given identifier)
 
 "COMMAND NAME  |  COMMAND FUNCTION
 
@@ -52,3 +53,15 @@ A L L   #
 *q.txt
 
 *The-Popes-Tweets.txt
+
+Sentence:#hey
+  * found in _DonaldDuck.txt
+
+Sentence:#hey
+  * found in growingBasil.txt
+
+&Sentence:#hey everyone this is a test
+  * found in q.txt
+
+Sentence:#hey
+"  * found in The-Popes-Tweets.txt

@@ -36,6 +36,11 @@ public class testReports{
     assertNotEquals(notebook.getMaps().get(0).size(),0);
   }
   @Test
+  /** this function tests getsentence() as well because it relies on it to return true */
+  public void testGetFileForSentences(){
+    assertEquals(report.getFileForSentences("#hey"),true);
+  }
+  @Test
   public void testIterateLists(){
     /** makes sure LL value in hashmap is not size 0 */
     assertEquals(report.iterateLists(notebook.getMaps().get(0),"#hey"),true);

@@ -77,7 +77,7 @@ public class Reports {
     }
   }
 
-  public void getFileForSentences(String mention){
+  public boolean getFileForSentences(String mention){
     ArrayList<String> fileName = new ArrayList<String>();
     String answer;
     for (int i = 0; i < notebook.getMaps().size(); i++) {
@@ -101,10 +101,10 @@ public class Reports {
       }
       catch (IOException e ){
         System.out.println("IO Error");
-        e.printStackTrace();
-
+        return false;
       }
     }
+    return true;
   }
   /**
   * Finds sentences containing a given mention within the note files from printSpecificMention
