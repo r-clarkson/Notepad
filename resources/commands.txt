@@ -17,6 +17,7 @@ COMMAND NAME |  COMMAND FUNCTION  |  COMMAND OPTIONS
                                       -o (returns notes organized by identifiers of a certain type)
                                       -l (returns list of all identifiers of a certain type)
                                       -t (returns notes organized in topological order)
+                                      -s (returns sentences containing a given identifier)
 
 COMMAND NAME  |  COMMAND FUNCTION
 
