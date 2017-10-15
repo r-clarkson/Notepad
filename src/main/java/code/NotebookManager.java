@@ -58,12 +58,16 @@ public class NotebookManager{
     Note note = null;
     try{
       PrintWriter writer = new PrintWriter(filename, "UTF-8");
-      System.out.println("Enter the body of your note: ");
-      String body = scan.next();
-      writer.write(body);
+      System.out.println("Enter the body of your note: ");    
+      //testing only appended one word to the file so a while loop should fix it...
+      String body;
+      while(scan.hasNextLine()){
+        body = scan.nextLine();
+        writer.write(body);
+      }
       writer.close();
       System.out.println("File written properly!");
-      //turn new texxt file into note with note = new Note(textfile)
+      //read in text file and from that create a Note obj
     } catch (IOException e) {
       System.out.println("File did not write properly");
     }
