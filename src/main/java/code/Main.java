@@ -8,9 +8,9 @@ Reports are then generated based on user input and the said notebook
 **/
 public class Main{
   static Scanner scanner = new Scanner(System.in);
-  File title = new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "title.txt");
-  File commands = new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt");
-  File notesDirectory = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator);
+  static File title = new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "title.txt");
+  static File commandsMenu = new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt");
+  static File notesDirectory = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator);
 
   /** Notebook object is created,
   filepath is taken from user (or not, depending on their input).
@@ -118,7 +118,7 @@ public class Main{
     }
     clearScreen();
     /* performs action based on first command */
-    cont = commandSwitch(commands);
+    cont = commandSwitch(commands,notebook,notebookManager);
     if (!cont){
       terminateProgram();
     }
@@ -127,10 +127,10 @@ public class Main{
     }
   }
 
-  public boolean commandSwitch(String commands[]){
+  public static boolean commandSwitch(String commands[],Notebook notebook,NotebookManager notebookManager){
     switch (commands[0]) {
       case "help":
-      printMenu(commands);
+      printMenu(commandsMenu);
       break;
       case "add":
       notebookManager.editNote(commands[1]);
@@ -146,10 +146,8 @@ public class Main{
       Reports report = new Reports(notebook);
       report.generateReport(commands[1]);
       return report.getContinue();
-      break;
       case "quit":
       return false;
-      break;
       default:
       System.out.println("Command not recognized. Please try again.");
       break;
