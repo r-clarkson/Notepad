@@ -3,6 +3,9 @@ package notepad.src.main.java.code;
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
+import java.util.regex.*;
+import java.nio.charset.StandardCharsets;
+
 /**
 * consolidates the given notebook's maps into a list of maps to be a little cleaner has multiple
 * functions for generating different types of reports
@@ -11,6 +14,7 @@ public class Reports {
   Scanner scanner;
   Notebook notebook;
   LinkedList<String> notesList;
+  static Pattern END_OF_SENTENCE = Pattern.compile("\\.\\s+");
   /**
   * adds the notebook's hashmaps to the new list of maps so they can be more easily iterated
   * through (its a little cleaner)*
@@ -30,7 +34,7 @@ public class Reports {
       return true;
     }
     /** do these if the user did not choose topological sort */
-    else if (sw.equals("-a") || sw.equals("-w") || sw.equals("-l") || sw.equals("-o")){
+    else if (sw.equals("-a") || sw.equals("-w") || sw.equals("-l") || sw.equals("-o") || sw.equals("-s")){
       String data = getData();
       clearScreen();
       return printInformation(data,sw);
@@ -71,7 +75,44 @@ public class Reports {
         iterateLists(mapType, key);
       }
     }
+  }
 
+  public void getFileForSentences(String mention){
+    ArrayList<String> fileName = new ArrayList<String>();
+    String answer;
+    for (int i = 0; i < notebook.getMaps().size(); i++) {
+      if (notebook.getMaps().get(i).containsKey(mention)) {
+        for (int j = 0; j < notebook.getMaps().get(i).get(mention).size(); j++){
+          fileName.add(notebook.getMaps().get(i).get(mention).get(j));
+        }
+      }
+    }
+    for (int k = 0; k < fileName.size(); k++){
+      try {
+        List<String> lines = Files.readAllLines(Paths.get(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator + fileName.get(k)), StandardCharsets.ISO_8859_1);
+        for (int l = 0; l <lines.size(); l++){
+          answer = getSentence(lines.get(l),mention);
+          if (!answer.equals("")){
+            System.out.println("\nSentence:" + answer);
+            System.out.println("  * found in " + fileName.get(k));
+          }
+        }
+
+      }
+      catch (IOException e ){
+        System.out.println("IO Error");
+        e.printStackTrace();
+
+      }
+    }
+  }
+  /**
+  * Finds sentences containing a given mention within the note files from printSpecificMention
+  * Reference: https://codereview.stackexchange.com/questions/90474/extracting-a-sentence-containing-a-specific-word-from-a-longer-text
+  */
+  public static String getSentence(String text, String mention) {
+    final String lcword = mention.toLowerCase();
+    return END_OF_SENTENCE.splitAsStream(text).filter(s -> s.toLowerCase().contains(lcword)).findAny().orElse("");
   }
   /**
   * Iterates through given key's LL, while keeping track of which note names have already been
@@ -148,6 +189,11 @@ public class Reports {
         System.out.println("Enter the word you would like to search for of type " + data);
         data = data.concat(scanner.next());
         printSpecificMention(data);
+        break;
+        case "-s":
+        System.out.println("Enter the word you would like to search for of type " + data);
+        data = data.concat(scanner.next());
+        getFileForSentences(data);
         break;
         default:
         System.out.println("Please enter a valid second argument.");

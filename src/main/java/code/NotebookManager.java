@@ -57,31 +57,27 @@ public class NotebookManager{
   * previous note deleted and then new note returned so it can be re-added to the notebook in main
   */
   public Note addTypedNote( File filename){
-    String[] body= new String[50];
-    int index = 0;
-    Note newNote=null;
-    boolean done = false;
+    Note newNote = null;
+    String body=null;
     try{
       PrintWriter writer = new PrintWriter(filename);
-      System.out.println("Enter the body of your note. Add up to 50 lines. To complete your note, skip a line and press enter: \n ");
-      while (!done){
-        body[index] = scan.nextLine();
-        if(!(body[index].equals(""))){
-          writer.write(body[index]);
-          index++;
-        }
-        else{
-          done = true;
-          break;
-        }
-      }
-      writer.close();
-      System.out.println("File written properly!");
-      newNote = new Note(filename);
-    } catch (IOException e) {
+      System.out.println("Enter the body of your note. When you are finished please type EOF: \n ");
+      do {
+          body = scan.next();
+          writer.write(body);
+        }while(!(scan.next().equals("EOF")));
+        writer.close();
+        System.out.println("File written properly!");
+      } catch (IOException e) {
       System.out.println("File did not write properly");
     }
-    return newNote;
+    newNote = new Note(filename);
+    if (newNote!=null){
+      System.out.println("Note Object Created!");
+    } else {
+      System.out.println("Note Object Not Created");
+    }
+  return newNote;
   }
 
   /**

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="notepad.src.main.java.code.testMain" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-15T00:59:08" hostname="Rileys-MacBook-Pro.local" time="0.079">
+<testsuite name="notepad.src.main.java.code.testMain" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-15T19:17:15" hostname="Rileys-MacBook-Pro.local" time="0.094">
   <properties/>
-  <testcase name="testPrintMenu" classname="notepad.src.main.java.code.testMain" time="0.027"/>
-  <testcase name="testPassFiles" classname="notepad.src.main.java.code.testMain" time="0.051"/>
-  <testcase name="testGetFilepath" classname="notepad.src.main.java.code.testMain" time="0.001"/>
+  <testcase name="testPrintMenu" classname="notepad.src.main.java.code.testMain" time="0.02"/>
+  <testcase name="testPassFiles" classname="notepad.src.main.java.code.testMain" time="0.069"/>
+  <testcase name="testGetFilepath" classname="notepad.src.main.java.code.testMain" time="0.002"/>
   <system-out><![CDATA[?[H?[2J
 COMMAND NAME  |  COMMAND FUNCTION  |  COMMAND OPTIONS
 
