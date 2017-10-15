@@ -18,7 +18,7 @@ public class Main{
     Notebook notebook = new Notebook();
     NotebookManager notebookManager = new NotebookManager();
     clearScreen();
-    getCommand(notebook,notebookManager);
+    getCommand(notebook ,notebookManager);
   }
 
   /**
@@ -110,7 +110,7 @@ public class Main{
     commands = scanner.nextLine().split(" ");
     if (!(commands.length>=1)){
       System.out.println("Please enter at least two arguments.");
-      getCommand(notebook,notebookManager);
+      getCommand(notebook, notebookManager);
     }
     boolean cont = true;
     clearScreen();

@@ -21,8 +21,12 @@ public class NotebookManager {
 
   /** given the user's input, adds a note of that type */
   public void editNote(Notebook notebook, String type){
+    File filepath = null;
     if (type.equals("-t")){
-      addTypedNote(getNoteFile());
+      filepath = getNoteFile();
+      if (filepath.exists()){
+        addTypedNote(filepath);
+      }
     }
     else if (type.equals("-d")){
       addDictatedNote(getNoteFile());
@@ -94,6 +98,7 @@ public class NotebookManager {
     System.out.println("IN DELETE NOTE");
     LinkedList<String>noteList=notebook.getNotesList();
     //TODO: should i use iterateLists here or
+    System.out.println(noteList.size());
     for(int i =0; i<noteList.size();i++){
       System.out.println("IN FOR LOOP");
       sorter.deleteOutgoingVertices(noteList, notebook.getMaps());
