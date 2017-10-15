@@ -91,9 +91,9 @@ public class NotebookManager {
   * if the LL of a certain key in the HM is only size 1, then delete the key because it only existed due to that file
 */
   public void deleteNote(Notebook notebook, File filename){
-      System.out.println("IN DELETE NOTE");
+    System.out.println("IN DELETE NOTE");
     LinkedList<String>noteList=notebook.getNotesList();
-    //TODO: should i use iterateLists here or 
+    //TODO: should i use iterateLists here or
     for(int i =0; i<noteList.size();i++){
       System.out.println("IN FOR LOOP");
       sorter.deleteOutgoingVertices(noteList, notebook.getMaps());
@@ -183,8 +183,13 @@ public class NotebookManager {
         }
         getNoteFile();
       }
+      else if (!noteFile.isDirectory());
+        noteFile = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator + input + ".txt");
+        if (noteFile.exists()){
+          noteFile = noteFile;
+        }
       // TODO: only functionality for creating a new note at the moment. need to be able to edit existing notes as well.
-      else{
+      else {
         //create new text file (in notes folder) with filename entered and return it
         noteFile = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator + input + ".txt");
         Files.createFile(Paths.get(noteFile.getPath()));

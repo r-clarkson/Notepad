@@ -120,13 +120,13 @@ public class Main{
       printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt"));
       break;
       case "add":
-      notebookManager.editNote(commands[1]);
+      notebookManager.editNote(notebook, commands[1]);
       break;
       case "filepath":
       getFilePath();
       break;
       case "delete":
-      notebookManager.editNote(commands[1]);
+      notebookManager.editNote(notebook, "-x");
       break;
       case "search":
       passFiles(notebook);
