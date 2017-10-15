@@ -8,8 +8,8 @@ import java.util.*;
  */
 public class Notebook {
   char listType = '\0';
-  LinkedList<String> notes;
-  List<String> uniqueMentions;
+  LinkedList<String> notes = new LinkedList<String>();
+  List<String> uniqueMentions = new LinkedList<String>();
   HashMap<String, LinkedList<String>> topicMentionMap;
   HashMap<String, LinkedList<String>> individualMentionMap;
   HashMap<String, LinkedList<String>> referenceMentionMap;
@@ -21,8 +21,6 @@ public class Notebook {
    * enough to the assignment? A list of these would not work because we define them later...
    */
   public Notebook() {
-    notes = new LinkedList<String>();
-    uniqueMentions = new LinkedList<String>();
     topicMentionMap = new HashMap<String, LinkedList<String>>();
     individualMentionMap = new HashMap<String, LinkedList<String>>();
     referenceMentionMap = new HashMap<String, LinkedList<String>>();
@@ -97,5 +95,15 @@ public class Notebook {
   /** getter for the list of all notes parsed so far; needed for topological sort* */
   public LinkedList<String> getNotesList() {
     return notes;
+  }
+
+  public LinkedList<HashMap<String, LinkedList<String>>> getMaps(){
+    LinkedList<HashMap<String, LinkedList<String>>> maps = new LinkedList<HashMap<String, LinkedList<String>>>();
+    maps.add(topicMentionMap);
+    maps.add(referenceMentionMap);
+    maps.add(individualMentionMap);
+    maps.add(uniqueMentionMap);
+    maps.add(urlMap);
+    return maps;
   }
 }
