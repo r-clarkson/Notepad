@@ -27,7 +27,6 @@ public class Reports {
   * switch statement to generate different types of reports based on the option the user typed in (sw variable)
   */
   public boolean generateReport(String sw) {
-    /** TODO: have an option to just do them all or combinations instead of choosing one */
     if (sw.equals("-t")){
       TSort topologicalSort = new TSort();
       topologicalSort.tSort(notebook.getNotesList(), notebook.getMaps());
