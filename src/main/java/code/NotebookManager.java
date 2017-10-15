@@ -38,6 +38,7 @@ public class NotebookManager{
       case "-x":
         filepath = getNoteFile();
         if (filepath.exists()){
+          System.out.println("path exists");
           deleteNoteMentions(deleteNote(filepath));
         } else {
           System.out.println("File does not exists!");
@@ -154,6 +155,7 @@ public class NotebookManager{
 
 
   public void deleteNoteMentions(String mentionID){
+    System.out.println("IN DEL NOTE MENTIONS");
     File [] txtFiles = new File(".." + File.separator + "Notepad" + File.separator + "notes").listFiles();
     String charset = "UTF-8";   //Determine the charset.
     //BufferedReader reader = null;
@@ -196,15 +198,20 @@ public class NotebookManager{
 
   public String deleteNote(File filename){
     String charset = "UTF-8";   //Determine the charset.
-    //BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), charset));
-      //Open the temp file for writing.
     String retLine = null;
-      for (String line; (line = scan.nextLine()) != null;) {
+    BufferedReader reader = null;
+    try{
+      reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), charset));
+      for (String line; (line = reader.readLine()) != null;) {
           if (line.matches("\\![-a-zA-Z0-9_]+")){
             retLine =   line;//Delete the string from the line.
           }
         }
     filename.delete();    //Delete the file.
+    System.out.println("IN DELETE NOTE: "+retLine);
+  }catch (IOException e){
+      System.out.println("Error openning BufferedReader or PrintWriter");
+  }
     return retLine;
     }
 
