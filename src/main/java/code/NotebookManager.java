@@ -10,15 +10,12 @@ import edu.cmu.sphinx.api.SpeechResult;
 import java.util.regex.*;
 
 
+
 /**
 * Due to the construction of the Note class, we will create a txt file with whatever method the user chose,
 * then the text file will be returned after it is turned into a note object
 */
 public class NotebookManager{
-  Scanner scan = new Scanner(System.in);
-  /** given the user's input, adds a note of that type */
-
-  public class NotebookManager{
   Scanner scan = new Scanner(System.in);
   /** given the user's input, adds a note of that type */
   public void editNote(String type){
@@ -29,7 +26,7 @@ public class NotebookManager{
         if (filepath.exists()){
           addTypedNote(filepath);
         } else {
-          System.out.println("File already exists!")
+          System.out.println("File already exists!");
         }
         break;
       case "-d":
@@ -37,6 +34,14 @@ public class NotebookManager{
         break;
       case "-i":
         addIdentifier(getNoteFile());
+        break;
+      case "-x":
+        filepath = getNoteFile();
+        if (filepath.exists()){
+          deleteNoteMentions(deleteNote(filepath));
+        } else {
+          System.out.println("File does not exists!");
+        }
         break;
       case "-e":
         appendToNote(getNoteFile());
@@ -121,7 +126,7 @@ public class NotebookManager{
     /**
     * TODO: Method should iterate through hashmaps' LLs of notebook and delete references of the given filename
     * if the LL of a certain key in the HM is only size 1, then delete the key because it only existed due to that file
-  */
+
     public void deleteNote(Notebook notebook, File filename){
       System.out.println("IN DELETE NOTE");
       LinkedList<String>noteList=notebook.getNotesList();
@@ -145,28 +150,62 @@ public class NotebookManager{
         System.out.println("File deleted successfully!");
       }
     }
+    */
 
-  public void deleteNoteTwo(){
-    File file = new File("/path/to/file.txt");    //Locate the file.
-    //Create a temporary file (otherwise you've to read everything into Java's memory first).
-    File temp = File.createTempFile("file", ".txt", file.getParentFile());
+
+  public void deleteNoteMentions(String mentionID){
+    File [] txtFiles = new File(".." + File.separator + "Notepad" + File.separator + "notes").listFiles();
     String charset = "UTF-8";   //Determine the charset.
-    String delete = "foo";    //Determine the string you'd like to delete.
-    //Open the file for reading.
-    BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), charset));
-    //Open the temp file for writing.
-    PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(temp), charset));
-    //Read the file line by line.
-  for (String line; (line = reader.readLine()) != null;) {
-      if (line.match(Pattern.compile("\\^[-a-zA-Z0-9_]+"))){
-        line = line.replace(delete, "");    //Delete the string from the line.
-        writer.println(line);   //Write it to temp file.
+    //BufferedReader reader = null;
+    PrintWriter  writer = null;
+    File temp = null;
+      for (File cur : txtFiles){
+        try{
+        //Create a temporary file (otherwise you've to read everything into Java's memory first).
+        temp = File.createTempFile("tmp", ".txt", cur.getParentFile());
+
+          //Open the file for reading.
+          //reader = new BufferedReader(new InputStreamReader(new FileInputStream(cur), charset));
+          //Open the temp file for writing.
+          writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(cur), charset));
+          //Read the file line by line.
+        } catch (IOException e){
+            System.out.println("Error openning BufferedReader or PrintWriter");
+        } /*catch(FileNotFoundException e){
+          System.out.println("FileNotFoundException");
+        }catch(UnsupportedEncodingException e){
+          System.out.println("UnsupportedEncodingException");
+        }
+        */
+
+        for (String line; (line = scan.nextLine()) != null;) {
+            if (line.matches("\\^[-a-zA-Z0-9_]+")){
+              line = line.replace(mentionID, "");    //Delete the string from the line.
+              writer.println(line);   //Write it to temp file.
+            }
+          }
+          scan.close();   //Close the reader and writer (preferably in the finally block).
+          writer.close();
+          cur.delete();    //Delete the file.
+          temp.renameTo(cur);
       }
-    }
-    reader.close();   //Close the reader and writer (preferably in the finally block).
-    writer.close();
-    file.delete();    //Delete the file.
-    temp.renameTo(file);    //Rename the temp file.
+
+       //Rename the temp file.
+}
+
+
+  public String deleteNote(File filename){
+    String charset = "UTF-8";   //Determine the charset.
+    //BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), charset));
+      //Open the temp file for writing.
+    String retLine = null;
+      for (String line; (line = scan.nextLine()) != null;) {
+          if (line.matches("\\![-a-zA-Z0-9_]+")){
+            retLine =   line;//Delete the string from the line.
+          }
+        }
+    filename.delete();    //Delete the file.
+    return retLine;
     }
 
 
