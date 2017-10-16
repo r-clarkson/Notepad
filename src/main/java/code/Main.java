@@ -29,6 +29,7 @@ public class Main{
   * If the user wants to put in their own filepath, this function will retrieve it
   * Asks user for filepath, and then puts those files into the notes directory
   **/
+
   public static boolean getFilePath(){
     File noteFolder;
     try{
@@ -42,6 +43,7 @@ public class Main{
         fileEntry.renameTo(notesDirectory);
       }
     }
+
     /** Catches null pointers from filepath not being correct */
     catch (NullPointerException e){
       System.out.println("File not found.");
@@ -57,8 +59,8 @@ public class Main{
   /** Looks at txt files from the local notes directory and will pass each one to the Note class to become a Note
   * for each file in the directory, makes a new note, and then the note is added to the notebook with passToMap
   * https://stackoverflow.com/questions/1844688/read-all-files-in-a-folder
-  * TODO: function was made boolean for testing but is that still necessary?
   **/
+
   public static boolean passFiles(Notebook notebook) {
     try{
       /** passes each file to passfiles recursively to become a note */
@@ -83,6 +85,7 @@ public class Main{
   }
 
   /** Reads text file containing menu or commands and prints it to the screen https://stackoverflow.com/questions/15695984/java-print-contents-of-text-file-to-screen **/
+
   public static boolean printMenu(File menu){
     clearScreen();
     try  {
@@ -102,9 +105,10 @@ public class Main{
   }
 
   /**
-  * This method retrieves the user's desired action and performs it
-  * in most cases, the method recursively calls itself so that the user can continue to make/edit/report notes
+  * This function takes in user input and passes it to the switch statement which performs actions
+  * A boolean is returned and if it is false, the program will terminate
   **/
+
   public static void getCommand(Notebook notebook,NotebookManager notebookManager){
     boolean cont = true;
     String[] commands = null;
@@ -126,6 +130,11 @@ public class Main{
       getCommand(notebook,notebookManager);
     }
   }
+
+  /**
+  * This method retrieves the user's desired action and performs it
+  * in most cases, the method recursively calls itself so that the user can continue to make/edit/report notes
+  **/
 
   public static boolean commandSwitch(String commands[],Notebook notebook,NotebookManager notebookManager){
     switch (commands[0]) {
