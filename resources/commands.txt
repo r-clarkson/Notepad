@@ -7,8 +7,8 @@ COMMAND NAME  |  COMMAND FUNCTION  |  COMMAND OPTIONS
 
 COMMAND NAME |   COMMAND FUNCTION  |  COMMAND OPTIONS
 
- delete -x     delete from notebook     -n (delete a note and its identifiers by notename)
-                                        -i (delete a specific identifier)
+ delete -x     delete from notebook     -i (delete a specific identifier)
+                                        -x (delete a note from the notebook)
 
 COMMAND NAME |  COMMAND FUNCTION  |  COMMAND OPTIONS
 
