@@ -155,22 +155,35 @@ public class NotebookManager{
 
 
   public void deleteNoteMentions(String mentionID){
-    System.out.println("IN DEL NOTE MENTIONS");
+    String newMention = mentionID.replace("!", "^");
+    System.out.println("IN DEL NOTE MENTIONS" + mentionID);
     File [] txtFiles = new File(".." + File.separator + "Notepad" + File.separator + "notes").listFiles();
     String charset = "UTF-8";   //Determine the charset.
     //BufferedReader reader = null;
+    BufferedReader reader = null;
     PrintWriter  writer = null;
     File temp = null;
       for (File cur : txtFiles){
+        System.out.println(newMention + "IN FOR LOOP");
+        System.out.println(cur.getName());
         try{
         //Create a temporary file (otherwise you've to read everything into Java's memory first).
         temp = File.createTempFile("tmp", ".txt", cur.getParentFile());
-
           //Open the file for reading.
-          //reader = new BufferedReader(new InputStreamReader(new FileInputStream(cur), charset));
+          reader = new BufferedReader(new InputStreamReader(new FileInputStream(cur), charset));
           //Open the temp file for writing.
           writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(cur), charset));
           //Read the file line by line.
+        for (String line; (line = scan.nextLine()) != null;) {
+            if (line.matches("\\^[-a-zA-Z0-9_]+")){
+              line = line.replace(newMention, "");    //Delete the string from the line.
+              writer.println(line);   //Write it to temp file.
+            }
+          }
+          scan.close();   //Close the reader and writer (preferably in the finally block).
+          writer.close();
+          cur.delete();    //Delete the file.
+          temp.renameTo(cur);
         } catch (IOException e){
             System.out.println("Error openning BufferedReader or PrintWriter");
         } /*catch(FileNotFoundException e){
@@ -179,19 +192,7 @@ public class NotebookManager{
           System.out.println("UnsupportedEncodingException");
         }
         */
-
-        for (String line; (line = scan.nextLine()) != null;) {
-            if (line.matches("\\^[-a-zA-Z0-9_]+")){
-              line = line.replace(mentionID, "");    //Delete the string from the line.
-              writer.println(line);   //Write it to temp file.
-            }
-          }
-          scan.close();   //Close the reader and writer (preferably in the finally block).
-          writer.close();
-          cur.delete();    //Delete the file.
-          temp.renameTo(cur);
       }
-
        //Rename the temp file.
 }
 
@@ -208,7 +209,6 @@ public class NotebookManager{
           }
         }
     filename.delete();    //Delete the file.
-    System.out.println("IN DELETE NOTE: "+retLine);
   }catch (IOException e){
       System.out.println("Error openning BufferedReader or PrintWriter");
   }
