@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="notepad.src.main.java.code.testMain" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-15T21:19:07" hostname="Rileys-MacBook-Pro.local" time="0.069">
+<testsuite name="notepad.src.main.java.code.testMain" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-16T23:42:24" hostname="Rileys-MacBook-Pro.local" time="0.109">
   <properties/>
-  <testcase name="testPrintMenu" classname="notepad.src.main.java.code.testMain" time="0.02"/>
-  <testcase name="testPassFiles" classname="notepad.src.main.java.code.testMain" time="0.048"/>
-  <testcase name="testGetFilepath" classname="notepad.src.main.java.code.testMain" time="0.001"/>
+  <testcase name="testPrintMenu" classname="notepad.src.main.java.code.testMain" time="0.029"/>
+  <testcase name="testPassFiles" classname="notepad.src.main.java.code.testMain" time="0.08"/>
+  <testcase name="testGetFilepath" classname="notepad.src.main.java.code.testMain" time="0.0"/>
   <system-out><![CDATA[?[H?[2J
 COMMAND NAME  |  COMMAND FUNCTION  |  COMMAND OPTIONS
 
@@ -13,8 +13,8 @@ COMMAND NAME  |  COMMAND FUNCTION  |  COMMAND OPTIONS
 
 COMMAND NAME |   COMMAND FUNCTION  |  COMMAND OPTIONS
 
- delete -x     delete from notebook     -n (delete a note and its identifiers by notename)
-                                        -i (delete a specific identifier)
+ delete -x     delete from notebook     -i (delete a specific identifier)
+                                        -x (delete a note from the notebook)
 
 COMMAND NAME |  COMMAND FUNCTION  |  COMMAND OPTIONS
 
