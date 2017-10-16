@@ -22,8 +22,7 @@ public class NotebookManager{
     File filepath = null;
     switch (type){
       case "-t":
-        filepath = getNoteFile();
-        if (filepath.exists()){
+        if (getNoteFile().exists()){
           addTypedNote(filepath);
         } else {
           System.out.println("File already exists!");
@@ -36,8 +35,7 @@ public class NotebookManager{
         addIdentifier(getNoteFile());
         break;
       case "-x":
-        filepath = getNoteFile();
-        if (filepath.exists()){
+        if (getNoteFile().exists()){
           System.out.println("path exists");
           deleteNoteMentions(deleteNote(filepath));
         } else {
@@ -52,7 +50,6 @@ public class NotebookManager{
         break;
     }
 }
-
 
   /**
    * Adds a specific type of identifier to a note the user chooses by filename
@@ -75,24 +72,6 @@ public class NotebookManager{
      }
      return newNote;
    }
-   /**
-   * Adds text to an already existing file
-   **/
-   public void appendToNote(File filename){
-     System.out.println("Please type what you would like to append to " + filename.getName() + ". Skip a line and press enter to submit changes");
-     String text = scan.nextLine();
-     while (!text.equals("")){
-       try{
-         Files.write(Paths.get(filename.getPath()), text.getBytes(), StandardOpenOption.APPEND);
-       }
-       catch (IOException e){
-         System.out.println("Error editing file.");
-       }
-       text = scan.nextLine();
-     }
-     System.out.println(filename.getName() + " edited.");
- }
-
 
     /**
     * TODO: Method will use getNoteFile to get the text file to be written to.
@@ -151,8 +130,26 @@ public class NotebookManager{
         System.out.println("File deleted successfully!");
       }
     }
+
     */
 
+  /**
+  * Adds text to an already existing file
+  **/
+  public void appendToNote(File filename){
+    System.out.println("Please type what you would like to append to " + filename.getName() + ". Skip a line and press enter to submit changes");
+    String text = scan.nextLine();
+    while (!text.equals("")){
+      try{
+        Files.write(Paths.get(filename.getPath()), text.getBytes(), StandardOpenOption.APPEND);
+      }
+      catch (IOException e){
+        System.out.println("Error editing file.");
+      }
+      text = scan.nextLine();
+    }
+    System.out.println(filename.getName() + " edited.");
+  }
 
   public void deleteNoteMentions(String mentionID){
     String newMention = mentionID.replace("!", "^");
@@ -197,26 +194,23 @@ public class NotebookManager{
 }
 
 
-  public String deleteNote(File filename){
-    String charset = "UTF-8";   //Determine the charset.
-    String retLine = null;
-    BufferedReader reader = null;
-    try{
-      reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), charset));
-      for (String line; (line = reader.readLine()) != null;) {
-          if (line.matches("\\![-a-zA-Z0-9_]+")){
-            retLine =   line;//Delete the string from the line.
-          }
-        }
-    filename.delete();    //Delete the file.
-  }catch (IOException e){
-      System.out.println("Error openning BufferedReader or PrintWriter");
-  }
-    return retLine;
-    }
-
-
-
+public String deleteNote(File filename){
+ String charset = "UTF-8";   //Determine the charset.
+ String retLine = null;
+ BufferedReader reader = null;
+ try{
+   reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), charset));
+   for (String line; (line = reader.readLine()) != null;) {
+       if (line.matches("\\![-a-zA-Z0-9_]+")){
+         retLine =   line;//Delete the string from the line.
+       }
+     }
+ filename.delete();    //Delete the file.
+}catch (IOException e){
+   System.out.println("Error openning BufferedReader or PrintWriter");
+}
+ return retLine;
+ }
     /**
     * Using Sphinx4 API, record from user's microphone and then add recording to a text file
     * See inside for more details
@@ -267,44 +261,40 @@ public class NotebookManager{
       return newNote;
     }
 
-  /**
-  * Method to create and return new text file if user is adding a file
-  * Otherwise will return the filename the user wishes to edit
-  */
-  public File getNoteFile(){
+/**
+* Method to create and return new text file if user is adding a file
+* Otherwise will return the filename the user wishes to edit
+*/
+public File getNoteFile(){
 
-    File noteFile = new File(".." + File.separator + "Notepad" + File.separator + "notes");
-    System.out.println("Please enter the name of the note you would like to edit to or create (do not include file type, only the name). For a list of current note filenames, please type 'list'.");
-    String input = scan.nextLine();
-    /** lists files available to edit or creates filename user typed in */
-    try{
-      if (input.equals("list")){
-        if (noteFile.isDirectory()){
-          for (final File fileEntry : noteFile.listFiles()) {
-            System.out.println("File: " + fileEntry.getName());
-          }
+  File noteFile = new File(".." + File.separator + "Notepad" + File.separator + "notes");
+  System.out.println("Please enter the name of the note you would like to edit to or create (do not include file type, only the name). For a list of current note filenames, please type 'list'.");
+  String input = scan.nextLine();
+  /** lists files available to edit or creates filename user typed in */
+  try{
+    if (input.equals("list")){
+      if (noteFile.isDirectory()){
+        for (final File fileEntry : noteFile.listFiles()) {
+          System.out.println("File: " + fileEntry.getName());
         }
-        getNoteFile();
       }
-      else if (!noteFile.isDirectory());
-        noteFile = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator + input + ".txt");
-        if (noteFile.exists()){
-          noteFile = noteFile;
-        }
-      // TODO: only functionality for creating a new note at the moment. need to be able to edit existing notes as well.
-      else {
-        //create new text file (in notes folder) with filename entered and return it
-        noteFile = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator + input + ".txt");
+      getNoteFile();
+    }
+    else {
+      //create new text file (in notes folder) with filename entered and return it
+      noteFile = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator + input + ".txt");
+      if (!noteFile.exists()){
         Files.createFile(Paths.get(noteFile.getPath()));
-        System.out.println(noteFile.getName() + " created in notes directory.");
       }
+      System.out.println(noteFile.getName() + " retrieved");
     }
-    catch (NullPointerException e){
-      System.out.println("Null Pointer Error.");
-    }
-    catch (IOException i){
-      System.out.println("IO Error.");
-    }
-    return noteFile;
   }
+  catch (NullPointerException e){
+    System.out.println("Null Pointer Error.");
+  }
+  catch (IOException i){
+    System.out.println("IO Error.");
+  }
+  return noteFile;
+}
 }

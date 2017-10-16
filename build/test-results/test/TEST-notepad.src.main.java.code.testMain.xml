@@ -1,48 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="notepad.src.main.java.code.testMain" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-13T18:53:38" hostname="Rileys-MacBook-Pro.local" time="0.15">
+<testsuite name="notepad.src.main.java.code.testMain" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-15T21:19:07" hostname="Rileys-MacBook-Pro.local" time="0.069">
   <properties/>
-  <testcase name="testPrintMenu" classname="notepad.src.main.java.code.testMain" time="0.019"/>
-  <testcase name="testPassFiles" classname="notepad.src.main.java.code.testMain" time="0.128"/>
+  <testcase name="testPrintMenu" classname="notepad.src.main.java.code.testMain" time="0.02"/>
+  <testcase name="testPassFiles" classname="notepad.src.main.java.code.testMain" time="0.048"/>
   <testcase name="testGetFilepath" classname="notepad.src.main.java.code.testMain" time="0.001"/>
   <system-out><![CDATA[?[H?[2J
+COMMAND NAME  |  COMMAND FUNCTION  |  COMMAND OPTIONS
 
-COMMAND NAME
-  add
-FUNCTION
-  add a note or specific identifier to the notebook
-OPTIONS
-  -t (add a note by typing text)
-  -d (add a note via dictation)
-  -i (add a type of identifier to existing note)
+ add -x           add to notebook      -t (add a note by typing text)
+                                       -d (add a note through dictation)
+                                       -i (add a type of identifier to an existing note)
 
-COMMAND NAME
-  filepath
-FUNCTION
-  add a text file or folder of text files to be added to the notebook
+COMMAND NAME |   COMMAND FUNCTION  |  COMMAND OPTIONS
 
-COMMAND NAME
-  delete
-FUNCTION
-  delete a note or specific identifier from the notebook
-OPTIONS
-  -n (delete a note and its identifier by the note's filename)
-  -i (delete a specific identifier)
+ delete -x     delete from notebook     -n (delete a note and its identifiers by notename)
+                                        -i (delete a specific identifier)
 
-COMMAND NAME
-  search
-FUNCTION
-  search for different types of identifiers and organize the notebook
-OPTIONS
-  -w (returns the filenames of notes containing an entered identifier)
-  -a (returns all notes which contain one or more identifiers of a certain type)
-  -o (returns notes organized by identifiers of a certain type)
-  -l (returns list of all identifiers of a certain type)
-  -t (returns notes organized in topological order)
+COMMAND NAME |  COMMAND FUNCTION  |  COMMAND OPTIONS
 
-COMMAND NAME
-  quit
-FUNCTION
-  terminate the program
+ search -x     search in notebook     -w (returns the filenames of notes containing an entered identifier)
+                                      -a (returns all notes which contain one+ identifiers of a certain type)
+                                      -o (returns notes organized by identifiers of a certain type)
+                                      -l (returns list of all identifiers of a certain type)
+                                      -t (returns notes organized in topological order)
+                                      -s (returns sentences containing a given identifier)
+
+COMMAND NAME  |  COMMAND FUNCTION
+
+ filepath         give notes location via filepath
+
+COMMAND NAME  |  COMMAND FUNCTION
+
+ quit             terminate program
+
+
 Please enter your ABSOLUTE filepath:
 File not found.
 ]]></system-out>
