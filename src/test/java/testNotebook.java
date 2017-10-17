@@ -1,4 +1,4 @@
-package notepad.src.main.java.code;
+package classes;
 import junit.framework.*;
 import static org.junit.Assert.*;
 import java.io.*;

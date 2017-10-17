@@ -1,4 +1,4 @@
-package notepad.src.main.java.code;
+package classes;
 import junit.framework.*;
 import static org.junit.Assert.*;
 import java.io.*;
@@ -28,7 +28,7 @@ public class testReports{
   }
   @Test
   public void testPrintSpecificMention(){
-    /** #hey is present in test note files 
+    /** #hey is present in test note files
     assertEquals(report.printSpecificMention("#hey"),true);
   }
   @Test

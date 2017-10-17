@@ -1,4 +1,4 @@
-package notepad.src.main.java.code;
+package classes;
 
 import static org.junit.Assert.*;
 
