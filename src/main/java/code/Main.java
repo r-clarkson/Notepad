@@ -152,7 +152,7 @@ public class Main{
       break;
       case "search":
       passFiles(notebook);
-      Reports report = new Reports(notebook);
+      ReportManager report = new ReportManager(notebook);
       report.generateReport(commands[1]);
       return report.getContinue();
       case "quit":

@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class testReports{
+  /**
   Notebook notebook;
   Reports report;
   @Before
@@ -22,36 +23,37 @@ public class testReports{
   }
   @Test
   public void testGenerateReport(){
-    /** should return false as -c is not a command option */
+    /** should return false as -c is not a command option
     assertEquals(report.generateReport("-c"),false);
   }
   @Test
   public void testPrintSpecificMention(){
-    /** #hey is present in test note files */
+    /** #hey is present in test note files 
     assertEquals(report.printSpecificMention("#hey"),true);
   }
   @Test
   public void testPrintNotesWithOneOrMoreMentions(){
-    /** returns true if map is not empty (something must have been printed if its got elements) */
+    /** returns true if map is not empty (something must have been printed if its got elements)
     assertNotEquals(notebook.getMaps().get(0).size(),0);
   }
   @Test
-  /** this function tests getsentence() as well because it relies on it to return true */
+  /** this function tests getsentence() as well because it relies on it to return true
   public void testGetFileForSentences(){
     assertEquals(report.getFileForSentences("#hey"),true);
   }
   @Test
   public void testIterateLists(){
-    /** makes sure LL value in hashmap is not size 0 */
+    /** makes sure LL value in hashmap is not size 0
     assertEquals(report.iterateLists(notebook.getMaps().get(0),"#hey"),true);
   }
   @Test
   public void testGetContinue(){
-    /** should return false without input during testing */
+    /** should return false without input during testing
     assertEquals(report.getContinue(),false);
   }
   @Test
   public void testPrintInformation(){
     assertEquals(report.printInformation("#","-l"),true);
   }
+**/
 }

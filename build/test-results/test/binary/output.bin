@@ -30,38 +30,3 @@
 
 %Please enter your ABSOLUTE filepath:
 File not found.
-
-A L L   #
-* #whats-up
-* #theWhale
-
-* #sports
-* #hey
-* #struggling
-	* #howTo
-Notes found for #hey 
-B [_DonaldDuck.txt, growingBasil.txt, q.txt, The-Popes-Tweets.txt]
-
-1: Return
-2: Quit
-Command not recognized.
-
-*_DonaldDuck.txt
-
-*growingBasil.txt
-
-*q.txt
-
-*The-Popes-Tweets.txt
-
-Sentence:#hey
-  * found in _DonaldDuck.txt
-
-Sentence:#hey
-  * found in growingBasil.txt
-
-&Sentence:#hey everyone this is a test
-  * found in q.txt
-
-Sentence:#hey
-"  * found in The-Popes-Tweets.txt
