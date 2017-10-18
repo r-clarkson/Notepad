@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="classes.TestMain" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-10-18T00:55:17" hostname="Rileys-MacBook-Pro.local" time="0.066">
+<testsuite name="classes.TestMain" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-10-18T03:28:43" hostname="Rileys-MacBook-Pro.local" time="0.047">
   <properties/>
   <testcase name="testPrintMenu" classname="classes.TestMain" time="0.004"/>
-  <testcase name="testPassFiles" classname="classes.TestMain" time="0.059"/>
-  <testcase name="testGetFilepath" classname="classes.TestMain" time="0.0"/>
+  <testcase name="testPassFiles" classname="classes.TestMain" time="0.04"/>
+  <testcase name="testGetFilepath" classname="classes.TestMain" time="0.001"/>
   <testcase name="testGetCommand" classname="classes.TestMain" time="0.001"/>
-  <testcase name="testCommandSwitch" classname="classes.TestMain" time="0.002"/>
+  <testcase name="testCommandSwitch" classname="classes.TestMain" time="0.001"/>
   <system-out><![CDATA[?[H?[2J
 COMMAND NAME  |  COMMAND FUNCTION  |  COMMAND OPTIONS
 

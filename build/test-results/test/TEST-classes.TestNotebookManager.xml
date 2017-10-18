@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="classes.TestNotebookManager" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-10-18T03:28:57" hostname="Rileys-MacBook-Pro.local" time="0.049">
+  <properties/>
+  <testcase name="testEditNote" classname="classes.TestNotebookManager" time="0.017"/>
+  <testcase name="testGetNoteFile" classname="classes.TestNotebookManager" time="0.008"/>
+  <testcase name="testListFiles" classname="classes.TestNotebookManager" time="0.011"/>
+  <testcase name="testGetNoteMention" classname="classes.TestNotebookManager" time="0.012"/>
+  <system-out><![CDATA[Please enter the name of the note you would like to edit/create/delete (do not include file type, only the name).
+Or for a list of current notefilenames, please type 'list'.
+Please enter the name of the note you would like to edit/create/delete (do not include file type, only the name).
+Or for a list of current notefilenames, please type 'list'.
+File: _DonaldDuck.txt
+File: exceldata5.txt
+File: growingBasil.txt
+File: How-To-Use-A-Screwdriver.txt
+File: MobyDick.txt
+File: pages79-84.txt
+File: sample.txt
+File: sconeRecipe.txt
+File: starwars9script.txt
+File: stepByStepGuide-lightingCandles.txt
+File: sushi-cookbook.txt
+File: The-Popes-Tweets.txt
+Please enter the name of the note you would like to edit/create/delete (do not include file type, only the name).
+Or for a list of current notefilenames, please type 'list'.
+Please type what you would like to delete from your notebook. If it is an identifier, include the symbol
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

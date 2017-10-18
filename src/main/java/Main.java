@@ -30,7 +30,7 @@ public class Main{
 
   /**
   * If the user wants to put in their own filepath, this function will retrieve it
-  * Asks user for filepath, and then puts those files into the notes directory
+  * Asks user for filepath, and then puts those files into the program's notes directory
   **/
 
   public static boolean getFilePath(){

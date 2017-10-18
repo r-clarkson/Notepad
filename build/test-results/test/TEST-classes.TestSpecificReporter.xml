@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="classes.TestSpecificReporter" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-10-18T03:28:57" hostname="Rileys-MacBook-Pro.local" time="0.066">
+  <properties/>
+  <testcase name="testGetSentence" classname="classes.TestSpecificReporter" time="0.015"/>
+  <testcase name="testGetSentenceLines" classname="classes.TestSpecificReporter" time="0.016"/>
+  <testcase name="testPrintSpecificMentionNoteNames" classname="classes.TestSpecificReporter" time="0.012"/>
+  <testcase name="testPrintSpecificMention" classname="classes.TestSpecificReporter" time="0.008"/>
+  <testcase name="testGetFileForSentences" classname="classes.TestSpecificReporter" time="0.014"/>
+  <system-out><![CDATA[
+Sentence:#hey
+  * found in _DonaldDuck.txt
+
+Sentence:#hey
+  * found in growingBasil.txt
+
+Sentence:#hey everyone this is a test
+  * found in q.txt
+
+Sentence:#hey
+  * found in The-Popes-Tweets.txt
+
+Sentence:#hey
+  * found in _DonaldDuck.txt
+
+Sentence:#hey
+  * found in growingBasil.txt
+
+Sentence:#hey everyone this is a test
+  * found in q.txt
+
+Sentence:#hey
+  * found in The-Popes-Tweets.txt
+
+Sentence:#hey
+  * found in growingBasil.txt
+
+Sentence:#hey
+  * found in _DonaldDuck.txt
+
+Sentence:#hey
+  * found in growingBasil.txt
+
+Sentence:#hey everyone this is a test
+  * found in q.txt
+
+Sentence:#hey
+  * found in The-Popes-Tweets.txt
+Notes found for #hey 
+ [_DonaldDuck.txt, growingBasil.txt, q.txt, The-Popes-Tweets.txt]
+
+Sentence:#hey
+  * found in _DonaldDuck.txt
+
+Sentence:#hey
+  * found in growingBasil.txt
+
+Sentence:#hey everyone this is a test
+  * found in q.txt
+
+Sentence:#hey
+  * found in The-Popes-Tweets.txt
+
+Sentence:#hey
+  * found in _DonaldDuck.txt
+
+Sentence:#hey
+  * found in growingBasil.txt
+
+Sentence:#hey everyone this is a test
+  * found in q.txt
+
+Sentence:#hey
+  * found in The-Popes-Tweets.txt
+
+Sentence:#hey
+  * found in _DonaldDuck.txt
+
+Sentence:#hey
+  * found in growingBasil.txt
+
+Sentence:#hey everyone this is a test
+  * found in q.txt
+
+Sentence:#hey
+  * found in The-Popes-Tweets.txt
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

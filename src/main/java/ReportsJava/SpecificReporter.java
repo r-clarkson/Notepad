@@ -16,16 +16,22 @@ public class SpecificReporter{
   String mention;
   boolean showSentence;
   Notebook notebook;
+  boolean found;
 
   public SpecificReporter(String mention, boolean showSentence, Notebook notebook){
     this.notebook = notebook;
     this.mention = mention;
     this.showSentence = showSentence;
+    found = false;
     if (showSentence){
       getFileForSentences();
     }
     else{
       printSpecificMentionNoteNames();
+    }
+
+    if (!found){
+      System.out.println("No matches found for " + mention);
     }
   }
   /**
@@ -36,16 +42,18 @@ public class SpecificReporter{
 
   public boolean getFileForSentences(){
     ArrayList<String> fileName = new ArrayList<String>();
-
-    for (int i = 0; i < notebook.getMaps().size(); i++) {
-      if (notebook.getMaps().get(i).containsKey(mention)) {
-        for (int j = 0; j < notebook.getMaps().get(i).get(mention).size(); j++){
-          fileName.add(notebook.getMaps().get(i).get(mention).get(j));
+    if (notebook != null && notebook.getMaps() != null){
+      for (int i = 0; i < notebook.getMaps().size(); i++) {
+        if (notebook.getMaps().get(i).containsKey(mention)) {
+          for (int j = 0; j < notebook.getMaps().get(i).get(mention).size(); j++){
+            fileName.add(notebook.getMaps().get(i).get(mention).get(j));
+          }
         }
       }
+      getSentenceLines(fileName);
+      return true;
     }
-    getSentenceLines(fileName);
-    return true;
+    return false;
   }
 
   /**
@@ -57,24 +65,28 @@ public class SpecificReporter{
 
   public boolean getSentenceLines(ArrayList<String> fileName){
     String answer;
-    for (int k = 0; k < fileName.size(); k++){
-      try {
-        List<String> lines = Files.readAllLines(Paths.get(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator + fileName.get(k)), StandardCharsets.ISO_8859_1);
-        for (int l = 0; l <lines.size(); l++){
-          answer = getSentence(lines.get(l),mention);
-          if (!answer.equals("")){
-            System.out.println("\nSentence:" + answer);
-            System.out.println("  * found in " + fileName.get(k));
+    if (fileName != null){
+      for (int k = 0; k < fileName.size(); k++){
+        try {
+          List<String> lines = Files.readAllLines(Paths.get(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator + fileName.get(k)), StandardCharsets.ISO_8859_1);
+          for (int l = 0; l <lines.size(); l++){
+            answer = getSentence(lines.get(l),mention);
+            if (!answer.equals("")){
+              found = true;
+              System.out.println("\nSentence:" + answer);
+              System.out.println("  * found in " + fileName.get(k));
+            }
           }
         }
+        catch (IOException e ){
+          System.out.println("IO Error");
+          return false;
+        }
       }
-      catch (IOException e ){
-        System.out.println("IO Error");
-        return false;
-      }
+      return true;
+    }
+    return false;
   }
-  return true;
-}
 
   /**
   * Finds sentences containing a given mention within the note files from printSpecificMention
@@ -94,12 +106,15 @@ public class SpecificReporter{
   * with that mention
   */
   public boolean printSpecificMentionNoteNames() {
-    for (int i = 0; i < notebook.getMaps().size(); i++) {
-      if (notebook.getMaps().get(i).containsKey(mention)) {
-        System.out.println("Notes found for " + mention + " ");
-        System.out.print(" " + notebook.getMaps().get(i).get(mention) + "\n");
-        return true;
+    if (notebook != null && notebook.getMaps() != null){
+      for (int i = 0; i < notebook.getMaps().size(); i++) {
+        if (notebook.getMaps().get(i).containsKey(mention)) {
+          found = true;
+          System.out.println("Notes found for " + mention + " ");
+          System.out.print(" " + notebook.getMaps().get(i).get(mention) + "\n");
+        }
       }
+      return true;
     }
     return false;
   }

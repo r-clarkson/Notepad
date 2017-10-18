@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="classes.TestGeneralReporter" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-10-18T00:55:17" hostname="Rileys-MacBook-Pro.local" time="0.133">
+<testsuite name="classes.TestGeneralReporter" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-10-18T03:28:43" hostname="Rileys-MacBook-Pro.local" time="0.134">
   <properties/>
-  <testcase name="testPrintNotesWithOneOrMoreMentions" classname="classes.TestGeneralReporter" time="0.078"/>
+  <testcase name="testPrintNotesWithOneOrMoreMentions" classname="classes.TestGeneralReporter" time="0.079"/>
   <testcase name="testIterateLists" classname="classes.TestGeneralReporter" time="0.054"/>
   <system-out><![CDATA[* #whats-up
 

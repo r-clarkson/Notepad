@@ -11,8 +11,8 @@ import java.nio.charset.StandardCharsets;
 
 
 /**
-* Due to the construction of the Note class, we will create a txt file with whatever method the user chose,
-* then the text file will be returned after it is turned into a note object
+* This class determines which edit the user wants to make and to which file (if one specifically)
+* Then it hands off the edit to the correct editor object which manipulates the actual text files in the notes directory
 */
 
 public class NotebookManager{
@@ -33,7 +33,7 @@ public class NotebookManager{
   * ...as well as (mostly) the noteAdder and noteDelete objects to perform the edits
   **/
 
-  public void editNote(String type){
+  public boolean editNote(String type){
     File filepath = null;
     switch (type){
       case "-t":
@@ -52,8 +52,9 @@ public class NotebookManager{
       break;
       default:
       System.out.println("Option not recognized.");
-      break;
+      return false;
     }
+    return true;
   }
 
   /**
@@ -63,19 +64,22 @@ public class NotebookManager{
   */
 
   public File getNoteFile(){
+    String input;
     File noteFile = new File(".." + File.separator + "Notepad" + File.separator + "notes");
     System.out.println("Please enter the name of the note you would like to edit/create/delete (do not include file type, only the name).\nOr for a list of current notefilenames, please type 'list'.");
 
-    String input = scan.nextLine();
+    if (scan.hasNext()){
+      input = scan.nextLine();
+    }
+    else{
+      return null;
+    }
 
     try{
-      if (input.equals("list") && noteFile.isDirectory()){
-        for (final File fileEntry : noteFile.listFiles()) {
-          System.out.println("File: " + fileEntry.getName());
-        }
-        getNoteFile();
+      /** lets user print existing files/notes or creates a new file (if it doesnt exist already) based on name entered */
+      if (input.equals("list")){
+        listFiles(noteFile);
       }
-
       else {
         noteFile = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator + input + ".txt");
         if (!noteFile.exists()){
@@ -84,19 +88,45 @@ public class NotebookManager{
         System.out.println(noteFile.getName() + " retrieved.");
       }
     }
+
     catch (NullPointerException e){
       System.out.println("Error.");
     }
     catch (IOException i){
       System.out.println("Error.");
     }
+
     return noteFile;
   }
 
-  /** gets users input of what they want to delete from the notebook **/
+  /**
+  * Gets users input of what they want to delete from the notebook
+  **/
+
   public String getNoteMention(){
+    String text;
     System.out.println("Please type what you would like to delete from your notebook. If it is an identifier, include the symbol");
-    String text = scan.nextLine();
+    if (scan.hasNext()){
+      text = scan.nextLine();
+    }
+    else{
+      text = null;
+    }
     return text;
+  }
+
+  /**
+  * Lists current files in given directory
+  **/
+
+  public boolean listFiles(File noteFile){
+    if (noteFile.isDirectory()){
+      for (final File fileEntry : noteFile.listFiles()) {
+        System.out.println("File: " + fileEntry.getName());
+      }
+      getNoteFile();
+      return true;
+    }
+    return false;
   }
 }

@@ -8,11 +8,15 @@ import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import edu.cmu.sphinx.api.SpeechResult;
 
+/**
+* This class adds text files to the note directories by typing or by dictation
+**/
+
 public class NoteAdder{
   Scanner scan;
 
   public NoteAdder(){
-    scan = null;
+    scan = new Scanner(System.in);
   }
 
   /**
@@ -20,20 +24,28 @@ public class NoteAdder{
   *
   **/
 
-  public void addTypedNote( File filename){
-    String body=null;
-    try{
-      PrintWriter writer = new PrintWriter(filename);
-      System.out.println("Enter the body of your note. When you are finished please type EOF: \n ");
-      do {
-        body = scan.next();
-        writer.write(body);
-      }while(!(scan.next().equals("EOF")));
-      writer.close();
-      System.out.println("File written properly!");
-    } catch (IOException e) {
-      System.out.println("File did not write properly");
+  public boolean addTypedNote(File filename){
+    String body = null;
+    if (filename!=null){
+      try{
+        PrintWriter writer = new PrintWriter(filename);
+        System.out.println("Enter the body of your note. When you are finished please type EOF: \n ");
+        do {
+          if (!scan.hasNext()){
+            return false;
+          }
+          body = scan.next();
+          writer.write(body);
+        }while(scan.hasNext() && !(scan.next().equals("EOF")));
+        writer.close();
+        System.out.println("File written properly!");
+        return true;
+      } catch (IOException e) {
+        System.out.println("File did not write properly");
+        return false;
+      }
     }
+    return false;
   }
 
   /**
@@ -41,19 +53,29 @@ public class NoteAdder{
   * Uses Java's File class to write to the text file
   **/
 
-  public void appendToNote(File filename){
+  public boolean appendToNote(File filename){
+    String text;
+
     System.out.println("Please type what you would like to add to " + filename.getName() + ". Skip a line and press enter to submit changes");
-    String text = scan.nextLine();
+    if (!scan.hasNext() || !filename.exists()){
+      return false;
+    }
+    else{
+      text = scan.nextLine();
+    }
+
     while (!text.equals("")){
       try{
         Files.write(Paths.get(filename.getPath()), text.getBytes(), StandardOpenOption.APPEND);
       }
       catch (IOException e){
         System.out.println("Error.");
+        return false;
       }
       text = scan.nextLine();
     }
     System.out.println(filename.getName() + " edited.");
+    return true;
   }
 
   /**
@@ -61,7 +83,11 @@ public class NoteAdder{
   * See inside for more details
   */
 
-  public void addDictatedNote(File filename){
+  public boolean addDictatedNote(File filename){
+
+    if (!filename.exists()){
+      return false;
+    }
 
     /** set up a configuration for english, and set recording variable to true */
     Configuration configuration = new Configuration();
@@ -95,10 +121,15 @@ public class NoteAdder{
       SpeechResult result = recognizer.getResult();
       results.add(result);
 
-      /** recording is stopped when user presses enter */
-      scan = new Scanner(System.in);
-      if (scan.nextLine()==""){
-        recognizer.stopRecognition();
+      /** recording is stopped when user presses enter, or function returns false with no scanner for testing */
+      if (scan.hasNext()){
+        scan = new Scanner(System.in);
+        if (scan.nextLine()==""){
+          recognizer.stopRecognition();
+        }
+      }
+      else {
+        return false;
       }
       /** predicted results are written to file */
       for (int i = 0; i < results.size(); i++){
@@ -107,6 +138,8 @@ public class NoteAdder{
     }
     catch (IOException e){
       System.out.println("Error.");
+      return false;
     }
+    return true;
   }
 }
