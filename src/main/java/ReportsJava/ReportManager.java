@@ -37,8 +37,7 @@ public class ReportManager {
       topologicalSort.tSort();
       return true;
     }
-    /** do these if the user did not choose topological sort */
-
+    /** these require further user input */
     else if (sw.equals("-w") || sw.equals("-s")){
       SpecificReporter sr = null;
       boolean showSentence = sw.equals("-s") ? true : false;
@@ -50,13 +49,10 @@ public class ReportManager {
       }
       return true;
     }
-
     else{
       return printInformation(getData(),sw);
     }
   }
-
-
 
   /**
   * Uses a big switch statement to determine which report to generate exactly, and then prints it
@@ -69,14 +65,12 @@ public class ReportManager {
     if (data == null){
       return false;
     }
-
     else if (data.equals("all")){
       for (String type : types){
         System.out.println("\n");
         printInformation(type,sw);
       }
     }
-
     else if (!data.equals("all")){
       switch (sw) {
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="src.main.java.TestSpecificReporter" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-10-18T16:36:34" hostname="Rileys-MacBook-Pro.local" time="0.27">
+<testsuite name="src.main.java.TestSpecificReporter" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-10-18T17:00:34" hostname="Rileys-MacBook-Pro.local" time="0.406">
   <properties/>
-  <testcase name="testGetSentence" classname="src.main.java.TestSpecificReporter" time="0.06"/>
-  <testcase name="testGetSentenceLines" classname="src.main.java.TestSpecificReporter" time="0.047"/>
-  <testcase name="testPrintSpecificMentionNoteNames" classname="src.main.java.TestSpecificReporter" time="0.052"/>
-  <testcase name="testPrintSpecificMention" classname="src.main.java.TestSpecificReporter" time="0.051"/>
-  <testcase name="testGetFileForSentences" classname="src.main.java.TestSpecificReporter" time="0.058"/>
+  <testcase name="testGetSentence" classname="src.main.java.TestSpecificReporter" time="0.067"/>
+  <testcase name="testGetSentenceLines" classname="src.main.java.TestSpecificReporter" time="0.134"/>
+  <testcase name="testPrintSpecificMentionNoteNames" classname="src.main.java.TestSpecificReporter" time="0.087"/>
+  <testcase name="testPrintSpecificMention" classname="src.main.java.TestSpecificReporter" time="0.073"/>
+  <testcase name="testGetFileForSentences" classname="src.main.java.TestSpecificReporter" time="0.042"/>
   <system-out><![CDATA[
 Sentence:#hey
   * found in _DonaldDuck.txt

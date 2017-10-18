@@ -21,6 +21,52 @@
 *How-To-Use-A-Screwdriver.txt
 
 %*stepByStepGuide-lightingCandles.txt
+* #whats-up
+
+*How-To-Use-A-Screwdriver.txt
+* #theWhale
+
+*MobyDick.txt
+* #hey
+
+*_DonaldDuck.txt
+
+*growingBasil.txt
+
+*q.txt
+
+*The-Popes-Tweets.txt
+* #struggling
+
+*sample.txt
+	* #howTo
+
+*How-To-Use-A-Screwdriver.txt
+
+%*stepByStepGuide-lightingCandles.txt
+* #whats-up
+
+*How-To-Use-A-Screwdriver.txt
+* #theWhale
+
+*MobyDick.txt
+* #hey
+
+*_DonaldDuck.txt
+
+*growingBasil.txt
+
+*q.txt
+
+*The-Popes-Tweets.txt
+* #struggling
+
+*sample.txt
+	* #howTo
+
+*How-To-Use-A-Screwdriver.txt
+
+%*stepByStepGuide-lightingCandles.txt
 
 *_DonaldDuck.txt
 
@@ -115,6 +161,11 @@
 iPlease type what you would like to delete from your notebook. If it is an identifier, include the symbol
  
 A L L   #
+ * #whats-up
+ * #theWhale
+ * #hey
+ * #struggling
+ 	* #howTo
  !nEnter the type of identifier ('#','@','^','!', or 'url') you would like to organize by, or type 'all' for all
 #"
 #"Sentence:#hey
