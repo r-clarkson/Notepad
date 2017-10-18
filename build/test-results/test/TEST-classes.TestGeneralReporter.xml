@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="classes.TestGeneralReporter" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-10-18T00:28:54" hostname="Rileys-MacBook-Pro.local" time="0.148">
+  <properties/>
+  <testcase name="testPrintNotesWithOneOrMoreMentions" classname="classes.TestGeneralReporter" time="0.087"/>
+  <testcase name="testIterateLists" classname="classes.TestGeneralReporter" time="0.061"/>
+  <system-out><![CDATA[* #whats-up
+
+*How-To-Use-A-Screwdriver.txt
+* #theWhale
+
+*MobyDick.txt
+* #sports
+
+*growingBasil.txt
+* #hey
+
+*_DonaldDuck.txt
+
+*growingBasil.txt
+
+*q.txt
+
+*The-Popes-Tweets.txt
+* #struggling
+
+*sample.txt
+* #howTo
+
+*How-To-Use-A-Screwdriver.txt
+
+*stepByStepGuide-lightingCandles.txt
+
+*_DonaldDuck.txt
+
+*growingBasil.txt
+
+*q.txt
+
+*The-Popes-Tweets.txt
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

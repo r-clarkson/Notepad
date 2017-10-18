@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="classes.TestReportManager" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-10-18T00:28:54" hostname="Rileys-MacBook-Pro.local" time="0.092">
+  <properties/>
+  <testcase name="testPrintInformation" classname="classes.TestReportManager" time="0.047"/>
+  <testcase name="testGenerateReport" classname="classes.TestReportManager" time="0.044"/>
+  <system-out><![CDATA[A L L   #
+Enter the type of identifier ('#','@','^','!', or 'url') you would like to organize by, or type 'all' for all
+?[H?[2J]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

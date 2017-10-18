@@ -34,7 +34,12 @@ public class ReportManager {
     else {
       String data = getData();
       clearScreen();
-      return printInformation(data,sw);
+      if (data == null){
+        return false;
+      }
+      else{
+        return printInformation(data,sw);
+      }
     }
   }
 
@@ -105,27 +110,14 @@ public class ReportManager {
   /** Returns the type of identifier the user wants to search by */
   public String getData(){
     System.out.println("Enter the type of identifier ('#','@','^','!', or 'url') you would like to organize by, or type 'all' for all");
-    String data = scanner.next();
-    return data;
-  }
-
-  /**  Retrieves user's input on whether to conitnue or not */
-  public boolean getContinue(){
-    System.out.println("1: Return\n2: Quit");
+    String data;
     if (scanner.hasNext()){
-      switch (scanner.nextInt()){
-        case 1:
-        clearScreen();
-        return true;
-        case 2:
-        clearScreen();
-        return false;
-        default:
-        System.out.println("Option not recognized.");
-        getContinue();
-      }
+      data = scanner.next();
     }
-    return false;
+    else{
+      data = null;
+    }
+    return data;
   }
 
   /**

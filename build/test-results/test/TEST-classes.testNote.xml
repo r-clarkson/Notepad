@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="classes.testNote" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-17T23:14:46" hostname="Rileys-MacBook-Pro.local" time="0.02">
+<testsuite name="classes.testNote" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-18T00:28:54" hostname="Rileys-MacBook-Pro.local" time="0.019">
   <properties/>
-  <testcase name="testParseNote" classname="classes.testNote" time="0.008"/>
+  <testcase name="testParseNote" classname="classes.testNote" time="0.005"/>
   <testcase name="testName" classname="classes.testNote" time="0.007"/>
-  <testcase name="testGetIdentifierLists" classname="classes.testNote" time="0.005"/>
+  <testcase name="testGetIdentifierLists" classname="classes.testNote" time="0.007"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

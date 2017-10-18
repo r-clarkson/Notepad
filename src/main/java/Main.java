@@ -6,7 +6,8 @@ import java.io.*;
 
 /**  MainClass initiates process by passing on files in the "notes" folder to be made into note objects, which are then put into a notebook
  * Reports are then generated based on user input and the said notebook
- * This is by far our largest class
+ * This is by far our largest class, as it contains the functions we need to get the notebook started
+ * as well as functions to print things to the screen and get user input
 **/
 public class Main{
   static Scanner scanner = new Scanner(System.in);
@@ -38,14 +39,13 @@ public class Main{
       System.out.println("Please enter your ABSOLUTE filepath:");
       noteFolder = new File(scanner.next());
       if (!noteFolder.isDirectory()){
-        System.out.println("This is not a directory. Try again.");
-        getFilePath();
+        System.out.println("This is not a directory.");
+        return false;
       }
       for (final File fileEntry : noteFolder.listFiles()) {
         fileEntry.renameTo(notesDirectory);
       }
     }
-
     /** Catches null pointers from filepath not being correct */
     catch (NullPointerException e){
       System.out.println("File not found.");
@@ -111,26 +111,28 @@ public class Main{
   * A boolean is returned and if it is false, the program will terminate
   **/
 
-  public static void getCommand(Notebook notebook,NotebookManager notebookManager){
-    boolean cont = true;
+  public static boolean getCommand(Notebook notebook,NotebookManager notebookManager){
     String[] commands = null;
     System.out.println("Enter command below, or for help type 'help'");
     /* splits command into parts so that each can be handed off to the correct class/method */
-    commands = scanner.nextLine().split(" ");
+    if (!scanner.hasNext()){
+      return false;
+    }
+    else {
+      commands = scanner.nextLine().split(" ");
+    }
 
-    if (!(commands.length>=1)){
-      System.out.println("Please enter at least two arguments.");
-      getCommand(notebook, notebookManager);
+    if (!(commands.length < 1) || commands.length >= 3){
+      System.out.println("Please enter two arguments.");
+      return getCommand(notebook, notebookManager);
     }
-    clearScreen();
     /* performs action based on first command */
-    cont = commandSwitch(commands,notebook,notebookManager);
-    if (!cont){
-      terminateProgram();
+    else if (commands.length == 2 || commands.length == 1){
+      clearScreen();
+      commandSwitch(commands,notebook,notebookManager);
+      return true;
     }
-    else if (cont){
-      getCommand(notebook,notebookManager);
-    }
+    return false;
   }
 
   /**
@@ -161,16 +163,17 @@ public class Main{
       passFiles(notebook);
       ReportManager report = new ReportManager(notebook);
       report.generateReport(commands[1]);
-      return report.getContinue();
+      break;
 
       case "quit":
-      return false;
+      terminateProgram();
 
       default:
       System.out.println("Command not recognized. Please try again.");
-      break;
+      return false;
 
     }
+    getCommand(notebook,notebookManager);
     return true;
   }
 

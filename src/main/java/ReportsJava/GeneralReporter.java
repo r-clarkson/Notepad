@@ -21,22 +21,26 @@ public class GeneralReporter{
   * of note names
   * Returns false if the map is null (useful for testing)
   */
-  public void printNotesWithOneOrMoreMentions() {
-    for (String key : mapType.keySet()) {
-      if (showKey) {
-        System.out.println("* " + key);
+  public boolean printNotesWithOneOrMoreMentions() {
+    if (mapType!=null){
+      for (String key : mapType.keySet()) {
+        if (showKey) {
+          System.out.println("* " + key);
+        }
+        if (showValue) {
+          iterateLists(key);
+        }
       }
-      if (showValue) {
-        iterateLists(mapType, key);
-      }
+      return true;
     }
+    return false;
   }
 
   /**
   * Iterates through given key's LL, while keeping track of which note names have already been
   * printed (hence the extra LL) in order to avoid duplicates
   */
-  public boolean iterateLists(HashMap<String, LinkedList<String>> mapType, String key) {
+  public boolean iterateLists(String key) {
     List<String> noteNames = new LinkedList<String>();
     for (int i = 0; i < mapType.get(key).size(); i++) {
       if (!noteNames.contains(mapType.get(key).get(i))) {
