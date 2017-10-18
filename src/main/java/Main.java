@@ -116,7 +116,7 @@ public class Main{
 
   public static boolean getCommand(Notebook notebook,NotebookManager notebookManager){
     String[] commands = null;
-    System.out.println("Enter command below, or for help type 'help'");
+    System.out.println("\nEnter command below, or for help type 'help'");
     /* splits command into parts so that each can be handed off to the correct class/method */
     if (!scanner.hasNext()){
       return false;
