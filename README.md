@@ -1,3 +1,5 @@
+https://travis-ci.org/r-clarkson/Notepad.svg?branch=master
+
 INTRODUCTION
 ------------
 The "Notepad" program reads in text files that contain #hashtags and @mentions.
