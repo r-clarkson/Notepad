@@ -10,7 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class testNote {
+public class TestNote {
 
   protected Note n;
   protected File testFile;

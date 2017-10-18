@@ -7,7 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class testNotebook{
+public class TestNotebook{
   File testFile;
   Notebook notebook;
   Note note;

@@ -1,4 +1,5 @@
 package classes;
+
 import junit.framework.*;
 import static org.junit.Assert.*;
 import java.io.*;
@@ -7,7 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class testNotebookManager{
+public class TestNotebookManager{
 
 
 }
