@@ -1,4 +1,4 @@
-https://travis-ci.org/r-clarkson/Notepad.svg?branch=master
+[![BuildStatus](https://travis-ci.org/r-clarkson/Notepad.svg?branch=master)](https://travis-ci.org/r-clarkson/Notepad)
 
 INTRODUCTION
 ------------
