@@ -69,7 +69,7 @@ public class SpecificReporter{
     if (fileName != null){
       for (int k = 0; k < fileName.size(); k++){
         try {
-          List<String> lines = Files.readAllLines(Paths.get(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator + fileName.get(k)), StandardCharsets.ISO_8859_1);
+          List<String> lines = Files.readAllLines(Paths.get("." + File.separator + "notes" + File.separator + fileName.get(k)), StandardCharsets.ISO_8859_1);
           for (int l = 0; l <lines.size(); l++){
             answer = getSentence(lines.get(l),mention);
             if (!answer.equals("")){
@@ -111,7 +111,7 @@ public class SpecificReporter{
       for (int i = 0; i < notebook.getMaps().size(); i++) {
         if (notebook.getMaps().get(i).containsKey(mention)) {
           found = true;
-          System.out.println("Notes found for " + mention + " ");
+          System.out.println("\nNotes found for " + mention + " ");
           System.out.print(" " + notebook.getMaps().get(i).get(mention) + "\n");
         }
       }

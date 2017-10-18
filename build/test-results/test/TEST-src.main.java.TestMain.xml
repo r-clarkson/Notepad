@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="src.main.java.TestMain" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-10-18T17:00:33" hostname="Rileys-MacBook-Pro.local" time="0.069">
+<testsuite name="src.main.java.TestMain" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-10-18T23:22:07" hostname="Rileys-MacBook-Pro.local" time="0.059">
   <properties/>
-  <testcase name="testPrintMenu" classname="src.main.java.TestMain" time="0.009"/>
-  <testcase name="testPassFiles" classname="src.main.java.TestMain" time="0.054"/>
-  <testcase name="testGetFilepath" classname="src.main.java.TestMain" time="0.0"/>
+  <testcase name="testPrintMenu" classname="src.main.java.TestMain" time="0.003"/>
+  <testcase name="testPassFiles" classname="src.main.java.TestMain" time="0.053"/>
+  <testcase name="testGetFilepath" classname="src.main.java.TestMain" time="0.001"/>
   <testcase name="testGetCommand" classname="src.main.java.TestMain" time="0.0"/>
-  <testcase name="testCommandSwitch" classname="src.main.java.TestMain" time="0.003"/>
+  <testcase name="testCommandSwitch" classname="src.main.java.TestMain" time="0.002"/>
   <system-out><![CDATA[?[H?[2J
 COMMAND NAME  |  COMMAND FUNCTION  |  COMMAND OPTIONS
 

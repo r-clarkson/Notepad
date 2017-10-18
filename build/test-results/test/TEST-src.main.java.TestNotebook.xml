@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="src.main.java.TestNotebook" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-18T17:00:33" hostname="Rileys-MacBook-Pro.local" time="0.017">
+<testsuite name="src.main.java.TestNotebook" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-18T23:22:07" hostname="Rileys-MacBook-Pro.local" time="0.012">
   <properties/>
-  <testcase name="testGetListType" classname="src.main.java.TestNotebook" time="0.005"/>
+  <testcase name="testGetListType" classname="src.main.java.TestNotebook" time="0.004"/>
   <testcase name="testGetMaps" classname="src.main.java.TestNotebook" time="0.004"/>
-  <testcase name="testPassToMap" classname="src.main.java.TestNotebook" time="0.007"/>
+  <testcase name="testPassToMap" classname="src.main.java.TestNotebook" time="0.004"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

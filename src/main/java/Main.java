@@ -11,9 +11,9 @@ import java.io.*;
 **/
 public class Main{
   static Scanner scanner = new Scanner(System.in);
-  static File title = new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "title.txt");
-  static File commandsMenu = new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt");
-  static File notesDirectory = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator);
+  static File title = new File("." + File.separator + "resources" + File.separator + "title.txt");
+  static File commandsMenu = new File("." +  File.separator + "resources" + File.separator + "commands.txt");
+  static File notesDirectory = new File("." + File.separator + "notes" + File.separator);
 
   /** Notebook object is created,
   filepath is taken from user (or not, depending on their input).

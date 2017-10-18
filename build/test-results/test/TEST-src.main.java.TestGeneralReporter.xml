@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="src.main.java.TestGeneralReporter" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-10-18T17:00:33" hostname="Rileys-MacBook-Pro.local" time="0.147">
+<testsuite name="src.main.java.TestGeneralReporter" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-10-18T23:22:07" hostname="Rileys-MacBook-Pro.local" time="0.129">
   <properties/>
-  <testcase name="testPrintNotesWithOneOrMoreMentions" classname="src.main.java.TestGeneralReporter" time="0.08"/>
-  <testcase name="testIterateLists" classname="src.main.java.TestGeneralReporter" time="0.066"/>
+  <testcase name="testPrintNotesWithOneOrMoreMentions" classname="src.main.java.TestGeneralReporter" time="0.082"/>
+  <testcase name="testIterateLists" classname="src.main.java.TestGeneralReporter" time="0.047"/>
   <system-out><![CDATA[* #whats-up
 
 *How-To-Use-A-Screwdriver.txt
@@ -18,6 +18,9 @@
 *q.txt
 
 *The-Popes-Tweets.txt
+* #yo
+
+*new note.txt
 * #struggling
 
 *sample.txt
@@ -41,6 +44,9 @@
 *q.txt
 
 *The-Popes-Tweets.txt
+* #yo
+
+*new note.txt
 * #struggling
 
 *sample.txt
@@ -64,6 +70,9 @@
 *q.txt
 
 *The-Popes-Tweets.txt
+* #yo
+
+*new note.txt
 * #struggling
 
 *sample.txt

@@ -13,7 +13,7 @@ public class TestNotebook{
   Note note;
   @Before
   public void setUp(){
-    File testFile = new File("src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator + "growingBasil.txt");
+    File testFile = new File("." + File.separator + "src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator + "growingBasil.txt");
     notebook = new Notebook();
     note = new Note(testFile);
   }

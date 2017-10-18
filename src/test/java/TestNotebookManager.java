@@ -42,6 +42,6 @@ public class TestNotebookManager{
   @Test
   /** should return true if directory exists */
   public void testListFiles(){
-    assertEquals(true,nm.listFiles(new File("src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator)));
+    assertEquals(true,nm.listFiles(new File("." + File.separator + "src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator)));
   }
 }

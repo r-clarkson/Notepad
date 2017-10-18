@@ -13,6 +13,9 @@
 *q.txt
 
 *The-Popes-Tweets.txt
+* #yo
+
+*new note.txt
 * #struggling
 
 *sample.txt
@@ -36,6 +39,9 @@
 *q.txt
 
 *The-Popes-Tweets.txt
+* #yo
+
+*new note.txt
 * #struggling
 
 *sample.txt
@@ -59,6 +65,9 @@
 *q.txt
 
 *The-Popes-Tweets.txt
+* #yo
+
+*new note.txt
 * #struggling
 
 *sample.txt
@@ -164,6 +173,7 @@ A L L   #
  * #whats-up
  * #theWhale
  * #hey
+ * #yo
  * #struggling
  	* #howTo
  !nEnter the type of identifier ('#','@','^','!', or 'url') you would like to organize by, or type 'all' for all
@@ -206,6 +216,7 @@ A L L   #
 #%
 #%Sentence:#hey
 #%"  * found in The-Popes-Tweets.txt
+#%
 #%Notes found for #hey 
 #%B [_DonaldDuck.txt, growingBasil.txt, q.txt, The-Popes-Tweets.txt]
 #&
@@ -255,6 +266,9 @@ A L L   #
 )(
 )(
 )(*How-To-Use-A-Screwdriver.txt
+)(
+)(
+)(*new note.txt
 )(
 )(
 )(*newnote.txt

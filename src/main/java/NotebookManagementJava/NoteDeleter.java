@@ -20,7 +20,7 @@ public class NoteDeleter{
   public boolean deleteNoteMentions(String mentionID){
     boolean foundMention = false;
     String newMention = mentionID.replace("!", "^");
-    File [] txtFiles = new File(".." + File.separator + "Notepad" + File.separator + "notes").listFiles();
+    File [] txtFiles = new File("." + File.separator + "notes" + File.separator).listFiles();
     for (File cur : txtFiles){
       try{
         scan = new Scanner(cur);

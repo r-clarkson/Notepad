@@ -15,7 +15,7 @@ public class TestNoteAdder{
   @Before
   public void SetUp(){
     na = new NoteAdder();
-    testFile = new File("src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator + "testFile.txt");
+    testFile = new File("." + File.separator + "src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator + "testFile.txt");
   }
   @After
   public void TearDown(){

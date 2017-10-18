@@ -34,7 +34,7 @@ public class NotebookManager{
   **/
 
   public boolean editNote(String type){
-    File filepath = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator);
+    File filepath = new File("." + File.separator + "notes" + File.separator);
     switch (type){
       case "-t":
       noteAdder.addTypedNote(getNoteFile());
@@ -66,7 +66,7 @@ public class NotebookManager{
 
   public File getNoteFile(){
     String input;
-    File noteFile = new File(".." + File.separator + "Notepad" + File.separator + "notes");
+    File noteFile = new File("." + File.separator +  "notes" + File.separator);
     System.out.println("Please enter the name of the note you would like to edit/create/delete (do not include filetype). Or for a list of current notefilenames, please type 'list'.");
 
     if (scan.hasNext()){
@@ -82,7 +82,7 @@ public class NotebookManager{
         listFiles(noteFile);
       }
       else {
-        noteFile = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator + input + ".txt");
+        noteFile = new File("." + File.separator + "notes" + File.separator + input + ".txt");
         if (!noteFile.exists()){
           Files.createFile(Paths.get(noteFile.getPath()));
         }

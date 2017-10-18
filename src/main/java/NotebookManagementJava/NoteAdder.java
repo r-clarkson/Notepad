@@ -34,7 +34,7 @@ public class NoteAdder{
           if (!scan.hasNext()){
             return false;
           }
-          body = scan.next();
+          body = scan.nextLine();
           writer.write(body);
         }while(scan.hasNext() && !(scan.next().equals("EOF")));
         writer.close();

@@ -17,7 +17,7 @@ public class TestMain{
   @Before
   public void setUp(){
     n = new Notebook();
-    testFile = new File("src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator + "growingBasil.txt");
+    testFile = new File("." + File.separator + "src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator + "growingBasil.txt");
     nm = new NotebookManager();
   }
   @After
@@ -37,7 +37,7 @@ public class TestMain{
   }
   @Test
   public void testPrintMenu(){
-    assertEquals(true,Main.printMenu(new File(".." + File.separator + "Notepad" + File.separator + "resources" + File.separator + "commands.txt")));
+    assertEquals(true,Main.printMenu(new File("." + File.separator + "resources" + File.separator + "commands.txt")));
   }
   @Test
   public void testGetCommand(){

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="src.main.java.TestTSort" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-18T17:00:34" hostname="Rileys-MacBook-Pro.local" time="0.059">
+<testsuite name="src.main.java.TestTSort" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-18T23:22:08" hostname="Rileys-MacBook-Pro.local" time="0.043">
   <properties/>
-  <testcase name="testTSort" classname="src.main.java.TestTSort" time="0.021"/>
-  <testcase name="testDeleteOutgoingVertices" classname="src.main.java.TestTSort" time="0.022"/>
-  <testcase name="testFindIncomingVertices" classname="src.main.java.TestTSort" time="0.016"/>
+  <testcase name="testTSort" classname="src.main.java.TestTSort" time="0.016"/>
+  <testcase name="testDeleteOutgoingVertices" classname="src.main.java.TestTSort" time="0.012"/>
+  <testcase name="testFindIncomingVertices" classname="src.main.java.TestTSort" time="0.014"/>
   <system-out><![CDATA[
 *.txt
 
@@ -15,6 +15,9 @@
 
 
 *How-To-Use-A-Screwdriver.txt
+
+
+*new note.txt
 
 
 *newnote.txt

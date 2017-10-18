@@ -17,7 +17,7 @@ public class TestGeneralReporter{
   @Before
   public void setUp(){
     nb = new Notebook();
-    testFile = new File("src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator + "growingBasil.txt");
+    testFile = new File("." + File.separator + "src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator + "growingBasil.txt");
     Main.passFiles(nb);
     gr = new GeneralReporter(nb.getMaps().get(0),true,true);
   }

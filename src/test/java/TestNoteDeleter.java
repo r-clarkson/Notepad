@@ -14,7 +14,7 @@ public class TestNoteDeleter{
 
   @Before
   public void SetUp(){
-    testFile = new File("src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator + "testFile.txt");
+    testFile = new File("." + File.separator + "src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator + "testFile.txt");
     nd = new NoteDeleter();
   }
   @After

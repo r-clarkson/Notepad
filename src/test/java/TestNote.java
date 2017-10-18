@@ -18,7 +18,7 @@ public class TestNote {
   /** creates test variables/objects */
   @Before
   public void setUp() {
-    testFile = new File("src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator + "growingBasil.txt");
+    testFile = new File("." + File.separator + "src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator + "growingBasil.txt");
     testPattern = Pattern.compile("#[-a-zA-Z0-9_]+");
     n =  new Note(testFile);
   }
