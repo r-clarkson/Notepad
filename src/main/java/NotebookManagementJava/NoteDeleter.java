@@ -17,22 +17,25 @@ public class NoteDeleter{
   * When a text file is found that contains the mention, calls method removeMentionFromFile
   **/
 
-  public void deleteNoteMentions(String mentionID){
+  public boolean deleteNoteMentions(String mentionID){
+    boolean foundMention = false;
     String newMention = mentionID.replace("!", "^");
     File [] txtFiles = new File(".." + File.separator + "Notepad" + File.separator + "notes").listFiles();
     for (File cur : txtFiles){
-      System.out.println(newMention + " searching" + " in file " + cur.getName());
       try{
         scan = new Scanner(cur);
         while (scan.hasNext()){
           if (scan.next().contains(newMention)){
             removeMentionFromFile(cur,newMention);
+            foundMention = true;
           }
         }
       } catch (FileNotFoundException e){
         System.out.println("Error openning BufferedReader or PrintWriter");
+        return false;
       }
     }
+    return foundMention;
   }
 
   /**
@@ -43,7 +46,8 @@ public class NoteDeleter{
   * https://stackoverflow.com/questions/5360209/how-to-delete-a-specific-string-in-a-text-file
   **/
 
-  public void removeMentionFromFile(File file, String newMention){
+  public boolean removeMentionFromFile(File file, String newMention){
+    boolean replaced = false;
     try{
       File temp = File.createTempFile("tmp", ".txt", file.getParentFile());
       BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.ISO_8859_1));
@@ -51,6 +55,7 @@ public class NoteDeleter{
       for (String line; (line = reader.readLine()) != null;) {
         if (line.contains(newMention)){
           line = line.replace(newMention, "");
+          replaced = true;
         }
         System.out.println(line);
         writer.println(line);
@@ -60,7 +65,9 @@ public class NoteDeleter{
     }
     catch (IOException e){
       System.out.println("Error.");
+      return false;
     }
+    return replaced;
   }
 
   /**

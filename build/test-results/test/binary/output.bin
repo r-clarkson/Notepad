@@ -97,7 +97,7 @@
 	
 	
 	-Enter command below, or for help type 'help'
-bPlease type what you would like to add to fakefile. Skip a line and press enter to submit changes
+fPlease type what you would like to add to testFile.txt. Skip a line and press enter to submit changes
 [H[2JDDependencies loaded. Dictate your note and then press enter to stop
 EEnter the body of your note. When you are finished please type EOF: 
  
@@ -116,87 +116,157 @@
 File: starwars9script.txt
 *File: stepByStepGuide-lightingCandles.txt
 File: sushi-cookbook.txt
+File: testFile.txt
 File: The-Popes-Tweets.txt
 rPlease enter the name of the note you would like to edit/create/delete (do not include file type, only the name).
 <Or for a list of current notefilenames, please type 'list'.
 iPlease type what you would like to delete from your notebook. If it is an identifier, include the symbol
-
+#sports
+#hey
+!recipe
+{We should get some dirt and fertilizer and put it in a pot and plant some basil seeds.  It will totally up our pizza game!
+
+�1. Plant with seeds or a starter plant. I grow from seeds and start a few months before it gets warmer in my area (around February or March). You can also buy a starter plant at a nursery or a grocery store.
+
+�2. Well-drained soil is good soil for basil. If you grow yours in containers like I do, the container itself needs to have good drainage holes.
+
+�3. Keep the temperature fairly warm with lots of sunlight (at least six hours a day). Basil likes warmer temperatures (over 50ï¿½F/10ï¿½C) so I grow mine in the summer outside. If you're growing it outside, a layer or mulch will help regulate temperature and prevent weeds from growing. If there's any hint of frost coming, protect the plants with a covering like sheets or blankets tied loosely around and held in place with rocks, stakes, or bricks. If you don't have any stakes, call Buffy.
+
+�4. Fertilize the soil about once a month if you're growing it indoors. Organic or slow-release fertilizers (like compost tea) are best for basil. Just don't fertilize it below 60ï¿½F/16ï¿½C.
+
+
+,By: Christian Schnettelker ï¿½ CC BY 2.0
+�5. Water often in hot weather. I watered once a day when the temperatures got really hot this summer. But in more normal conditions, I water every other day or so. Check your soil to make sure it isn't getting dry either way.
+
+�6. Prune it! Pruning leads to more basil, so make sure that you figure out how you'll handle the overflow, maybe by learning how to freeze fresh herbs. Start pruning the top leaves at around six inches tall and continue to prune as it gets bushier. Also, pinch off any flowers that you see so they don't go to seed. That will lead to bland and sparse plants.
+
+s7. Keep insects away. If pests are bugging your plants, I've heard using liquid seaweed as a fertilizer will help.
+"heyhellomynameisriley yo whaddup 
+ 
 A L L   #
-nEnter the type of identifier ('#','@','^','!', or 'url') you would like to organize by, or type 'all' for all
-[H[2J
-Sentence:#hey
-  * found in _DonaldDuck.txt
-
-Sentence:#hey
-  * found in growingBasil.txt
-
-&Sentence:#hey everyone this is a test
-  * found in q.txt
-
-Sentence:#hey
-"  * found in The-Popes-Tweets.txt
- 
- Sentence:#hey
-   * found in _DonaldDuck.txt
- 
- Sentence:#hey
-   * found in growingBasil.txt
- 
- &Sentence:#hey everyone this is a test
-   * found in q.txt
- 
- Sentence:#hey
- "  * found in The-Popes-Tweets.txt
- 
- Sentence:#hey
-   * found in growingBasil.txt
-!
-!Sentence:#hey
-!  * found in _DonaldDuck.txt
-!
-!Sentence:#hey
-!  * found in growingBasil.txt
-!
-!&Sentence:#hey everyone this is a test
-!  * found in q.txt
-!
-!Sentence:#hey
-!"  * found in The-Popes-Tweets.txt
-!Notes found for #hey 
-!B [_DonaldDuck.txt, growingBasil.txt, q.txt, The-Popes-Tweets.txt]
-"
-"Sentence:#hey
-"  * found in _DonaldDuck.txt
-"
-"Sentence:#hey
-"  * found in growingBasil.txt
-"
-"&Sentence:#hey everyone this is a test
-"  * found in q.txt
-"
-"Sentence:#hey
-""  * found in The-Popes-Tweets.txt
-#
-#Sentence:#hey
-#  * found in _DonaldDuck.txt
-#
-#Sentence:#hey
-#  * found in growingBasil.txt
-#
-#&Sentence:#hey everyone this is a test
-#  * found in q.txt
-#
-#Sentence:#hey
-#"  * found in The-Popes-Tweets.txt
-#
-#Sentence:#hey
-#  * found in _DonaldDuck.txt
-#
-#Sentence:#hey
-#  * found in growingBasil.txt
-#
-#&Sentence:#hey everyone this is a test
-#  * found in q.txt
-#
-#Sentence:#hey
-#"  * found in The-Popes-Tweets.txt
+ !nEnter the type of identifier ('#','@','^','!', or 'url') you would like to organize by, or type 'all' for all
+ ![H[2J#"
+#"Sentence:#hey
+#"  * found in _DonaldDuck.txt
+#"
+#"Sentence:#hey
+#"  * found in growingBasil.txt
+#"
+#"&Sentence:#hey everyone this is a test
+#"  * found in q.txt
+#"
+#"Sentence:#hey
+#""  * found in The-Popes-Tweets.txt
+#$
+#$Sentence:#hey
+#$  * found in _DonaldDuck.txt
+#$
+#$Sentence:#hey
+#$  * found in growingBasil.txt
+#$
+#$&Sentence:#hey everyone this is a test
+#$  * found in q.txt
+#$
+#$Sentence:#hey
+#$"  * found in The-Popes-Tweets.txt
+#$
+#$Sentence:#hey
+#$  * found in growingBasil.txt
+#%
+#%Sentence:#hey
+#%  * found in _DonaldDuck.txt
+#%
+#%Sentence:#hey
+#%  * found in growingBasil.txt
+#%
+#%&Sentence:#hey everyone this is a test
+#%  * found in q.txt
+#%
+#%Sentence:#hey
+#%"  * found in The-Popes-Tweets.txt
+#%Notes found for #hey 
+#%B [_DonaldDuck.txt, growingBasil.txt, q.txt, The-Popes-Tweets.txt]
+#&
+#&Sentence:#hey
+#&  * found in _DonaldDuck.txt
+#&
+#&Sentence:#hey
+#&  * found in growingBasil.txt
+#&
+#&&Sentence:#hey everyone this is a test
+#&  * found in q.txt
+#&
+#&Sentence:#hey
+#&"  * found in The-Popes-Tweets.txt
+#'
+#'Sentence:#hey
+#'  * found in _DonaldDuck.txt
+#'
+#'Sentence:#hey
+#'  * found in growingBasil.txt
+#'
+#'&Sentence:#hey everyone this is a test
+#'  * found in q.txt
+#'
+#'Sentence:#hey
+#'"  * found in The-Popes-Tweets.txt
+#'
+#'Sentence:#hey
+#'  * found in _DonaldDuck.txt
+#'
+#'Sentence:#hey
+#'  * found in growingBasil.txt
+#'
+#'&Sentence:#hey everyone this is a test
+#'  * found in q.txt
+#'
+#'Sentence:#hey
+#'"  * found in The-Popes-Tweets.txt
+)(
+)(*.txt
+)(
+)(
+)(*exceldata5.txt
+)(
+)(
+)(*How-To-Use-A-Screwdriver.txt
+)(
+)(
+)(*newnote.txt
+)(
+)(
+)(*q.txt
+)(
+)(
+)(*sample.txt
+)(
+)(
+)(*starwars9script.txt
+)(
+)(
+)(*pages79-84.txt
+)(
+)(
+)(%*stepByStepGuide-lightingCandles.txt
+)(
+)(
+)(*sushi-cookbook.txt
+)(
+)(
+)(*_DonaldDuck.txt
+)(
+)(
+)(*The-Popes-Tweets.txt
+)(
+)(
+)(*MobyDick.txt
+)(
+)(
+)(*sconeRecipe.txt
+)(
+)(
+)(*growingBasil.txt
+)(
+)+
+)+*.txt
+)+

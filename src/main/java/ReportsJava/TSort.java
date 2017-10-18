@@ -5,9 +5,17 @@ import java.util.*;
 
 public class TSort {
   int sortIndex;
+  Notebook notebook;
+  LinkedList<String> notesList;
+  HashMap<String, LinkedList<String>> referenceMap;
+  HashMap<String, LinkedList<String>> titleMap;
 
-  public TSort() {
+  public TSort(Notebook notebook) {
     sortIndex = 0;
+    this.notebook = notebook;
+    notesList = notebook.getNotesList();
+    referenceMap = notebook.getListType("^");
+    titleMap = notebook.getListType("!");
   }
 
   /**
@@ -16,19 +24,19 @@ public class TSort {
    * of all notes then repeats until the notes list has reached 0 notes sortIndex is global because
    * it is used in different ways in each of the sort functions
    */
-  public void tSort(
-      LinkedList<String> notesList, LinkedList<HashMap<String, LinkedList<String>>> maps) {
+  public boolean tSort() {
     boolean incomingVertices = false;
     while (notesList.size() != 0) {
-      incomingVertices = findIncomingVertices(notesList, maps);
+      incomingVertices = findIncomingVertices();
       if (incomingVertices) {
         sortIndex++;
-        tSort(notesList, maps);
+        tSort();
       } else {
-        deleteOutgoingVertices(notesList, maps);
-        tSort(notesList, maps);
+        deleteOutgoingVertices();
+        tSort();
       }
     }
+    return notesList.size() == 0 ? true : false;
   }
   /**
    * searches through the ! map if the sortIndex is listSize, start at 0 to check for notes with new
@@ -37,16 +45,15 @@ public class TSort {
    * their symbols), and returns true if it does otherwise, prints the note name because no incoming
    * references were found and then returns false
    */
-  public boolean findIncomingVertices(
-      LinkedList<String> notesList, LinkedList<HashMap<String, LinkedList<String>>> maps) {
-    for (String keyOne : maps.get(2).keySet()) {
+  public boolean findIncomingVertices() {
+    for (String keyOne : titleMap.keySet()) {
       if (sortIndex == notesList.size()) {
         sortIndex = 0;
       }
-      if (maps.get(2).get(keyOne).contains(notesList.get(sortIndex))) {
-        for (String keyTwo : maps.get(3).keySet()) {
+      if (titleMap.get(keyOne).contains(notesList.get(sortIndex))) {
+        for (String keyTwo : referenceMap.keySet()) {
           if ((keyOne.substring(1)).equals(keyTwo.substring(1))
-              && maps.get(3).get(keyTwo).size() != 0) {
+              && referenceMap.get(keyTwo).size() != 0) {
             return true;
           }
         }
@@ -61,14 +68,16 @@ public class TSort {
    * references/vertices the note is then removed from the list of all notes and sortIndex is set at
    * 0 since indexes of the list changed
    */
-  public void deleteOutgoingVertices(
-      LinkedList<String> notesList, LinkedList<HashMap<String, LinkedList<String>>> maps) {
-    for (String key : maps.get(3).keySet()) {
-      while (maps.get(3).get(key).contains(notesList.get(sortIndex))) {
-        maps.get(3).get(key).remove(notesList.get(sortIndex));
+  public boolean deleteOutgoingVertices() {
+    boolean removed = false;
+    for (String key : referenceMap.keySet()) {
+      while (referenceMap.get(key).contains(notesList.get(sortIndex))) {
+        referenceMap.get(key).remove(notesList.get(sortIndex));
+        removed = true;
       }
     }
     notesList.remove(sortIndex);
     sortIndex = 0;
+    return removed;
   }
 }

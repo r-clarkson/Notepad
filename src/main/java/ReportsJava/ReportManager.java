@@ -26,8 +26,8 @@ public class ReportManager {
 
   public boolean generateReport(String sw) {
     if (sw.equals("-t")){
-      TSort topologicalSort = new TSort();
-      topologicalSort.tSort(notebook.getNotesList(), notebook.getMaps());
+      TSort topologicalSort = new TSort(notebook);
+      topologicalSort.tSort();
       return true;
     }
     /** do these if the user did not choose topological sort */

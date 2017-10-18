@@ -15,6 +15,7 @@ public class TestNoteAdder{
   @Before
   public void SetUp(){
     na = new NoteAdder();
+    testFile = new File("src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator + "testFile.txt");
   }
   @After
   public void TearDown(){
@@ -24,16 +25,16 @@ public class TestNoteAdder{
   @Test
   /** would be hard to test in a unit test... should return false without user input */
   public void testAddDictatedNote(){
-    assertEquals(false,na.addDictatedNote(new File("fakefile")));
+    assertEquals(false,na.addDictatedNote(testFile));
   }
   @Test
   public void testAddTypedNote(){
-    assertEquals(false,na.addTypedNote(new File("fakefile")));
+    assertEquals(false,na.addTypedNote(testFile));
   }
   @Test
   /** should return false without user input */
   public void testAppendToNote(){
-    assertEquals(false,na.appendToNote(new File("fakefile")));
+    assertEquals(false,na.appendToNote(testFile));
   }
 
 }
