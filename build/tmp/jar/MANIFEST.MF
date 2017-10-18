@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: notepad.src.main.java.code.Main
+Main-Class: notepad.src.main.java.code.main.Main
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="classes.TestNotebookManager" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-10-18T13:23:58" hostname="Rileys-MacBook-Pro.local" time="0.066">
+<testsuite name="classes.TestNotebookManager" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-10-18T13:41:21" hostname="Rileys-MacBook-Pro.local" time="0.226">
   <properties/>
-  <testcase name="testEditNote" classname="classes.TestNotebookManager" time="0.028"/>
-  <testcase name="testGetNoteFile" classname="classes.TestNotebookManager" time="0.019"/>
-  <testcase name="testListFiles" classname="classes.TestNotebookManager" time="0.01"/>
-  <testcase name="testGetNoteMention" classname="classes.TestNotebookManager" time="0.009"/>
+  <testcase name="testEditNote" classname="classes.TestNotebookManager" time="0.06"/>
+  <testcase name="testGetNoteFile" classname="classes.TestNotebookManager" time="0.057"/>
+  <testcase name="testListFiles" classname="classes.TestNotebookManager" time="0.054"/>
+  <testcase name="testGetNoteMention" classname="classes.TestNotebookManager" time="0.054"/>
   <system-out><![CDATA[Please enter the name of the note you would like to edit/create/delete (do not include file type, only the name).
 Or for a list of current notefilenames, please type 'list'.
 Please enter the name of the note you would like to edit/create/delete (do not include file type, only the name).

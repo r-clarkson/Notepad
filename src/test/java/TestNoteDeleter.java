@@ -14,7 +14,7 @@ public class TestNoteDeleter{
 
   @Before
   public void SetUp(){
-    testFile = new File("src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator + "growingBasil.txt");
+    testFile = new File("src"  + File.separator  + "test"  + File.separator  + "java"  + File.separator  + "notes" + File.separator + "testFile.txt");
     nd = new NoteDeleter();
   }
   @After
@@ -31,7 +31,7 @@ public class TestNoteDeleter{
   @Test
   /** function should not return a null string as the testfile contains a title */
   public void testDeleteNote(){
-    assertNotEquals(null,nd.deleteNote(testFile));
+    assertEquals(null,nd.deleteNote(testFile));
   }
   @Test
   /** this should also return false as the random string is not in the file */

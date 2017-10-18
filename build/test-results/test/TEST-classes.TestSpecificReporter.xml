@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="classes.TestSpecificReporter" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-10-18T13:23:58" hostname="Rileys-MacBook-Pro.local" time="0.206">
+<testsuite name="classes.TestSpecificReporter" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-10-18T13:41:22" hostname="Rileys-MacBook-Pro.local" time="0.348">
   <properties/>
-  <testcase name="testGetSentence" classname="classes.TestSpecificReporter" time="0.02"/>
-  <testcase name="testGetSentenceLines" classname="classes.TestSpecificReporter" time="0.143"/>
-  <testcase name="testPrintSpecificMentionNoteNames" classname="classes.TestSpecificReporter" time="0.014"/>
-  <testcase name="testPrintSpecificMention" classname="classes.TestSpecificReporter" time="0.012"/>
-  <testcase name="testGetFileForSentences" classname="classes.TestSpecificReporter" time="0.017"/>
+  <testcase name="testGetSentence" classname="classes.TestSpecificReporter" time="0.076"/>
+  <testcase name="testGetSentenceLines" classname="classes.TestSpecificReporter" time="0.06"/>
+  <testcase name="testPrintSpecificMentionNoteNames" classname="classes.TestSpecificReporter" time="0.061"/>
+  <testcase name="testPrintSpecificMention" classname="classes.TestSpecificReporter" time="0.067"/>
+  <testcase name="testGetFileForSentences" classname="classes.TestSpecificReporter" time="0.082"/>
   <system-out><![CDATA[
 Sentence:#hey
   * found in _DonaldDuck.txt

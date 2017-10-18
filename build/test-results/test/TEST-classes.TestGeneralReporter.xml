@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="classes.TestGeneralReporter" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-10-18T13:23:50" hostname="Rileys-MacBook-Pro.local" time="0.132">
+<testsuite name="classes.TestGeneralReporter" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-10-18T13:41:21" hostname="Rileys-MacBook-Pro.local" time="0.145">
   <properties/>
-  <testcase name="testPrintNotesWithOneOrMoreMentions" classname="classes.TestGeneralReporter" time="0.078"/>
-  <testcase name="testIterateLists" classname="classes.TestGeneralReporter" time="0.054"/>
+  <testcase name="testPrintNotesWithOneOrMoreMentions" classname="classes.TestGeneralReporter" time="0.077"/>
+  <testcase name="testIterateLists" classname="classes.TestGeneralReporter" time="0.067"/>
   <system-out><![CDATA[* #whats-up
 
 *How-To-Use-A-Screwdriver.txt

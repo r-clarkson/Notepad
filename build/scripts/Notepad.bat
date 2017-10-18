@@ -66,7 +66,7 @@ set CMD_LINE_ARGS=%*
 set CLASSPATH=%APP_HOME%\lib\Notepad.jar;%APP_HOME%\lib\sphinx4-core-5prealpha-SNAPSHOT.jar;%APP_HOME%\lib\commons-math3-3.2.jar;%APP_HOME%\lib\sphinx4-data-5prealpha-SNAPSHOT.jar
 
 @rem Execute Notepad
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %NOTEPAD_OPTS%  -classpath "%CLASSPATH%" notepad.src.main.java.code.Main %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %NOTEPAD_OPTS%  -classpath "%CLASSPATH%" notepad.src.main.java.main.Main %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell
