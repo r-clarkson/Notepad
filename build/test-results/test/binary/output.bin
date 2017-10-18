@@ -4,10 +4,6 @@
 * #theWhale
 
 *MobyDick.txt
-
-* #sports
-
-*growingBasil.txt
 * #hey
 
 *_DonaldDuck.txt
@@ -38,21 +34,21 @@
 
 F add -x           add to notebook      -t (add a note by typing text)
 I                                       -d (add a note through dictation)
-Y                                       -i (add a type of identifier to an existing note)
+R                                       -e (edit an existing note by adding to it)
 
 6COMMAND NAME |   COMMAND FUNCTION  |  COMMAND OPTIONS
 
-J delete -x     delete from notebook     -i (delete a specific identifier)
-M                                        -x (delete a note from the notebook)
+I delete -x     delete from notebook    -i (delete a specific identifier)
+L                                       -x (delete a note from the notebook)
 
 5COMMAND NAME |  COMMAND FUNCTION  |  COMMAND OPTIONS
 
-k search -x     search in notebook     -w (returns the filenames of notes containing an entered identifier)
-n                                      -a (returns all notes which contain one+ identifiers of a certain type)
-d                                      -o (returns notes organized by identifiers of a certain type)
-]                                      -l (returns list of all identifiers of a certain type)
-X                                      -t (returns notes organized in topological order)
-[                                      -s (returns sentences containing a given identifier)
+l search -x     search in notebook      -w (returns the filenames of notes containing an entered identifier)
+o                                       -a (returns all notes which contain one+ identifiers of a certain type)
+e                                       -o (returns notes organized by identifiers of a certain type)
+^                                       -l (returns list of all identifiers of a certain type)
+Y                                       -t (returns notes organized in topological order)
+\                                       -s (returns sentences containing a given identifier)
 
 "COMMAND NAME  |  COMMAND FUNCTION
 
@@ -71,21 +67,21 @@
 	
 	F add -x           add to notebook      -t (add a note by typing text)
 	I                                       -d (add a note through dictation)
-	Y                                       -i (add a type of identifier to an existing note)
+	R                                       -e (edit an existing note by adding to it)
 	
 	6COMMAND NAME |   COMMAND FUNCTION  |  COMMAND OPTIONS
 	
-	J delete -x     delete from notebook     -i (delete a specific identifier)
-	M                                        -x (delete a note from the notebook)
+	I delete -x     delete from notebook    -i (delete a specific identifier)
+	L                                       -x (delete a note from the notebook)
 	
 	5COMMAND NAME |  COMMAND FUNCTION  |  COMMAND OPTIONS
 	
-	k search -x     search in notebook     -w (returns the filenames of notes containing an entered identifier)
-	n                                      -a (returns all notes which contain one+ identifiers of a certain type)
-	d                                      -o (returns notes organized by identifiers of a certain type)
-	]                                      -l (returns list of all identifiers of a certain type)
-	X                                      -t (returns notes organized in topological order)
-	[                                      -s (returns sentences containing a given identifier)
+	l search -x     search in notebook      -w (returns the filenames of notes containing an entered identifier)
+	o                                       -a (returns all notes which contain one+ identifiers of a certain type)
+	e                                       -o (returns notes organized by identifiers of a certain type)
+	^                                       -l (returns list of all identifiers of a certain type)
+	Y                                       -t (returns notes organized in topological order)
+	\                                       -s (returns sentences containing a given identifier)
 	
 	"COMMAND NAME  |  COMMAND FUNCTION
 	
@@ -98,12 +94,10 @@
 	
 	-Enter command below, or for help type 'help'
 fPlease type what you would like to add to testFile.txt. Skip a line and press enter to submit changes
-EEnter the body of your note. When you are finished please type EOF: 
+UEnter the body of your note. When you are finished please skip a line and type EOF: 
  
-rPlease enter the name of the note you would like to edit/create/delete (do not include file type, only the name).
-<Or for a list of current notefilenames, please type 'list'.
-rPlease enter the name of the note you would like to edit/create/delete (do not include file type, only the name).
-<Or for a list of current notefilenames, please type 'list'.
+žPlease enter the name of the note you would like to edit/create/delete (do not include filetype). Or for a list of current notefilenames, please type 'list'.
+žPlease enter the name of the note you would like to edit/create/delete (do not include filetype). Or for a list of current notefilenames, please type 'list'.
 File: _DonaldDuck.txt
 File: exceldata5.txt
 File: growingBasil.txt
@@ -117,13 +111,12 @@
 File: sushi-cookbook.txt
 File: testFile.txt
 File: The-Popes-Tweets.txt
-rPlease enter the name of the note you would like to edit/create/delete (do not include file type, only the name).
-<Or for a list of current notefilenames, please type 'list'.
+žPlease enter the name of the note you would like to edit/create/delete (do not include filetype). Or for a list of current notefilenames, please type 'list'.
 iPlease type what you would like to delete from your notebook. If it is an identifier, include the symbol
  
 A L L   #
  !nEnter the type of identifier ('#','@','^','!', or 'url') you would like to organize by, or type 'all' for all
- ![H[2J#"
+#"
 #"Sentence:#hey
 #"  * found in _DonaldDuck.txt
 #"
@@ -207,6 +200,9 @@ A L L   #
 )(*exceldata5.txt
 )(
 )(
+)(*growingBasil.txt
+)(
+)(
 )(*How-To-Use-A-Screwdriver.txt
 )(
 )(
@@ -241,9 +237,6 @@ A L L   #
 )(
 )(
 )(*sconeRecipe.txt
-)(
-)(
-)(*growingBasil.txt
 )(
 )+
 )+*.txt

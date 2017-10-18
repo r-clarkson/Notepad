@@ -1,4 +1,4 @@
-package classes;
+package src.main.java;
 
 import static org.junit.Assert.*;
 

@@ -1,4 +1,4 @@
-package classes;
+package src.main.java;
 
 import java.io.*;
 import java.nio.file.*;
@@ -8,11 +8,15 @@ public class GeneralReporter{
   HashMap<String, LinkedList<String>> mapType;
   boolean showKey;
   boolean showValue;
+  boolean found;
 
   public GeneralReporter(HashMap<String, LinkedList<String>> mapType, boolean showKey, boolean showValue){
     this.mapType = mapType;
     this.showKey = showKey;
     this.showValue = showValue;
+    found = false;
+
+    printNotesWithOneOrMoreMentions();
   }
 
   /**
@@ -26,6 +30,7 @@ public class GeneralReporter{
       for (String key : mapType.keySet()) {
         if (showKey) {
           System.out.println("* " + key);
+          found = true;
         }
         if (showValue) {
           iterateLists(key);
@@ -46,8 +51,14 @@ public class GeneralReporter{
       if (!noteNames.contains(mapType.get(key).get(i))) {
         System.out.println("\n*" + mapType.get(key).get(i));
         noteNames.add(mapType.get(key).get(i));
+        found = true;
       }
     }
     return (noteNames.size()!=0) ? true : false;
+  }
+
+  /** returns true if something was found to report */
+  public boolean getFound(){
+    return found;
   }
 }

@@ -1,4 +1,4 @@
-package classes;
+package src.main.java;
 import junit.framework.*;
 import static org.junit.Assert.*;
 import java.io.*;
@@ -21,7 +21,7 @@ public class TestReportManager{
   public void tearDown(){
     notebook = null;
   }
-  
+
   @Test
   /** should return false as -c is not a command option */
   public void testGenerateReport(){

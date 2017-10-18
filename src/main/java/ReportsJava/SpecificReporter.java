@@ -1,4 +1,4 @@
-package classes;
+package src.main.java;
 
 import java.io.*;
 import java.nio.file.*;
@@ -31,7 +31,7 @@ public class SpecificReporter{
     }
 
     if (!found){
-      System.out.println("No matches found for " + mention);
+      System.out.println("\nNo matches found for " + mention);
     }
   }
   /**
@@ -47,6 +47,7 @@ public class SpecificReporter{
         if (notebook.getMaps().get(i).containsKey(mention)) {
           for (int j = 0; j < notebook.getMaps().get(i).get(mention).size(); j++){
             fileName.add(notebook.getMaps().get(i).get(mention).get(j));
+            found = true;
           }
         }
       }
@@ -117,5 +118,11 @@ public class SpecificReporter{
       return true;
     }
     return false;
+  }
+
+  /** returns true if search was fruitful */
+
+  public boolean getFound(){
+    return found;
   }
 }

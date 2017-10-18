@@ -1,4 +1,4 @@
-package classes;
+package src.main.java;
 import junit.framework.*;
 import static org.junit.Assert.*;
 import java.io.*;

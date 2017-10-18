@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="src.main.java.TestMain" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-10-18T16:36:34" hostname="Rileys-MacBook-Pro.local" time="0.047">
+  <properties/>
+  <testcase name="testPrintMenu" classname="src.main.java.TestMain" time="0.004"/>
+  <testcase name="testPassFiles" classname="src.main.java.TestMain" time="0.038"/>
+  <testcase name="testGetFilepath" classname="src.main.java.TestMain" time="0.001"/>
+  <testcase name="testGetCommand" classname="src.main.java.TestMain" time="0.0"/>
+  <testcase name="testCommandSwitch" classname="src.main.java.TestMain" time="0.002"/>
+  <system-out><![CDATA[?[H?[2J
+COMMAND NAME  |  COMMAND FUNCTION  |  COMMAND OPTIONS
+
+ add -x           add to notebook      -t (add a note by typing text)
+                                       -d (add a note through dictation)
+                                       -e (edit an existing note by adding to it)
+
+COMMAND NAME |   COMMAND FUNCTION  |  COMMAND OPTIONS
+
+ delete -x     delete from notebook    -i (delete a specific identifier)
+                                       -x (delete a note from the notebook)
+
+COMMAND NAME |  COMMAND FUNCTION  |  COMMAND OPTIONS
+
+ search -x     search in notebook      -w (returns the filenames of notes containing an entered identifier)
+                                       -a (returns all notes which contain one+ identifiers of a certain type)
+                                       -o (returns notes organized by identifiers of a certain type)
+                                       -l (returns list of all identifiers of a certain type)
+                                       -t (returns notes organized in topological order)
+                                       -s (returns sentences containing a given identifier)
+
+COMMAND NAME  |  COMMAND FUNCTION
+
+ filepath         give notes location via filepath
+
+COMMAND NAME  |  COMMAND FUNCTION
+
+ quit             terminate program
+
+
+Please enter your ABSOLUTE filepath:
+File not found.
+Enter command below, or for help type 'help'
+?[H?[2J
+COMMAND NAME  |  COMMAND FUNCTION  |  COMMAND OPTIONS
+
+ add -x           add to notebook      -t (add a note by typing text)
+                                       -d (add a note through dictation)
+                                       -e (edit an existing note by adding to it)
+
+COMMAND NAME |   COMMAND FUNCTION  |  COMMAND OPTIONS
+
+ delete -x     delete from notebook    -i (delete a specific identifier)
+                                       -x (delete a note from the notebook)
+
+COMMAND NAME |  COMMAND FUNCTION  |  COMMAND OPTIONS
+
+ search -x     search in notebook      -w (returns the filenames of notes containing an entered identifier)
+                                       -a (returns all notes which contain one+ identifiers of a certain type)
+                                       -o (returns notes organized by identifiers of a certain type)
+                                       -l (returns list of all identifiers of a certain type)
+                                       -t (returns notes organized in topological order)
+                                       -s (returns sentences containing a given identifier)
+
+COMMAND NAME  |  COMMAND FUNCTION
+
+ filepath         give notes location via filepath
+
+COMMAND NAME  |  COMMAND FUNCTION
+
+ quit             terminate program
+
+
+Enter command below, or for help type 'help'
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

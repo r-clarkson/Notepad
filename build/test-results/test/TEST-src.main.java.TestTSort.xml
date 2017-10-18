@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="src.main.java.TestTSort" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-18T16:36:35" hostname="Rileys-MacBook-Pro.local" time="0.115">
+  <properties/>
+  <testcase name="testTSort" classname="src.main.java.TestTSort" time="0.043"/>
+  <testcase name="testDeleteOutgoingVertices" classname="src.main.java.TestTSort" time="0.037"/>
+  <testcase name="testFindIncomingVertices" classname="src.main.java.TestTSort" time="0.035"/>
+  <system-out><![CDATA[
+*.txt
+
+
+*exceldata5.txt
+
+
+*growingBasil.txt
+
+
+*How-To-Use-A-Screwdriver.txt
+
+
+*newnote.txt
+
+
+*q.txt
+
+
+*sample.txt
+
+
+*starwars9script.txt
+
+
+*pages79-84.txt
+
+
+*stepByStepGuide-lightingCandles.txt
+
+
+*sushi-cookbook.txt
+
+
+*_DonaldDuck.txt
+
+
+*The-Popes-Tweets.txt
+
+
+*MobyDick.txt
+
+
+*sconeRecipe.txt
+
+
+*.txt
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

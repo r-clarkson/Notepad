@@ -1,4 +1,4 @@
-package classes;
+package src.main.java;
 
 import java.io.*;
 import java.util.*;
@@ -12,10 +12,17 @@ public class ReportManager {
   Scanner scanner;
   Notebook notebook;
   LinkedList<String> notesList;
+  List<String> types;
 
   public ReportManager(Notebook notebook) {
     scanner = new Scanner(System.in);
     this.notebook = notebook;
+    types = new ArrayList<String>();
+    types.add("#");
+    types.add("@");
+    types.add("^");
+    types.add("!");
+    types.add("");
   }
 
   /**
@@ -31,35 +38,45 @@ public class ReportManager {
       return true;
     }
     /** do these if the user did not choose topological sort */
-    else {
-      String data = getData();
-      clearScreen();
-      if (data == null){
-        return false;
+
+    else if (sw.equals("-w") || sw.equals("-s")){
+      SpecificReporter sr = null;
+      boolean showSentence = sw.equals("-s") ? true : false;
+      System.out.println("Enter the identifier you would like to search for, excluding the symbol" );
+      String data = scanner.next();
+      for (String type:types){
+        type = type.concat(data);
+        sr = new SpecificReporter(type,showSentence,notebook);
       }
-      else{
-        return printInformation(data,sw);
-      }
+      return true;
+    }
+
+    else{
+      return printInformation(getData(),sw);
     }
   }
 
+
+
   /**
-  * Uses a big ass switch statement to determine which report to generate exactly, and then prints it
+  * Uses a big switch statement to determine which report to generate exactly, and then prints it
   * by creating the right report object
   **/
 
   public boolean printInformation(String data, String sw){
-    String[] types = {"keywords (#)","mentions (@)","references (^)","titles (!)","urls"};
-    SpecificReporter sr = null;
     GeneralReporter gr = null;
 
-    if (data.equals("all")){
+    if (data == null){
+      return false;
+    }
+
+    else if (data.equals("all")){
       for (String type : types){
         System.out.println("\n");
         printInformation(type,sw);
       }
     }
-    //here we go...
+
     else if (!data.equals("all")){
       switch (sw) {
 
@@ -78,31 +95,13 @@ public class ReportManager {
         gr = new GeneralReporter(notebook.getListType(data), true, true);
         break;
 
-
-        case "-w":
-        clearScreen();
-        String userInput = null;
-        System.out.println("Enter the word you would like to search for of type " + data);
-        data = data.concat(scanner.next());
-        for (String type:types){
-          type.concat(data);
-          sr = new SpecificReporter(type,false,notebook);
-        }
-        break;
-
-        case "-s":
-        System.out.println("Enter the word you would like to search for of type " + data);
-        data = data.concat(scanner.next());
-        for (String type:types){
-          type.concat(data);
-          sr = new SpecificReporter(type,true,notebook);
-        }
-        break;
-
         default:
         System.out.println("Please enter a valid second argument.");
         return false;
       }
+    }
+    if (!gr.getFound()){
+      System.out.println("No matches found for " + data);
     }
     return true;
   }

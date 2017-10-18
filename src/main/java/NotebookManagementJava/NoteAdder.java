@@ -1,4 +1,4 @@
-package classes;
+package src.main.java;
 
 import java.util.*;
 import java.util.logging.Logger;
@@ -29,7 +29,7 @@ public class NoteAdder{
     if (filename!=null){
       try{
         PrintWriter writer = new PrintWriter(filename);
-        System.out.println("Enter the body of your note. When you are finished please type EOF: \n ");
+        System.out.println("Enter the body of your note. When you are finished please skip a line and type EOF: \n ");
         do {
           if (!scan.hasNext()){
             return false;
@@ -117,16 +117,15 @@ public class NoteAdder{
       LiveSpeechRecognizer recognizer = new LiveSpeechRecognizer(configuration);
       recognizer.startRecognition(true);
 
-      /** result from recognizer is taken and the hypothesis of the word is written to the file */
-      SpeechResult result = recognizer.getResult();
-      results.add(result);
-
       /** recording is stopped when user presses enter, or function returns false with no scanner for testing */
       if (scan.hasNext()){
-        scan = new Scanner(System.in);
-        if (scan.nextLine()==""){
-          recognizer.stopRecognition();
+        String text = scan.nextLine();
+        while (!text.equals("")){
+          /** result from recognizer is taken and the hypothesis of the word is written to the file */
+          SpeechResult result = recognizer.getResult();
+          results.add(result);
         }
+        recognizer.stopRecognition();
       }
       else {
         return false;

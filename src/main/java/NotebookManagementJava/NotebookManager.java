@@ -1,4 +1,4 @@
-package classes;
+package src.main.java;
 import java.util.*;
 import java.util.logging.Logger;
 import java.io.*;
@@ -34,7 +34,7 @@ public class NotebookManager{
   **/
 
   public boolean editNote(String type){
-    File filepath = null;
+    File filepath = new File(".." + File.separator + "Notepad" + File.separator + "notes" + File.separator);
     switch (type){
       case "-t":
       noteAdder.addTypedNote(getNoteFile());
@@ -46,7 +46,8 @@ public class NotebookManager{
       noteDeleter.deleteNoteMentions(noteDeleter.deleteNote(getNoteFile()));
       break;
       case "-i":
-      noteDeleter.removeMentionFromFile(getNoteFile(),getNoteMention());
+      noteDeleter.deleteNoteMentions(getNoteMention());
+      break;
       case "-e":
       noteAdder.appendToNote(getNoteFile());
       break;
@@ -66,7 +67,7 @@ public class NotebookManager{
   public File getNoteFile(){
     String input;
     File noteFile = new File(".." + File.separator + "Notepad" + File.separator + "notes");
-    System.out.println("Please enter the name of the note you would like to edit/create/delete (do not include file type, only the name).\nOr for a list of current notefilenames, please type 'list'.");
+    System.out.println("Please enter the name of the note you would like to edit/create/delete (do not include filetype). Or for a list of current notefilenames, please type 'list'.");
 
     if (scan.hasNext()){
       input = scan.nextLine();
@@ -85,7 +86,6 @@ public class NotebookManager{
         if (!noteFile.exists()){
           Files.createFile(Paths.get(noteFile.getPath()));
         }
-        System.out.println(noteFile.getName() + " retrieved.");
       }
     }
 

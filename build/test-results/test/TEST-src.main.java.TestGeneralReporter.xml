@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="src.main.java.TestGeneralReporter" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-10-18T16:36:34" hostname="Rileys-MacBook-Pro.local" time="0.126">
+  <properties/>
+  <testcase name="testPrintNotesWithOneOrMoreMentions" classname="src.main.java.TestGeneralReporter" time="0.076"/>
+  <testcase name="testIterateLists" classname="src.main.java.TestGeneralReporter" time="0.049"/>
+  <system-out><![CDATA[* #whats-up
+
+*How-To-Use-A-Screwdriver.txt
+* #theWhale
+
+*MobyDick.txt
+* #hey
+
+*_DonaldDuck.txt
+
+*growingBasil.txt
+
+*q.txt
+
+*The-Popes-Tweets.txt
+* #struggling
+
+*sample.txt
+* #howTo
+
+*How-To-Use-A-Screwdriver.txt
+
+*stepByStepGuide-lightingCandles.txt
+
+*_DonaldDuck.txt
+
+*growingBasil.txt
+
+*q.txt
+
+*The-Popes-Tweets.txt
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,4 +1,4 @@
-package classes;
+package src.main.java;
 import java.util.regex.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -57,7 +57,6 @@ public class NoteDeleter{
           line = line.replace(newMention, "");
           replaced = true;
         }
-        System.out.println(line);
         writer.println(line);
       }
       writer.close();
