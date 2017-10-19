@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="src.main.java.TestNoteAdder" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-18T23:22:07" hostname="Rileys-MacBook-Pro.local" time="0.002">
+<testsuite name="src.main.java.TestNoteAdder" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-19T00:15:37" hostname="Rileys-MacBook-Pro.local" time="0.002">
   <properties/>
   <testcase name="testAppendToNote" classname="src.main.java.TestNoteAdder" time="0.0"/>
-  <testcase name="testAddDictatedNote" classname="src.main.java.TestNoteAdder" time="0.001"/>
+  <testcase name="testAddDictatedNote" classname="src.main.java.TestNoteAdder" time="0.0"/>
   <testcase name="testAddTypedNote" classname="src.main.java.TestNoteAdder" time="0.001"/>
   <system-out><![CDATA[Please type what you would like to add to testFile.txt. Skip a line and press enter to submit changes
 Enter the body of your note. When you are finished please skip a line and type EOF: 

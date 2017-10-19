@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="src.main.java.TestNotebookManager" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-10-18T23:22:07" hostname="Rileys-MacBook-Pro.local" time="0.243">
+<testsuite name="src.main.java.TestNotebookManager" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-10-19T00:15:37" hostname="Rileys-MacBook-Pro.local" time="0.221">
   <properties/>
-  <testcase name="testEditNote" classname="src.main.java.TestNotebookManager" time="0.034"/>
-  <testcase name="testGetNoteFile" classname="src.main.java.TestNotebookManager" time="0.069"/>
-  <testcase name="testListFiles" classname="src.main.java.TestNotebookManager" time="0.077"/>
-  <testcase name="testGetNoteMention" classname="src.main.java.TestNotebookManager" time="0.063"/>
+  <testcase name="testEditNote" classname="src.main.java.TestNotebookManager" time="0.058"/>
+  <testcase name="testGetNoteFile" classname="src.main.java.TestNotebookManager" time="0.059"/>
+  <testcase name="testListFiles" classname="src.main.java.TestNotebookManager" time="0.058"/>
+  <testcase name="testGetNoteMention" classname="src.main.java.TestNotebookManager" time="0.045"/>
   <system-out><![CDATA[Please enter the name of the note you would like to edit/create/delete (do not include filetype). Or for a list of current notefilenames, please type 'list'.
 Please enter the name of the note you would like to edit/create/delete (do not include filetype). Or for a list of current notefilenames, please type 'list'.
 File: _DonaldDuck.txt

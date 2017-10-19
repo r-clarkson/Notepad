@@ -116,6 +116,7 @@
 
 %Please enter your ABSOLUTE filepath:
 File not found.
+
 -Enter command below, or for help type 'help'
 	[H[2J	
 	6COMMAND NAME  |  COMMAND FUNCTION  |  COMMAND OPTIONS
@@ -145,6 +146,7 @@
 	"COMMAND NAME  |  COMMAND FUNCTION
 	
 	$ quit             terminate program
+	
 	
 	
 	-Enter command below, or for help type 'help'

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="src.main.java.TestTSort" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-18T23:22:08" hostname="Rileys-MacBook-Pro.local" time="0.043">
+<testsuite name="src.main.java.TestTSort" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-19T00:15:38" hostname="Rileys-MacBook-Pro.local" time="0.036">
   <properties/>
-  <testcase name="testTSort" classname="src.main.java.TestTSort" time="0.016"/>
-  <testcase name="testDeleteOutgoingVertices" classname="src.main.java.TestTSort" time="0.012"/>
-  <testcase name="testFindIncomingVertices" classname="src.main.java.TestTSort" time="0.014"/>
+  <testcase name="testTSort" classname="src.main.java.TestTSort" time="0.014"/>
+  <testcase name="testDeleteOutgoingVertices" classname="src.main.java.TestTSort" time="0.011"/>
+  <testcase name="testFindIncomingVertices" classname="src.main.java.TestTSort" time="0.011"/>
   <system-out><![CDATA[
 *.txt
 

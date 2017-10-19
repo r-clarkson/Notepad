@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="src.main.java.TestNoteDeleter" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-18T23:22:07" hostname="Rileys-MacBook-Pro.local" time="0.044">
+<testsuite name="src.main.java.TestNoteDeleter" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-19T00:15:37" hostname="Rileys-MacBook-Pro.local" time="0.041">
   <properties/>
   <testcase name="testRemoveMentionFromFile" classname="src.main.java.TestNoteDeleter" time="0.004"/>
-  <testcase name="testDeleteNoteMentions" classname="src.main.java.TestNoteDeleter" time="0.039"/>
+  <testcase name="testDeleteNoteMentions" classname="src.main.java.TestNoteDeleter" time="0.035"/>
   <testcase name="testDeleteNote" classname="src.main.java.TestNoteDeleter" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

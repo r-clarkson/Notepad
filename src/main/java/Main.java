@@ -1,6 +1,7 @@
 package src.main.java;
 
 import java.nio.file.*;
+import java.nio.channels.FileChannel;
 import java.util.*;
 import java.io.*;
 
@@ -46,7 +47,14 @@ public class Main{
         return false;
       }
       for (final File fileEntry : noteFolder.listFiles()) {
-        fileEntry.renameTo(notesDirectory);
+        try{
+          File destination = new File("." + File.separator + "notes" + File.separator + fileEntry.getName());
+          copyFile(fileEntry,destination);
+        }
+        catch (IOException e){
+          System.out.println("Could not copy files into notes directory.");
+          return false;
+        }
       }
     }
     /** Catches null pointers from filepath not being correct */
@@ -155,7 +163,7 @@ public class Main{
 
       case "filepath":
       getFilePath();
-      break;
+      return false;
 
       case "delete":
       notebookManager.editNote(commands[1]);
@@ -188,4 +196,32 @@ public class Main{
     System.out.println("Terminating...");
     System.exit(0);
   }
+
+  /**
+  * Copies files from the filepath to notes directory
+  * https://stackoverflow.com/questions/106770/standard-concise-way-to-copy-a-file-in-java
+  **/
+
+  public static void copyFile(File sourceFile, File destFile) throws IOException {
+    if(!destFile.exists()) {
+        destFile.createNewFile();
+    }
+
+    FileChannel source = null;
+    FileChannel destination = null;
+
+    try {
+        source = new FileInputStream(sourceFile).getChannel();
+        destination = new FileOutputStream(destFile).getChannel();
+        destination.transferFrom(source, 0, source.size());
+    }
+    finally {
+        if(source != null) {
+            source.close();
+        }
+        if(destination != null) {
+            destination.close();
+        }
+    }
+}
 }
